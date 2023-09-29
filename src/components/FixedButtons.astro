@@ -1,0 +1,106 @@
+<div class="container">
+    <a class="button button--black" href="">
+        <div class="icon"><img src="/images/icon-orientation.svg" alt="" width="40" height="40"></div>
+        <div class="label">説明会予約</div>
+        <div class="arrow"></div>
+    </a>
+    <a class="button button--orange" href="">
+        <div class="icon"><img src="/images/icon-material.svg" alt="" width="40" height="40"></div>
+        <div class="label">資料請求</div>
+        <div class="arrow"></div>
+    </a>
+</div>
+<style>
+    .container {
+        position: relative;
+        position: fixed;
+        z-index: 4;
+        right: 20px;
+        bottom: 40px;
+        display: grid;
+        gap: 10px;
+    }
+    .container::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        z-index: -1;
+        background: var(--color-white-primary);
+        border-radius: 24px;
+        filter: blur(32px);
+    }
+    .button {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        padding: 0 0 8px;
+        width: 120px;
+        height: 120px;
+        color: var(--color-white-primary);
+        background: var(--color-black-primary);
+        border: 1px solid rgba(255,255,255,0.65);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow-primary-medium);
+    }
+    .button::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 20px;
+        width: 26px;
+        height: 1px;
+        background: var(--color-white-primary);
+        filter: blur(2px);
+    }
+    .button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        box-shadow: var(--inner-grow-primary-medium);
+        border-radius: 12px;
+    }
+    .button--black {
+        transform: rotate(-2deg);
+        background: linear-gradient(#363636,#57433D);
+    }
+    .button--orange {
+        transform: rotate(2deg);
+        background: linear-gradient(#F7701B,#FF5A36);
+    }
+    .icon {
+        width: 48px;
+        filter: drop-shadow(var(--text-shadow-primary));
+    }
+    .label {
+        font-size: 14px;
+        text-shadow: var(--text-shadow-primary);
+    }
+    .arrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 12px 0 0 0;
+        background: #161616;
+    }
+    .arrow::before {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 4px;
+        width: 16px;
+        height: 16px;
+        background: var(--color-white-primary);
+        mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+        -webkit-mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+    }
+    .button--orange .arrow {
+        background-color: #da3300;
+    }
+</style>

@@ -1,0 +1,123 @@
+@charset "UTF-8"; 
+*,
+*::before,
+*::after {box-sizing:border-box;}
+* {margin:0; vertical-align:baseline; padding:0; font-style:inherit; font-family:inherit; font-weight:inherit; text-decoration:none; border:0; outline:0;}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin:0; vertical-align:baseline; padding:0; font-size:100%; text-decoration:none;color:inherit; background:none; border:0; font:inherit; }
+button {cursor:pointer;}
+img {display:block; width:100%; height:auto;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
+html { font-size:62.5%;}
+body {line-height:1; line-height:1.5; --letter-spacing:.05em; font-size:18px; font-family:var(--font-family-primary); font-weight:500; color:var(--color-black-primary); background: var(--color-white-secondary); overflow-y:auto; scrollbar-gutter:stable;}
+* {letter-spacing:var(--letter-spacing);}
+@media screen and (max-width:1080px) {
+	body {font-size:15px;}
+}
+ol, ul {list-style:none;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content:""; content:none;}
+table {border-collapse:collapse; border-spacing:0;}
+::-moz-selection {color:var(--color-white-900); background-color:var(--color-brown-600);}
+::selection {color:var(--color-white-900); background-color:var(--color-brown-600);}
+
+:root {
+    --color-white-primary: #ffffff;
+    --color-white-secondary: #F5F5F5;
+    --color-white-tertiary: #f1f1f1;
+    --color-lightgray-primary: #EBEBEB;
+    --color-lightgray-primary: #cccccc;
+    --color-gray-primary: #828282;
+    --color-black-primary: #414141;
+    --color-black-secondary: #000000;
+    --color-orange-primary: #F7701B;
+    --color-orange-secondary: #F79F1B;
+    --color-orange-tertiary: #F7701B;
+    --color-pink-primary: #F8B7B7;
+    --color-lightgreen-primary: #F8B7B7;
+    --color-purple-primary: #F8B7B7;
+    --shadow-rgb-orange: 146,17,0;
+    --shadow-primary-medium: 0 16px 32px -8px rgba(var(--shadow-rgb-orange),0.2);
+    --shadow-primary-small: 0 8px 16px -4px rgba(var(--shadow-rgb-orange),0.2);
+    --shadow-primary-tiny: 0 4px 8px 0 rgba(var(--shadow-rgb-orange),0.2);
+    --text-shadow-primary: 0 1px 4px rgba(var(--shadow-rgb-orange),0.6);
+    --filter-shadow-primary-medium: 0 16px 32px rgba(var(--shadow-rgb-orange),0.2);
+    --inner-grow-primary-medium: 0 0 8px rgba(255,255,255,0.35) inset,0 0 16px rgba(255,255,255,0.35) inset,0 0 32px rgba(255,255,255,0.35) inset;
+    --content-padding:64px;
+    --content-width:min(1400px,calc(100vw - var(--content-padding) * 2));
+    --content-width-wide:min(1600px,calc(100vw - var(--content-padding) * 2));
+    --content-width-narrow:min(1080px,calc(100vw - var(--content-padding) * 2));
+    --content-outerwidth:calc((100vw - var(--content-width)) / 2);
+    --content-outerwidth-wide:calc((100vw - var(--content-width-wide)) / 2);
+    --header-height:76px;
+    --font-family-primary:'LINE Seed JP', sans-serif;
+}
+@media screen and (max-width:1200px) {
+	:root {
+		--header-height:60px;
+	}
+}
+
+@media screen and (max-width:1280px) {
+	:root {
+		--content-padding:32px;
+	}
+}
+@media screen and (max-width:800px) {
+	:root {
+		--content-padding:20px;
+	}
+}
+._align-center {
+    display: flex;
+    justify-content: center;
+}
+
+._text-small {
+    font-size: 0.75em;
+}
+
+._keep-all {
+    word-break: keep-all;
+}
+
+.bodytext {
+    display: grid;
+    gap: 16px;
+    line-height: 2;
+}
+.bodytext--align-center {
+    text-align: center;
+}
+
+.columns {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2,1fr);
+    gap: 56px 7.5%;
+}
+@media screen and (max-width:1080px) {
+    .columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+@font-face {
+    font-family: 'LINE Seed JP';
+    src: url('/fonts/LINESeedJP_OTF_Bd.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

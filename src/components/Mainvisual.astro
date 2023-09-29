@@ -1,0 +1,166 @@
+<div id="mainvisual" class="mainvisual">
+    <div id="mainvisual-bg" class="mainvisual-bg">
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--04" data-depth="2">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--04"></div>
+        </div>
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--copy-bg" data-depth="4.5">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image-copy-bg"></div>
+        </div>
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--03" data-depth="6">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--03"></div>
+        </div>
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--02" data-depth="9">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--02"></div>
+        </div>
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--01" data-depth="11">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--01"></div>
+        </div>
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--00" data-depth="16">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--00"></div>
+        </div>
+        <div class="mainvisual-bg__layer mainvisual-bg__layer--copy" data-depth="4">
+            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image-copy"></div>
+        </div>
+    </div>
+    <div id="mainvisual__stoker" class="mainvisual__stoker"></div>
+</div>
+<style>
+    .mainvisual {
+        position: relative;
+        height: 67.5vw;
+        -webkit-mask: linear-gradient(to top, transparent 5%,black 17.5%, black 100%);
+        mask: linear-gradient(to top, transparent 5%,black 17.5%, black 100%);
+    }
+    .mainvisual-bg {
+        position: absolute;
+        overflow: hidden;
+        inset: 0;
+        z-index: 0;
+        background: var(--color-white-secondary);
+    }
+    .mainvisual-bg::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        background: url("/images/noise.png") center/50px repeat;
+        mix-blend-mode: overlay;
+        opacity: 1;
+        animation: mainvisual-overlay-noise 0.25s 0s both infinite normal steps(5, end);
+    }
+    @keyframes mainvisual-overlay-noise {
+        0% {background-position: 0% 0%;}
+        100% {background-position: 100% 100%;}
+    }
+    .mainvisual-bg__layer {
+        position: absolute;
+        inset: 0%;
+        width: 100%;
+        height: 100%;
+    }
+    .mainvisual-bg__layer-image {
+        position: absolute;
+        inset: -4.4%;
+        animation:mainvisual-shake 15s 0s both infinite normal linear;
+        background:center 40px/100% no-repeat;
+        translate: 0 calc(var(--parallax-offset) * (var(--parallax) - 1.25) * -0.2);
+        transition: translate 0.05s;
+    }
+    .mainvisual-bg__layer-image--00 {
+        --parallax: 2.5;
+        background-image:url("/images/kv-00.webp");
+    }
+    .mainvisual-bg__layer-image--01 {
+        --parallax: 2;
+        background-image:url("/images/kv-01.webp");
+    }
+    .mainvisual-bg__layer-image--02 {
+        --parallax: 1.5;
+        background-image:url("/images/kv-02.webp");
+    }
+    .mainvisual-bg__layer-image--03 {
+        --parallax: 1;
+        background-image:url("/images/kv-03.webp");
+    }
+    .mainvisual-bg__layer-image--04 {
+        --parallax: 0.75;
+        background-image:url("/images/kv-04.webp");
+    }
+    .mainvisual-bg__layer-image-copy {
+        --parallax: 0.5;
+        background-image:url("/images/kv-copy.svg");
+    }
+    .mainvisual-bg__layer-image-copy-bg {
+        --parallax: 0.5;
+        background-image:url("/images/kv-copy-bg.svg");
+        filter: blur(3px);
+    }
+    .mainvisual__stoker {
+        position: fixed;
+        top: -1em;
+        left: -1em;
+        pointer-events: none;
+        display: block;
+        width: 1600px;
+        height: 1600px;
+        border-radius: 50%;
+        background: url("/images/mouse-stoker.svg") center/contain no-repeat;
+        mix-blend-mode: color-dodge;
+        opacity: 0.75;
+        filter: blur(12px);
+        transition-property: width, height, background-color, transform;
+        transition-timing-function: linear;
+        transition-duration: 0.125s;
+        /* visibility: hidden; */
+        z-index: 2;
+    }
+    @keyframes mainvisual-shake {
+        0% {transform: rotateZ(0deg) translate3d(0,calc(1% * var(--parallax)),0) rotateZ(0deg);}
+        100% {transform: rotateZ(360deg) translate3d(0,calc(1% * var(--parallax)),0) rotateZ(-360deg);}
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script is:inline>
+    (function(){
+        const mainvisual = document.getElementById('mainvisual-bg');
+        window.onload = function() {
+            if(!document.getElementById('mainvisual-bg')) return;
+            const parallax = new Parallax( mainvisual, {
+                scalarX: 0.375,
+                scalarY: 0.2,
+                frictionX: 0.2,
+                frictionY: 0.4,
+            });
+        };
+        let lastScrollY = 0;
+        function updateParallax() {
+            const scrollY = window.scrollY;
+            const parallaxAmount = (scrollY - lastScrollY) * 0.5;
+            mainvisual.style.setProperty('--parallax-offset',`${scrollY}px`);
+            lastScrollY = scrollY;
+            setTimeout(updateParallax,50)
+        }
+        updateParallax();
+    }());
+    class MouseStalker {
+        constructor() {
+            this.mainvisual = document.getElementById("mainvisual");
+            this.stalker = document.getElementById("mainvisual__stoker");
+            this.posX = 0;
+            this.posY = 0;
+            this._init();
+        }
+        _init() {
+            this._on();
+        }
+        _on() {
+            document.addEventListener("mousemove", this._move.bind(this));
+        }
+        _move(e) {
+            this.posX = e.clientX;
+            this.posY = e.clientY;
+            this.stalker.style.transform = `translate(${this.posX - 800}px,${this.posY - 800}px)`;
+        }
+    }
+    new MouseStalker();
+</script>

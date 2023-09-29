@@ -1,0 +1,25 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import FixedButtons from "./FixedButtons.astro";
+
+---
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="../src/css/global.css">
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <meta name="description" content="ここに説明文が入ります">
+		<title>デジハリLP</title>
+	</head>
+	<body>
+        <Header />
+		<main>
+			<slot />
+			<FixedButtons />
+		</main>
+        <Footer />
+	</body>
+</html>

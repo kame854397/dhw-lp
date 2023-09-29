@@ -1,0 +1,73 @@
+---
+const {
+    label = "詳しく見る",
+    color = "white",
+    width = "medium",
+    iconSrc,
+} = Astro.props;
+---
+<a class={`container container--color-${color} container--width-${width}`} href="">
+    {iconSrc &&
+        <span class="icon">
+            <img src={iconSrc} alt="" width="40" height="40" />
+        </span>
+    }
+    <span class={`label`}>
+        {label}
+    </span>
+    <span class="arrow"></span>
+</a>
+<style>
+    .container {
+        position: relative;
+        z-index: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 18px;
+        height: 72px;
+        padding: 0 24px;
+        color: var(--color-black-primary);
+        background: linear-gradient(var(--color-orange-primary),var(--color-orange-secondary));
+        border-radius: 1000px;
+        box-shadow: var(--shadow-primary-medium);
+    }
+    .container--color-white.container::before {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        background: var(--color-white-primary);
+        border-radius: 1000px;
+        z-index: -1;
+    }
+    .container--width-medium {
+        max-width: 100%;
+        max-width: 320px;
+    }
+    .label {
+        margin: 0 auto;
+    }
+    .container--color-orange {
+        color: var(--color-white-primary);
+        text-shadow: var(--text-shadow-primary);
+        background: linear-gradient(-60deg,var(--color-orange-primary),var(--color-orange-secondary));
+        border: 1px solid rgba(255,255,255,0.5);
+    }
+    .arrow {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        background: var(--color-white-primary);
+        border-radius: 1000px;
+        box-shadow: var(--shadow-primary-tiny);
+    }
+    .arrow::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        background: var(--color-orange-primary);
+        mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+        -webkit-mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+    }
+</style>
