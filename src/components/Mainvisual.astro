@@ -36,7 +36,6 @@
         position: absolute;
         overflow: hidden;
         inset: -4.75%;
-
         z-index: 0;
         background: var(--color-white-secondary);
         filter:url(#chromaticAberration);
@@ -60,6 +59,7 @@
         inset: 0;
         width: 100%;
         height: 100%;
+        will-change: transform;
     }
     .mainvisual-bg__layer-image {
         inset: 0;
@@ -67,6 +67,7 @@
         animation:mainvisual-shake 15s 0s both infinite normal linear;
         background:center 32px/100% no-repeat;
         translate: 0 calc(var(--parallax-offset) * (var(--parallax) - 1.25) * -0.2);
+        will-change: translate;
         transition: translate 0.1s 0s linear;
     }
     .mainvisual-bg__layer-image--00 {
@@ -100,21 +101,19 @@
     }
     .mainvisual__stoker {
         position: fixed;
-        top: -1em;
-        left: -1em;
+        top: 0;
+        left: 0;
         pointer-events: none;
         display: block;
-        width: 1600px;
-        height: 1600px;
+        width: 1000px;
+        height: 1000px;
+        translate: -50% -50%;
         border-radius: 50%;
         background: url("/images/mouse-stoker.svg") center/contain no-repeat;
         mix-blend-mode: color-dodge;
-        opacity: 0.75;
-        filter: blur(12px);
+        opacity: 0.85;
         transition-property: width, height, background-color, transform;
         transition-timing-function: linear;
-        transition-duration: 0.125s;
-        /* visibility: hidden; */
         z-index: 2;
     }
     @keyframes mainvisual-shake {
@@ -131,8 +130,8 @@
             const parallax = new Parallax( mainvisual, {
                 scalarX: 0.375,
                 scalarY: 0.2,
-                frictionX: 0.2,
-                frictionY: 0.4,
+                frictionX: 0.1,
+                frictionY: 0.2,
             });
         };
         let lastScrollY = 0;
@@ -145,25 +144,25 @@
         }
         updateParallax();
     }());
-    // class MouseStalker {
-    //     constructor() {
-    //         this.mainvisual = document.getElementById("mainvisual");
-    //         this.stalker = document.getElementById("mainvisual__stoker");
-    //         this.posX = 0;
-    //         this.posY = 0;
-    //         this._init();
-    //     }
-    //     _init() {
-    //         this._on();
-    //     }
-    //     _on() {
-    //         document.addEventListener("mousemove", this._move.bind(this));
-    //     }
-    //     _move(e) {
-    //         this.posX = e.clientX;
-    //         this.posY = e.clientY;
-    //         this.stalker.style.transform = `translate(${this.posX - 800}px,${this.posY - 800}px)`;
-    //     }
-    // }
-    // new MouseStalker();
+    class MouseStalker {
+        constructor() {
+            this.mainvisual = document.getElementById("mainvisual");
+            this.stalker = document.getElementById("mainvisual__stoker");
+            this.posX = 0;
+            this.posY = 0;
+            this._init();
+        }
+        _init() {
+            this._on();
+        }
+        _on() {
+            document.addEventListener("mousemove", this._move.bind(this));
+        }
+        _move(e) {
+            this.posX = e.clientX;
+            this.posY = e.clientY;
+            this.stalker.style.transform = `translate(${this.posX}px,${this.posY}px)`;
+        }
+    }
+    new MouseStalker();
 </script>
