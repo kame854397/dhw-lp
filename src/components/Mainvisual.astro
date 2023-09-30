@@ -145,25 +145,25 @@
         }
         updateParallax();
     }());
-    class MouseStalker {
-        constructor() {
-            this.mainvisual = document.getElementById("mainvisual");
-            this.stalker = document.getElementById("mainvisual__stoker");
-            this.posX = 0;
-            this.posY = 0;
-            this._init();
-        }
-        _init() {
-            this._on();
-        }
-        _on() {
-            document.addEventListener("mousemove", this._move.bind(this));
-        }
-        _move(e) {
-            this.posX = e.clientX;
-            this.posY = e.clientY;
-            this.stalker.style.transform = `translate(${this.posX - 800}px,${this.posY - 800}px)`;
-        }
-    }
-    new MouseStalker();
+    // class MouseStalker {
+    //     constructor() {
+    //         this.mainvisual = document.getElementById("mainvisual");
+    //         this.stalker = document.getElementById("mainvisual__stoker");
+    //         this.posX = 0;
+    //         this.posY = 0;
+    //         this._init();
+    //     }
+    //     _init() {
+    //         this._on();
+    //     }
+    //     _on() {
+    //         document.addEventListener("mousemove", this._move.bind(this));
+    //     }
+    //     _move(e) {
+    //         this.posX = e.clientX;
+    //         this.posY = e.clientY;
+    //         this.stalker.style.transform = `translate(${this.posX - 800}px,${this.posY - 800}px)`;
+    //     }
+    // }
+    // new MouseStalker();
 </script>
