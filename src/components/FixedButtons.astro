@@ -1,13 +1,21 @@
 <div class="container">
-    <a class="button button--black" href="">
-        <div class="icon"><img src="/images/icon-orientation.svg" alt="" width="40" height="40"></div>
-        <div class="label">説明会予約</div>
+    <a class="button button--black fixed-button" href="">
+        <div class="specular"></div>
+        <div class="button-inner">
+            <div class="icon"><img src="/images/icon-orientation.svg" alt="" width="40" height="40"></div>
+            <div class="label">説明会予約</div>
+        </div>
         <div class="arrow"></div>
+        <div class="glow"></div>
     </a>
-    <a class="button button--orange" href="">
-        <div class="icon"><img src="/images/icon-material.svg" alt="" width="40" height="40"></div>
-        <div class="label">資料請求</div>
+    <a class="button button--orange fixed-button" href="">
+        <div class="specular"></div>
+        <div class="button-inner">
+            <div class="icon"><img src="/images/icon-material.svg" alt="" width="40" height="40"></div>
+            <div class="label">資料請求</div>
+        </div>
         <div class="arrow"></div>
+        <div class="glow"></div>
     </a>
 </div>
 <style>
@@ -19,6 +27,7 @@
         bottom: 40px;
         display: grid;
         gap: 10px;
+        transition: gap 0.5s;
     }
     .container::before {
         content: "";
@@ -28,6 +37,9 @@
         background: var(--color-white-primary);
         border-radius: 24px;
         filter: blur(32px);
+    }
+    .container:has(.button:hover) {
+        gap: 20px;
     }
     .button {
         position: relative;
@@ -44,17 +56,20 @@
         border: 1px solid rgba(255,255,255,0.65);
         border-radius: 24px;
         overflow: hidden;
-        box-shadow: var(--shadow-primary-medium);
+        box-shadow: var(--shadow-primary-medium-strong);
+        animation: fixed-button-shake 7.5s 0s infinite both normal linear;
+        transition: scale 0.5s, translate 1s;
     }
     .button::before {
         content: "";
         position: absolute;
-        top: 6px;
-        left: 20px;
-        width: 26px;
-        height: 1px;
-        background: var(--color-white-primary);
-        filter: blur(2px);
+        inset: 0;
+        z-index: 2;
+        background: url("/images/noise.png") center/50px repeat;
+        mix-blend-mode: overlay;
+        opacity: 0;
+        transition: opacity 0.5s;
+        animation: overlay-noise 0.25s 0s both infinite normal steps(5, end);
     }
     .button::after {
         content: "";
@@ -64,13 +79,41 @@
         box-shadow: var(--inner-grow-primary-medium);
         border-radius: 12px;
     }
+    .specular {
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 20px;
+        width: 26px;
+        height: 1px;
+        background: var(--color-white-primary);
+        filter: blur(2px);
+    }
+    .button:hover {
+        scale: 1.075;
+        translate: calc((var(--cursor-offsetX) - 50%) / 7.5 * var(--offset-weight)) calc((var(--cursor-offsetY) - 50%) / 7.5 * var(--offset-weight));
+        transition: scale 0.5s, translate 0s;
+    }
+    .button:hover::before {
+        opacity: 1;
+    }
+    .button-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: transform 2s;
+    }
+    .button:hover .button-inner {
+        transform: translate(calc((var(--cursor-offsetX) - 50%) / 20 * var(--offset-weight)),calc((var(--cursor-offsetY) - 50%) / 20 * var(--offset-weight)));
+        transition: transform 0s;
+    }
     .button--black {
-        transform: rotate(-2deg);
         background: linear-gradient(#363636,#57433D);
     }
     .button--orange {
-        transform: rotate(2deg);
         background: linear-gradient(#F7701B,#FF5A36);
+        animation-delay: -2.5s;
     }
     .icon {
         width: 48px;
@@ -103,4 +146,52 @@
     .button--orange .arrow {
         background-color: #da3300;
     }
+    .glow {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: #fff;
+        border-radius: 1000px;
+        background: url("/images/mouse-stoker.svg") center/contain no-repeat;
+        transform: translate(-50%,-50%);
+        mix-blend-mode: color-dodge;
+        z-index: 4;
+        opacity: 0;
+        transition: opacity 0.375s;
+    }
+    .button:hover .glow {
+        opacity: 1;
+    }
+    @keyframes fixed-button-shake {
+        0% {transform:rotateZ(-2.5deg) rotateZ(0deg) translate3d(0,2%,0) rotateZ(0deg);}
+        50% {transform:rotateZ(2.5deg) rotateZ(180deg) translate3d(0,2%,0) rotateZ(-180deg);}
+        100% {transform:rotateZ(-2.5deg) rotateZ(360deg) translate3d(0,2%,0) rotateZ(-360deg);}
+    }
 </style>
+<script is:inline>
+    const buttons = document.querySelectorAll('.fixed-button');
+    for (let i = 0; i < buttons.length; i++) {
+        const button = buttons[i];
+        document.addEventListener('mousemove', (e) => {
+            const glow = button.querySelector('.glow');
+            const offsetX = e.clientX - button.getBoundingClientRect().left;
+            const offsetY = e.clientY - button.getBoundingClientRect().top;
+            glow.style.left = `${offsetX}px`;
+            glow.style.top = `${offsetY}px`;
+            button.style.setProperty('--cursor-offsetX',`${offsetX}px`)
+            button.style.setProperty('--cursor-offsetY',`${offsetY}px`);
+        });
+        button.addEventListener('mouseover',function(){
+            let offsetWeight = 0;
+            button.style.setProperty('--offset-weight',0);
+            setInterval(function(){
+                if(offsetWeight >= 1) return;
+                offsetWeight += 0.05;
+                button.style.setProperty('--offset-weight',offsetWeight);
+            },10)
+        });
+        button.addEventListener('mouseleave',function(){
+            button.style.setProperty('--offset-weight',0);
+        });
+    }
+</script>

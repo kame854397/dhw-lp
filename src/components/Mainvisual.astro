@@ -30,13 +30,16 @@
         height: 67.5vw;
         -webkit-mask: linear-gradient(to top, transparent 5%,black 17.5%, black 100%);
         mask: linear-gradient(to top, transparent 5%,black 17.5%, black 100%);
+        content-visibility: auto;
     }
     .mainvisual-bg {
         position: absolute;
         overflow: hidden;
-        inset: 0;
+        inset: -4.75%;
+
         z-index: 0;
         background: var(--color-white-secondary);
+        filter:url(#chromaticAberration);
     }
     .mainvisual-bg::before {
         content: "";
@@ -46,25 +49,25 @@
         background: url("/images/noise.png") center/50px repeat;
         mix-blend-mode: overlay;
         opacity: 1;
-        animation: mainvisual-overlay-noise 0.25s 0s both infinite normal steps(5, end);
+        animation: overlay-noise 0.25s 0s both infinite normal steps(5, end);
     }
-    @keyframes mainvisual-overlay-noise {
+    @keyframes overlay-noise {
         0% {background-position: 0% 0%;}
         100% {background-position: 100% 100%;}
     }
     .mainvisual-bg__layer {
         position: absolute;
-        inset: 0%;
+        inset: 0;
         width: 100%;
         height: 100%;
     }
     .mainvisual-bg__layer-image {
+        inset: 0;
         position: absolute;
-        inset: -4.75%;
         animation:mainvisual-shake 15s 0s both infinite normal linear;
         background:center 32px/100% no-repeat;
         translate: 0 calc(var(--parallax-offset) * (var(--parallax) - 1.25) * -0.2);
-        transition: translate 0.05s;
+        transition: translate 0.1s 0s linear;
     }
     .mainvisual-bg__layer-image--00 {
         --parallax: 2.5;
@@ -119,7 +122,7 @@
         100% {transform: rotateZ(360deg) translate3d(0,calc(1% * var(--parallax)),0) rotateZ(-360deg);}
     }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 <script is:inline>
     (function(){
         const mainvisual = document.getElementById('mainvisual-bg');
@@ -138,7 +141,7 @@
             const parallaxAmount = (scrollY - lastScrollY) * 0.5;
             mainvisual.style.setProperty('--parallax-offset',`${scrollY}px`);
             lastScrollY = scrollY;
-            setTimeout(updateParallax,50)
+            setTimeout(updateParallax,100)
         }
         updateParallax();
     }());

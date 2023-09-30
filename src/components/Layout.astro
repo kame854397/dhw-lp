@@ -2,13 +2,13 @@
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import FixedButtons from "./FixedButtons.astro";
-
+import "../css/global.css";
 ---
 <html lang="ja">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="stylesheet" href="../src/css/global.css">
+        <link rel="stylesheet" href="">
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
         <meta name="description" content="ここに説明文が入ります">
@@ -21,5 +21,17 @@ import FixedButtons from "./FixedButtons.astro";
 			<FixedButtons />
 		</main>
         <Footer />
+		<svg class="svg-filter"><defs>
+			<filter id="chromaticAberration">
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+				<feOffset dx="-1" dy="-1" result="g"/>
+				<feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
+				<feOffset dx="1" dy="0" result="b"/>
+				<feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+				<feOffset dx="0" dy="1"/>
+				<feComposite in="g" operator="lighter"/>
+				<feComposite in="b" operator="lighter"/>
+			</filter>
+		</defs></svg>
 	</body>
 </html>
