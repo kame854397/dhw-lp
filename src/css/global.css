@@ -56,7 +56,7 @@ table {border-collapse:collapse; border-spacing:0;}
     --text-shadow-primary: 0 1px 4px rgba(var(--shadow-rgb-orange),0.6);
     --filter-shadow-primary-medium: 0 16px 32px rgba(var(--shadow-rgb-orange),0.2);
     --inner-grow-primary-medium: 0 0 8px rgba(255,255,255,0.35) inset,0 0 16px rgba(255,255,255,0.35) inset,0 0 32px rgba(255,255,255,0.35) inset;
-    --content-padding:64px;
+    --content-padding:40px;
     --content-width:min(1400px,calc(100vw - var(--content-padding) * 2));
     --content-width-wide:min(1600px,calc(100vw - var(--content-padding) * 2));
     --content-width-narrow:min(1080px,calc(100vw - var(--content-padding) * 2));
@@ -65,15 +65,9 @@ table {border-collapse:collapse; border-spacing:0;}
     --header-height:76px;
     --font-family-primary:'LINE Seed JP', sans-serif;
 }
-@media screen and (max-width:1200px) {
-	:root {
-		--header-height:60px;
-	}
-}
-
 @media screen and (max-width:1280px) {
 	:root {
-		--content-padding:32px;
+		--content-padding:24px;
 	}
 }
 @media screen and (max-width:800px) {
