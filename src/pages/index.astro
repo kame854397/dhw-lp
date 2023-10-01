@@ -2,15 +2,50 @@
 import Layout from '../components/Layout.astro';
 import Mainvisual from '../components/Mainvisual.astro';
 import Section from '../components/Section.astro';
+import Spacer from '../components/Spacer.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { Img } from 'astro-imagetools/components';
+import "../css/top.scss"
 ---
 <Layout>
     <Mainvisual />
-    <Section>
-    </Section>
-    <Section>
-    </Section>
-    <Section>
-    </Section>
-    <Section>
-    </Section>
+    <section class="section section-introduction">
+        <div class="site-introduction">
+            <div class="site-introduction-outline">
+                <div class="site-introduction-outline__text-content">
+                    <h2 class="site-introduction-outline__copy">
+                        <Img src="/images/introduction-copy.png" placeholder="none" format="webp" alt="WEBデザイン、実はつくばでも学べます。"/>
+                    </h2>
+                    <div class="site-introduction-outline__body-text">
+                        <p>STUDIO京都は、デジタルの力で未来の仕事や生活を楽しくするクリエイターを育てるスクールです。</p>
+                        <p>STUDIOでは好きな時間に学ぶことができるため、学業・仕事・育児といったライフスタイルに合わせた学習をサポートします。同じ想いを持った仲間たちと、STUDIO京都であなたの新しい未来をデザインしてみませんか。</p>
+                    </div>
+                </div>
+                <div class="site-introduction-outline__image">
+                    <Img src="/images/introduction-image.png" placeholder="none" format="webp" alt=""/>
+                </div>
+            </div>
+            <Spacer height="64px"/>
+            <div class="aim-job">
+                <h3 class="aim-job__title">目指せる職業</h3>
+                <ul class="aim-job__list">
+                    <li class="aim-job__list-item">WEBデザイナー</li>
+                    <li class="aim-job__list-item">WEBディレクター</li>
+                    <li class="aim-job__list-item">グラフィックデザイナー</li>
+                    <li class="aim-job__list-item">イラストレーター</li>
+                    <li class="aim-job__list-item">動画クリエーター</li>
+                    <li class="aim-job__list-item">WEB担当者</li>
+                </ul>
+            </div>
+        </div>
+        <Spacer height="96px" />
+        <div class="site-introduction__bottom-image">
+            <Img src="/images/introduction-bottom-image.jpg" format="webp" alt=""/>
+        </div>
+    </section>
+    <section class="section section-feature">
+        <SectionTitle subTitle="他にはないかも" subTitleImage="/images/section-subtitle-feature.png" >
+            スタジオつくばの<span class="inline-image">特徴</span>
+        </SectionTitle>
+    </section>
 </Layout>

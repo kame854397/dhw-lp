@@ -30,8 +30,8 @@ blockquote, q {quotes:none;}
 blockquote:before, blockquote:after,
 q:before, q:after {content:""; content:none;}
 table {border-collapse:collapse; border-spacing:0;}
-::-moz-selection {color:var(--color-white-900); background-color:var(--color-brown-600);}
-::selection {color:var(--color-white-900); background-color:var(--color-brown-600);}
+::-moz-selection {color:var(--color-white-primary); background-color:var(--color-orange-primary);}
+::selection {color:var(--color-white-primary); background-color:var(--color-orange-primary);}
 
 :root {
     --color-white-primary: #ffffff;
