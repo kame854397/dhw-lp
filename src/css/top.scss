@@ -1,5 +1,9 @@
 .section {
     padding: 104px 0;
+    overflow: hidden;
+}
+.section-introduction {
+    padding-top: 80px;
 }
 .site-introduction-outline {
     display: flex;
