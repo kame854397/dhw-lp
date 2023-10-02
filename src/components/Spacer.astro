@@ -1,0 +1,34 @@
+---
+const {
+    width = "64px",
+    height = "64px",
+    widthSP = "40px",
+    heightSP = "40px",
+    breakPoint = "m",
+} = Astro.props;
+---
+<div class=`container congtainer--breakpoint-${breakPoint}`></div>
+<style define:vars={{ width, height, widthSP, heightSP}}>
+    .container {
+        width: var(--width);
+        height: var(--height);
+    }
+    @media screen and (max-width:1280px) {
+        .congtainer--breakpoint-l {
+            width: var(--widthSP);
+            height: var(--heightSP);
+        }
+    }
+	@media screen and (max-width:960px) {
+        .congtainer--breakpoint-m {
+            width: var(--widthSP);
+            height: var(--heightSP);
+        }
+    }
+	@media screen and (max-width:600px) {
+        .congtainer--breakpoint-s {
+            width: var(--widthSP);
+            height: var(--heightSP);
+        }
+    }
+</style>

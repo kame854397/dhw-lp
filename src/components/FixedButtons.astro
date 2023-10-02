@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container fixed-button">
     <a class="button button--black fixed-button" href="">
         <div class="specular"></div>
         <div class="button-inner">
@@ -27,8 +27,14 @@
         bottom: 40px;
         display: grid;
         gap: 10px;
-        transition: gap 0.5s;
+        transition: gap 0.5s, opacity 0.5s 0.875s,transform 0.5s 0.875s;
         backface-visibility: hidden;
+        opacity: 0;
+        transform: translate(0,-8px);
+    }
+    :global(.is-load) .container {
+        transform: none;
+        opacity: 1;
     }
     .container::before {
         content: "";
@@ -48,6 +54,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        isolation: isolate;
+        backface-visibility: hidden;
         gap: 2px;
         padding: 0 0 8px;
         width: 120px;
@@ -66,11 +74,10 @@
         position: absolute;
         inset: 0;
         z-index: 2;
-        background: url("/images/noise.png") center/50px repeat;
+        background: url("/images/noise.webp") center/50px repeat;
         mix-blend-mode: overlay;
         opacity: 0;
         transition: opacity 0.5s;
-        animation: overlay-noise 0.25s 0s both infinite normal steps(5, end);
     }
     .button::after {
         content: "";

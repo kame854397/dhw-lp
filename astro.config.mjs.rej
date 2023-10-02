@@ -1,0 +1,11 @@
+diff a/astro.config.mjs b/astro.config.mjs	(rejected hunks)
+@@ -0,0 +1,8 @@
++import { defineConfig } from 'astro/config';
++
++import react from "@astrojs/react";
++
++// https://astro.build/config
++export default defineConfig({
++  integrations: [react()]
++});
+\ No newline at end of file

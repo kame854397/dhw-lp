@@ -4,7 +4,6 @@ const naviItem = [
     {label:"STUDIOつくばの特徴",href:"#feature"},
     {label:"コース紹介",href:"#feature"},
     {label:"卒業生の制作物",href:"#feature"},
-    {label:"よくある質問",href:"#feature"},
     {label:"卒業生インタビュー",href:"#feature"},
 ]
 ---
@@ -34,6 +33,17 @@ const naviItem = [
         left: 0;
         width: 100%;
         z-index: 8;
+        transform: translate3d(0,0,0);
+        opacity: 0;
+        transform: translate(0,-8px);
+        transition: opacity 0.5s 0.875s,transform 0.5s 0.875s;
+    }
+    .logo {
+        width: 168px;
+    }
+    :global(.is-load) .container {
+        transform: none;
+        opacity: 1;
     }
     .inner {
         max-width: var(--content-width-wide);
@@ -46,12 +56,22 @@ const naviItem = [
         padding: 14px 0;
         display: flex;
         align-items: center;
-        gap: 40px;
+        font-size: 18px;
+        gap: 36px;
         border-bottom: 1px solid var(--color-lightgray-primary);
     }
     .navi-item>a {
         display: block;
         padding: 8px 0;
-        font-size: 18px;
+    }
+    @media screen and (max-width:1280px) {
+        .navi {
+            padding: 8px 0;
+            font-size: 16px;
+            gap: 24px;
+        }
+        .logo {
+            width: 140px;
+        }
     }
 </style>

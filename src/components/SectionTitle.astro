@@ -1,0 +1,48 @@
+---
+import { Img } from 'astro-imagetools/components';
+const {
+    title = "",
+    subTitle,
+    subTitleImage,
+} = Astro.props
+---
+<div class="container">
+    <p class="subtitle">
+        <Img src={subTitleImage} format="webp" placeholder="none" alt={subTitle}/>
+    </p>
+    <h2 class="title">
+        <slot />
+    </h2>
+</div>
+<style>
+    .container {
+        width: var(--content-width);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+    .subtitle {
+        position: relative;
+        height: 64px;
+        z-index: 0;
+    }
+    .subtitle::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 11px;
+        border-radius: 1000px;
+        box-shadow: var(--shadow-primary-medium-strong);
+        z-index: -1;
+    }
+    .subtitle :global(.astro-imagetools-img) {
+        width: auto;
+        height: 100%!important;
+        margin: 0 auto;
+    }
+    .title {
+        font-size: 48px;
+    }
+</style>
