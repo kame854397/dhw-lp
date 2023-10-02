@@ -105,16 +105,20 @@
         left: 0;
         pointer-events: none;
         display: block;
-        width: 1000px;
-        height: 1000px;
+        width: 1400px;
+        height: 1400px;
         translate: -50% -50%;
         border-radius: 50%;
         background: url("/images/mouse-stoker.svg") center/contain no-repeat;
         mix-blend-mode: color-dodge;
-        opacity: 0.85;
+        opacity: 0;
         transition-property: width, height, background-color, transform;
         transition-timing-function: linear;
+        transition: opacity 0.5s 0.25s;
         z-index: 2;
+    }
+    .mainvisual__stoker.is-visible {
+        opacity: 0.75;
     }
     @keyframes mainvisual-shake {
         0% {transform: rotateZ(0deg) translate3d(0,calc(1% * var(--parallax)),0) rotateZ(0deg);}
@@ -162,6 +166,7 @@
             this.posX = e.clientX;
             this.posY = e.clientY;
             this.stalker.style.transform = `translate(${this.posX}px,${this.posY}px)`;
+            this.stalker.classList.add("is-visible");
         }
     }
     new MouseStalker();

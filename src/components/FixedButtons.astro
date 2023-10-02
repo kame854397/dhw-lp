@@ -171,29 +171,31 @@
     }
 </style>
 <script is:inline>
-    const buttons = document.querySelectorAll('.fixed-button');
-    for (let i = 0; i < buttons.length; i++) {
-        const button = buttons[i];
-        document.addEventListener('mousemove', (e) => {
-            const glow = button.querySelector('.glow');
-            const offsetX = e.clientX - button.getBoundingClientRect().left;
-            const offsetY = e.clientY - button.getBoundingClientRect().top;
-            glow.style.left = `${offsetX}px`;
-            glow.style.top = `${offsetY}px`;
-            button.style.setProperty('--cursor-offsetX',`${offsetX}px`)
-            button.style.setProperty('--cursor-offsetY',`${offsetY}px`);
-        });
-        button.addEventListener('mouseover',function(){
-            let offsetWeight = 0;
-            button.style.setProperty('--offset-weight',0);
-            setInterval(function(){
-                if(offsetWeight >= 1) return;
-                offsetWeight += 0.05;
-                button.style.setProperty('--offset-weight',offsetWeight);
-            },10)
-        });
-        button.addEventListener('mouseleave',function(){
-            button.style.setProperty('--offset-weight',0);
-        });
-    }
+    (function(){
+        const buttons = document.querySelectorAll('.fixed-button');
+        for (let i = 0; i < buttons.length; i++) {
+            const button = buttons[i];
+            document.addEventListener('mousemove', (e) => {
+                const glow = button.querySelector('.glow');
+                const offsetX = e.clientX - button.getBoundingClientRect().left;
+                const offsetY = e.clientY - button.getBoundingClientRect().top;
+                glow.style.left = `${offsetX}px`;
+                glow.style.top = `${offsetY}px`;
+                button.style.setProperty('--cursor-offsetX',`${offsetX}px`)
+                button.style.setProperty('--cursor-offsetY',`${offsetY}px`);
+            });
+            button.addEventListener('mouseover',function(){
+                let offsetWeight = 0;
+                button.style.setProperty('--offset-weight',0);
+                setInterval(function(){
+                    if(offsetWeight >= 1) return;
+                    offsetWeight += 0.05;
+                    button.style.setProperty('--offset-weight',offsetWeight);
+                },10)
+            });
+            button.addEventListener('mouseleave',function(){
+                button.style.setProperty('--offset-weight',0);
+            });
+        }
+    }());
 </script>
