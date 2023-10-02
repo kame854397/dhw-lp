@@ -1,0 +1,27 @@
+---
+const {
+    numberOfBullet = 3,
+    direction = "vertical",
+} = Astro.props;
+const bullets = [];
+for (let i=0; i<numberOfBullet; i+=1) {
+    bullets.push('<div class="bullet"></div>');
+}
+
+---
+<div class="container">
+    {bullets}
+</div>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .bullet {
+        width: 12px;
+        height: 12px;
+        background: var(--color-lightgray-primary);
+        border-radius: 1000px;
+    }
+</style>

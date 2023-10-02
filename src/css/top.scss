@@ -1,9 +1,9 @@
 .section {
     padding: 104px 0;
-    overflow: hidden;
 }
 .section-introduction {
     padding-top: 80px;
+    overflow: hidden;
 }
 .site-introduction-outline {
     display: flex;
@@ -15,7 +15,13 @@
         width: 60%;
     }
     &__copy {
+        font-size: 64px;
+        height: 2.5em;
         margin: 0 0 48px;
+        img {
+            width: auto;
+            height: 100%!important;
+        }
     }
     &__body-text {
         line-height: 2;
@@ -55,4 +61,32 @@
         border-radius: 8px;
     }
 }
+.studio-image {
+    position: relative;
+    width: 100%;
+    height: 40vw;
+    max-height: 580px;
+    overflow: hidden;
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("/images/image-overlay-primary.png") center/6px repeat;
+        z-index: 2;
+    }
+    &__image {
+        position: absolute;
+        inset: 0;
+        top: -160px;
+        bottom: -160px;
+    }
+    img {
+        width: 100%;
+        height: 100%!important;
+        object-fit: cover;
+    }
+}
+
+
+
 

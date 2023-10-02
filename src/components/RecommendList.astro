@@ -1,0 +1,39 @@
+---
+const {
+    data
+} = Astro.props;
+---
+<ul class="container">
+    {data &&
+    data.map((item)=>
+        <li class="item">
+            <div class="checkbox"></div>
+            <div class="content">{item}</div>
+        </li>
+    )}
+</ul>
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 14px;
+    }
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        min-height: 72px;
+        background: var(--color-white-primary);
+        border-radius: 12px;
+    }
+    .checkbox {
+        content: "";
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        box-shadow: var(--shadow-primary-tiny);
+        border-radius: 4px;
+        background: url("/images/icon-check.png") center/100% no-repeat;
+    }
+</style>

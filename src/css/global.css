@@ -37,8 +37,8 @@ table {border-collapse:collapse; border-spacing:0;}
     --color-white-primary: #ffffff;
     --color-white-secondary: #F5F5F5;
     --color-white-tertiary: #f1f1f1;
-    --color-lightgray-primary: #EBEBEB;
-    --color-lightgray-primary: #cccccc;
+    --color-lightgray-primary: #eaeaea;
+    --color-lightgray-secondary: #cccccc;
     --color-gray-primary: #828282;
     --color-black-primary: #414141;
     --color-black-secondary: #000000;
@@ -56,6 +56,7 @@ table {border-collapse:collapse; border-spacing:0;}
     --text-shadow-primary: 0 1px 4px rgba(var(--shadow-rgb-orange),0.6);
     --filter-shadow-primary-medium: 0 16px 32px rgba(var(--shadow-rgb-orange),0.2);
     --inner-grow-primary-medium: 0 0 8px rgba(255,255,255,0.35) inset,0 0 16px rgba(255,255,255,0.35) inset,0 0 32px rgba(255,255,255,0.35) inset;
+    --inner-grow-primary-small: 0 0 4px rgba(255,255,255,0.75) inset,0 0 8px rgba(255,255,255,0.75) inset;
     --content-padding:40px;
     --content-width:min(1400px,calc(100vw - var(--content-padding) * 2));
     --content-width-wide:min(1600px,calc(100vw - var(--content-padding) * 2));
@@ -75,6 +76,7 @@ table {border-collapse:collapse; border-spacing:0;}
 		--content-padding:20px;
 	}
 }
+
 ._align-center {
     display: flex;
     justify-content: center;

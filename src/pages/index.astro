@@ -4,7 +4,11 @@ import Mainvisual from '../components/Mainvisual.astro';
 import Section from '../components/Section.astro';
 import Spacer from '../components/Spacer.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import Button from '../components/Button.astro';
+import FeatureList from '../components/FeatureList.astro';
+import CourceList from '../components/CourceList.astro';
 import { Img } from 'astro-imagetools/components';
+import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
 ---
 <Layout>
@@ -47,5 +51,39 @@ import "../css/top.scss"
         <SectionTitle subTitle="他にはないかも" subTitleImage="/images/section-subtitle-feature.png" >
             スタジオつくばの<span class="inline-image">特徴</span>
         </SectionTitle>
+        <Spacer height="24px" />
+        <FeatureList />
+    </section>
+    <Spacer height="40px" />
+    <div class="studio-image">
+        <div class="studio-image__image" data-rellax-speed="3" data-rellax-percentage="0.5">
+            <Img src="/images/studio-image.jpg" format="webp" alt="" />
+        </div>
+        <script is:inline src="/js/rellax.min.js"></script>
+        <script is:inline>
+            const rellax = new Rellax('.studio-image__image');
+        </script>
+    </div>
+    <Spacer height="40px" />
+    <section class="section section-feature">
+        <SectionTitle subTitle="豊富なオプション！学び方は自由" subTitleImage="/images/section-subtitle-cource.png" >
+            コース紹介
+        </SectionTitle>
+        <Spacer height="40px" />
+        <CourceList />
     </section>
 </Layout>
+<script is:inline>
+    const addInview = function(){
+        const target = document.getElementsByClassName('inviewTarget');
+        const position = Math.floor(window.innerHeight * .75);
+        for (let i = 0; i < target.length; i++) {
+            let offsetTop = Math.floor(target[i].getBoundingClientRect().top);
+            if (offsetTop < position) {
+                target[i].classList.add('is-inview');
+            }
+        }
+    }
+    addInview();
+    window.addEventListener('scroll', addInview, false);
+</script>

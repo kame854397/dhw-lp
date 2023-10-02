@@ -1,5 +1,6 @@
 ---
 const {
+    href = "",
     label = "詳しく見る",
     color = "white",
     width = "medium",
@@ -32,7 +33,7 @@ const {
         border-radius: 1000px;
         box-shadow: var(--shadow-primary-medium);
     }
-    .container--color-white.container::before {
+    .container--color-white::before {
         content: "";
         position: absolute;
         inset: 3px;
@@ -42,7 +43,7 @@ const {
     }
     .container--width-medium {
         max-width: 100%;
-        max-width: 320px;
+        max-width: 280px;
     }
     .label {
         margin: 0 auto;
@@ -68,5 +69,11 @@ const {
         background: var(--color-orange-primary);
         mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
         -webkit-mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+    }
+    :where(.container--color-white) .arrow {
+        background: var(--color-orange-primary);
+    }
+    :where(.container--color-white) .arrow::before {
+        background: var(--color-white-primary);
     }
 </style>

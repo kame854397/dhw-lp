@@ -1,0 +1,64 @@
+---
+import Button from "./Button.astro";
+import SubsectionTitle from "./SubsectionTitle.astro";
+import Spacer from "./Spacer.astro";
+import RecommendList from "./RecommendList.astro";
+import CourcePriceInfo from "./CourcePriceInfo.astro";
+
+const {
+    data,
+} = Astro.props
+---
+<div class="container" style={`--dominant-color:${data.color ? data.color : "#EE0101"}`}>
+    <div class="outline">
+        <div class="text-content">
+            <div class="header">
+                <h3 class="title">
+                    <span class="title-icon" style={`--icon-src:url(${data.icon})`}></span>
+                    {data.label}
+                </h3>
+                <p class="copy">{data.copy}</p>
+            </div>
+            <div class="description">
+                <p class="body-text">{data.description}</p>
+                <Spacer height="32px" />
+                <Button label="詳しく見る" />
+            </div>
+            <Spacer height="56px" />
+            <SubsectionTitle>こんな方にオススメ</SubsectionTitle>
+            <RecommendList data={data.recommend} />
+            <CourcePriceInfo data={data.recommend} />
+        </div>
+        <div class="image"></div>
+    </div>
+</div>
+<style>
+    .header {
+        margin: 0 0 24px;
+    }
+    .title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 6px;
+    }
+    .title-icon {
+        position: relative;
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: var(--dominant-color,#EE0101);
+        border-radius: 1000px;
+    }
+    .title-icon::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        background: var(--color-white-primary);
+        -webkit-mask: var(--icon-src) center/contain no-repeat;
+        mask: var(--icon-src) center/contain no-repeat;
+    }
+    .copy {
+        font-size: 36px;
+    }
+</style>

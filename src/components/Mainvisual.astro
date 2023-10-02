@@ -28,8 +28,10 @@
     .mainvisual {
         position: relative;
         height: 67.5vw;
-        -webkit-mask: linear-gradient(to top, transparent 5%,black 17.5%, black 100%);
-        mask: linear-gradient(to top, transparent 5%,black 17.5%, black 100%);
+        -webkit-mask: linear-gradient(to top, transparent 0%,12.5%,black 17.5%, black 100%);
+        mask: linear-gradient(to top, transparent 0%,12.5%,black 17.5%, black 100%);
+        -webkit-mask-mode: luminance;
+        mask-mode: luminance;
         content-visibility: auto;
         opacity: 0;
         transition: opacity 0.5s 0.375s;

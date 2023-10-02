@@ -1,0 +1,34 @@
+---
+import CourceItem from "./CourceItem.astro";
+import CourceNavi from "./CourceNavi.astro";
+import courceData from "../data/CourceData.json";
+---
+<div class="container">
+    <div class="cource-navi">
+        <CourceNavi courceData={courceData} />
+    </div>
+    <div class="cource-list">
+        {courceData.map((item,index)=>
+            <CourceItem data={item} />
+        )}
+    </div>
+</div>
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: var(--content-width);
+        margin: 0 auto;
+    }
+    .cource-navi {
+        position: sticky;
+        top: 80px;
+        width: 328px;
+    }
+    .cource-list {
+        display: grid;
+        gap: 160px;
+        width: calc(100% - 368px);
+    }
+</style>

@@ -1,0 +1,111 @@
+---
+import Spacer from './Spacer.astro';
+import Button from './Button.astro';
+import { Img } from 'astro-imagetools/components';
+---
+<div class="container">
+    <div class="item">
+        <div class="item-image">
+            <Img src="/images/feature-01.jpg" format="webp" alt=""/>
+        </div>
+        <div class="item-textcontent">
+            <div class="item-number"><img src="/images/feature-number-01.svg" alt="01" width="250" height="200"></div>
+            <div class="item-title">
+                <div class="item-title-decotaion"></div>
+                一人当たりの受講生に対応できる時間がとても多い
+            </div>
+            <div class="item-body-text">
+                <p>STUDIOつくばのSA（サポートアシスタント）って、まるでWEBの魔法使いみたいなんですよ！トレーナーの助っ人で、受講生の質問に超ウルトラフレンドリーに答えて、難しい壁をポイッと吹き飛ばしてくれます。トレーナーとSAの二人体制のおかげで、一人当たりの受講生に対応できる時間がとっても長いんです！みんなのことをサポートしてアシストしてアシスタントします！</p>
+            </div>
+            <Spacer height="40px" />
+            <div class="item-button">
+                <Button href="" label="詳しく見る" color="white" />
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .container {
+        position: relative;
+        overflow: hidden;
+    }
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: var(--content-width);
+        margin: 0 auto;
+    }
+    .item-image {
+        position: relative;
+        width: 65%;
+        margin: 0 0 0 -10%;
+    }
+    .item-textcontent {
+        position: relative;
+        width: 40%;
+    }
+    .item-title {
+        font-size: 36px;
+        margin: 0 0 32px;
+    }
+    .item-title-decotaion {
+        position: absolute;
+        top: -48px;
+        left: -48px;
+        width: 64px;
+        height: 64px;
+        z-index: 2;
+    }
+    .item-title-decotaion::before,
+    .item-title-decotaion::after {
+        content: "";
+        position: absolute;
+        border-radius: 8px;
+        background: radial-gradient(at top center,#F8B7CB,#FF9191);
+        box-shadow: var(--inner-grow-primary-small);
+    }
+    .item-title-decotaion::before {
+        top: 4px;
+        left: 28px;
+        width: 32px;
+        height: 32px;
+    }
+    .item-title-decotaion::after {
+        top: 36px;
+        left: 4px;
+        width: 24px;
+        height: 24px;
+        filter: blur(2px);
+    }
+    .item-number {
+        position: absolute;
+        top: 0;
+        right: -40px;
+        width: 250px;
+        transform: translate(0,-100%);
+    }
+    .item-body-text {
+        line-height: 2;
+    }
+    .pagination {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    .pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: var(--color-lightgray-primary);
+        border-radius: 1000px;
+        transition: transform 0.25s,background-color 0.25s;
+    }
+    .pagination-bullet.is-active {
+        background: var(--color-orange-primary);
+        transform: scale(1.2);
+    }
+</style>
