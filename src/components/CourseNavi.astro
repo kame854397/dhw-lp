@@ -1,13 +1,13 @@
 ---
 const {
-    courceData,
+    courseData,
 } = Astro.props;
 ---
 <div class="container">
     <ul class="navi">
-        {courceData.map((item,index)=>
+        {courseData.map((item,index)=>
             <li class={`item ${index===0 ? "is-active" : ""}`}>
-                <a href={`#cource-${index}`}>
+                <a href={`#course-${index}`}>
                     <span class="icon">
                         <img src={item.icon} alt="" width="40" height="40" />
                     </span>

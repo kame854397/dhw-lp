@@ -65,6 +65,7 @@ table {border-collapse:collapse; border-spacing:0;}
     --content-outerwidth:calc((100vw - var(--content-width)) / 2);
     --content-outerwidth-wide:calc((100vw - var(--content-width-wide)) / 2);
     --header-height:76px;
+    --clip-rect-edge: polygon(2px 2px, calc(100% - 2px) 2px,calc(100% - 2px) calc(100% - 2px),2px calc(100% - 2px));
     --font-family-primary:'LINE Seed JP', sans-serif;
 }
 @media screen and (max-width:1280px) {

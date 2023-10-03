@@ -6,7 +6,7 @@ import Spacer from '../components/Spacer.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import Button from '../components/Button.astro';
 import FeatureList from '../components/FeatureList.astro';
-import CourceList from '../components/CourceList.astro';
+import CourseList from '../components/CourseList.astro';
 import { Img } from 'astro-imagetools/components';
 import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
@@ -15,8 +15,9 @@ import "../css/top.scss"
     <Mainvisual />
     <section class="section section-introduction">
         <div class="site-introduction">
+            <div class="site-introduction__bg"></div>
             <div class="site-introduction-outline">
-                <div class="site-introduction-outline__text-content">
+                <div class="site-introduction-outline__text-content inview-target inview-fadein">
                     <h2 class="site-introduction-outline__copy">
                         <Img src="/images/introduction-copy.png" placeholder="none" format="webp" alt="WEBデザイン、実はつくばでも学べます。"/>
                     </h2>
@@ -30,7 +31,7 @@ import "../css/top.scss"
                 </div>
             </div>
             <Spacer height="64px"/>
-            <div class="aim-job">
+            <div class="aim-job inview-target inview-fadein">
                 <h3 class="aim-job__title">目指せる職業</h3>
                 <ul class="aim-job__list">
                     <li class="aim-job__list-item">WEBデザイナー</li>
@@ -62,11 +63,49 @@ import "../css/top.scss"
     </div>
     <Spacer height="40px" />
     <section class="section section-feature">
-        <SectionTitle subTitle="豊富なオプション！学び方は自由" subTitleImage="/images/section-subtitle-cource.png" >
+        <SectionTitle subTitle="豊富なオプション！学び方は自由" subTitleImage="/images/section-subtitle-course.png" >
             コース紹介
         </SectionTitle>
         <Spacer height="40px" />
-        <CourceList />
+        <CourseList />
+        <Spacer height="104px" />
+        <div class="course-others">
+            <h3 class="course-others__title">
+                <div class="course-others__title-bubble inview-target">
+                    <Img src="/images/course-others-title-bubble.png" format="webp" placeholder="none" alt="もっと自由に">
+                </div>
+                <span class="course-others__title-text">他にもある！選べるコース</span>
+            </h3>
+            <ul class="course-others__list">
+                <li class="course-others-list-item">
+                    <div class="course-others-list-item__image">
+                        <img src="/images/course-others-01.jpg" alt="" width="720" height="480">
+                    </div>
+                    <h4 class="course-others-list-item__title">〇〇コース</h4>
+                    <div class="course-others-list-item__description">
+                        <p>これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。</p>
+                    </div>
+                </li>
+                <li class="course-others-list-item">
+                    <div class="course-others-list-item__image">
+                        <img src="/images/course-others-01.jpg" alt="" width="720" height="480">
+                    </div>
+                    <h4 class="course-others-list-item__title">〇〇コース</h4>
+                    <div class="course-others-list-item__description">
+                        <p>これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。</p>
+                    </div>
+                </li>
+                <li class="course-others-list-item">
+                    <div class="course-others-list-item__image">
+                        <img src="/images/course-others-01.jpg" alt="" width="720" height="480">
+                    </div>
+                    <h4 class="course-others-list-item__title">〇〇コース</h4>
+                    <div class="course-others-list-item__description">
+                        <p>これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </section>
 </Layout>
 <script is:inline src="/js/rellax.min.js"></script>

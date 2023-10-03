@@ -1,0 +1,46 @@
+---
+import CourseItem from "./CourseItem.astro";
+import CourseNavi from "./CourseNavi.astro";
+import courseData from "../data/courseData.json";
+---
+<div class="container">
+    <div class="course-navi">
+        <CourseNavi courseData={courseData} />
+    </div>
+    <div class="course-list">
+        {courseData.map((item,index)=>
+            <>
+            <CourseItem data={item} />
+            {index !== courseData.length - 1 ?
+                <hr class="border" />
+                : ""
+            }
+            </>
+        )}
+    </div>
+</div>
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: var(--content-width);
+        margin: 0 auto;
+    }
+    .course-navi {
+        position: sticky;
+        top: 80px;
+        width: 328px;
+    }
+    .course-list {
+        display: grid;
+        gap: 160px;
+        width: calc(100% - 368px);
+    }
+    .border {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: var(--color-lightgray-secondary);
+    }
+</style>

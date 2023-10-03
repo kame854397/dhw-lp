@@ -3,7 +3,8 @@ import Button from "./Button.astro";
 import SubsectionTitle from "./SubsectionTitle.astro";
 import Spacer from "./Spacer.astro";
 import RecommendList from "./RecommendList.astro";
-import CourcePriceInfo from "./CourcePriceInfo.astro";
+import CoursePriceInfo from "./CoursePriceInfo.astro";
+import { Img } from 'astro-imagetools/components';
 
 const {
     data,
@@ -26,16 +27,39 @@ const {
                 <Spacer height="32px" />
                 <Button label="詳しく見る" />
             </div>
-            <Spacer height="56px" />
-            <SubsectionTitle>こんな方にオススメ</SubsectionTitle>
-            <RecommendList data={data.recommend} />
-            <Spacer height="48px" />
-            <CourcePriceInfo data={data.price} />
         </div>
-        <div class="image"></div>
+        <div class="image">
+            <Img src="/images/course-web-image.png" format="webp" alt="" />
+        </div>
     </div>
+    <Spacer height="56px" />
+    <SubsectionTitle>こんな方にオススメ</SubsectionTitle>
+    <RecommendList data={data.recommend} />
+    <Spacer height="48px" />
+    <CoursePriceInfo data={data.price} />
 </div>
 <style>
+    .outline {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    .text-content {
+        width: 50%;
+    }
+    .image {
+        position: relative;
+        width: 40%;
+        aspect-ratio: 434 / 320;
+    }
+    .image :global(img) {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%,0);
+        max-width: none!important;
+        width: calc(580 / 434 * 100%);
+    }
     .header {
         margin: 0 0 24px;
     }
