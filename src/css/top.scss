@@ -2,7 +2,7 @@
     padding: 104px 0;
 }
 .section-introduction {
-    padding-top: 80px;
+    padding-top: 40px;
     overflow: hidden;
 }
 .site-introduction-outline {
@@ -86,7 +86,15 @@
         object-fit: cover;
     }
 }
-
+.inview-fadein {
+    opacity: 0;
+    transform: translate(0,8px);
+    transition: opacity 0.75s,transform 0.75s;
+}
+.inview-fadein.is-inview {
+    opacity: 1;
+    transform: none;
+}
 
 
 

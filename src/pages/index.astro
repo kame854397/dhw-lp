@@ -43,7 +43,7 @@ import "../css/top.scss"
             </div>
         </div>
         <Spacer height="96px" />
-        <div class="site-introduction__bottom-image">
+        <div class="site-introduction__bottom-image inview-target inview-fadein">
             <Img src="/images/introduction-bottom-image.jpg" format="webp" alt=""/>
         </div>
     </section>
@@ -56,13 +56,9 @@ import "../css/top.scss"
     </section>
     <Spacer height="40px" />
     <div class="studio-image">
-        <div class="studio-image__image" data-rellax-speed="3" data-rellax-percentage="0.5">
+        <div class="studio-image__image" data-rellax-speed="-4" data-rellax-percentage="0.5">
             <Img src="/images/studio-image.jpg" format="webp" alt="" />
         </div>
-        <script is:inline src="/js/rellax.min.js"></script>
-        <script is:inline>
-            const rellax = new Rellax('.studio-image__image');
-        </script>
     </div>
     <Spacer height="40px" />
     <section class="section section-feature">
@@ -73,9 +69,10 @@ import "../css/top.scss"
         <CourceList />
     </section>
 </Layout>
+<script is:inline src="/js/rellax.min.js"></script>
 <script is:inline>
     const addInview = function(){
-        const target = document.getElementsByClassName('inviewTarget');
+        const target = document.getElementsByClassName('inview-target');
         const position = Math.floor(window.innerHeight * .75);
         for (let i = 0; i < target.length; i++) {
             let offsetTop = Math.floor(target[i].getBoundingClientRect().top);
@@ -86,4 +83,6 @@ import "../css/top.scss"
     }
     addInview();
     window.addEventListener('scroll', addInview, false);
+    const studioImageRellax = new Rellax('.studio-image__image');
+    const rellax = new Rellax('.rellax');
 </script>

@@ -1,8 +1,84 @@
 ---
+import Button from "./Button.astro";
+import Spacer from "./Spacer.astro";
 const {
     data
 } = Astro.props;
 ---
 <div class="container">
-    
+    <div class="left-content">
+        {data &&
+            <table class="table">
+                <tr>
+                    <th>入学金</th>
+                    <td>{data.入学金}（税込）</td>
+                </tr>
+                <tr>
+                    <th>授業料</th>
+                    <td>{data.授業料}（税込）</td>
+                </tr>
+                <tr>
+                    <th>設備教材費</th>
+                    <td>{data.設備教材費}（税込）</td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div class="right-content">
+        {data &&
+            <dl class="total-price">
+                <dt class="total-price-title">合計</dt>
+                <dd class="total-price-price">{data.合計}<div class="total-price-note">（税込）</div></dd>
+            </dl>
+        }
+        <Spacer height="24px" />
+        <Button label="お問い合わせ" iconSrc="/images/icon-email.svg" />
+    </div>
 </div>
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 32px;
+        padding: 32px;
+        border-radius: 12px;
+        background: var(--color-white-primary);
+    }
+    .table {
+        width: 100%;
+    }
+    .table th,
+    .table td {
+        position: relative;
+        text-align: left;
+        padding: 12px 0 12px;
+        font-size: 20px;
+    }
+    .table th::after,
+    .table td::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--color-lightgray-secondary);
+    }
+    .table th::after {
+        right: 8px;
+        background-color: var(--color-orange-primary);
+    }
+    .total-price-title {
+        display: inline-block;
+        margin: 0 24px 0 0;
+        font-size: 28px;
+    }
+    .total-price-price {
+        display: inline-block;
+        font-size: 36px;
+    }
+    .total-price-note {
+        display: inline-block;
+        font-size: 18px;
+    }
+</style>

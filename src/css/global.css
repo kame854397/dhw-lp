@@ -20,7 +20,7 @@ button {cursor:pointer;}
 img {display:block; width:100%; height:auto;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
 html { font-size:62.5%;}
-body {line-height:1; line-height:1.5; --letter-spacing:.05em; font-size:18px; font-family:var(--font-family-primary); font-weight:500; color:var(--color-black-primary); background: var(--color-white-secondary); overflow-y:auto; scrollbar-gutter:stable;}
+body {line-height:1; line-height:1.5; --letter-spacing:.05em; font-size:16px; font-family:var(--font-family-primary); font-weight:500; color:var(--color-black-primary); background: var(--color-white-secondary); overflow-y:auto; scrollbar-gutter:stable;}
 * {letter-spacing:var(--letter-spacing);}
 @media screen and (max-width:1080px) {
 	body {font-size:15px;}
@@ -55,6 +55,7 @@ table {border-collapse:collapse; border-spacing:0;}
     --shadow-primary-tiny: 0 4px 8px 0 rgba(var(--shadow-rgb-orange),0.2);
     --text-shadow-primary: 0 1px 4px rgba(var(--shadow-rgb-orange),0.6);
     --filter-shadow-primary-medium: 0 16px 32px rgba(var(--shadow-rgb-orange),0.2);
+    --filter-shadow-primary-tiny: 0 1px 4px rgba(var(--shadow-rgb-orange),0.4);
     --inner-grow-primary-medium: 0 0 8px rgba(255,255,255,0.35) inset,0 0 16px rgba(255,255,255,0.35) inset,0 0 32px rgba(255,255,255,0.35) inset;
     --inner-grow-primary-small: 0 0 4px rgba(255,255,255,0.75) inset,0 0 8px rgba(255,255,255,0.75) inset;
     --content-padding:40px;

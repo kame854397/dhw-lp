@@ -8,10 +8,10 @@ import { Img } from 'astro-imagetools/components';
         <div class="item-image">
             <Img src="/images/feature-01.jpg" format="webp" alt=""/>
         </div>
-        <div class="item-textcontent">
-            <div class="item-number"><img src="/images/feature-number-01.svg" alt="01" width="250" height="200"></div>
+        <div class="item-textcontent inview-target">
+            <div class="item-number rellax" data-rellax-speed="-0.6" data-rellax-percentage="4"><img src="/images/feature-number-01.svg" alt="01" width="250" height="200"></div>
             <div class="item-title">
-                <div class="item-title-decotaion"></div>
+                <div class="item-title-decoration"></div>
                 一人当たりの受講生に対応できる時間がとても多い
             </div>
             <div class="item-body-text">
@@ -49,7 +49,7 @@ import { Img } from 'astro-imagetools/components';
         font-size: 36px;
         margin: 0 0 32px;
     }
-    .item-title-decotaion {
+    .item-title-decoration {
         position: absolute;
         top: -48px;
         left: -48px;
@@ -57,21 +57,22 @@ import { Img } from 'astro-imagetools/components';
         height: 64px;
         z-index: 2;
     }
-    .item-title-decotaion::before,
-    .item-title-decotaion::after {
+    .item-title-decoration::before,
+    .item-title-decoration::after {
         content: "";
         position: absolute;
         border-radius: 8px;
         background: radial-gradient(at top center,#F8B7CB,#FF9191);
         box-shadow: var(--inner-grow-primary-small);
+        opacity: 0;
     }
-    .item-title-decotaion::before {
+    .item-title-decoration::before {
         top: 4px;
         left: 28px;
         width: 32px;
         height: 32px;
     }
-    .item-title-decotaion::after {
+    .item-title-decoration::after {
         top: 36px;
         left: 4px;
         width: 24px;
@@ -82,6 +83,7 @@ import { Img } from 'astro-imagetools/components';
         position: absolute;
         top: 0;
         right: -40px;
+        z-index: -1;
         width: 250px;
         transform: translate(0,-100%);
     }
@@ -107,5 +109,48 @@ import { Img } from 'astro-imagetools/components';
     .pagination-bullet.is-active {
         background: var(--color-orange-primary);
         transform: scale(1.2);
+    }
+    :where(.item-textcontent.is-inview) .item-title-decoration::before,
+    :where(.item-textcontent.is-inview) .item-title-decoration::after {
+        animation: inview-title-decoration-show 0.75s 0s normal both 1 ease-in-out;
+    }
+    :where(.item-textcontent.is-inview) .item-title-decoration::after {
+        animation-delay: 0.125s;
+    }
+    .item-title,
+    .item-body-text,
+    .item-button {
+        opacity: 0;
+        transform: translate(0,8px);
+        transition: opacity 0.75s,transform 0.75s;
+    }
+    .item-title {
+        transition-delay: 0s;
+    }
+    .item-body-text {
+        transition-delay: 0.125s;
+    }
+    .item-button {
+        transition-delay: 0.25s;
+    }
+    :where(.item-textcontent.is-inview) .item-title,
+    :where(.item-textcontent.is-inview) .item-body-text,
+    :where(.item-textcontent.is-inview) .item-button {
+        opacity: 1;
+        transform: none;
+    }
+    @keyframes inview-title-decoration-show {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 </style>
