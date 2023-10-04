@@ -137,6 +137,7 @@
         position: absolute;
         right: 0;
         bottom: 0;
+        z-index: -1;
         width: 26px;
         height: 26px;
         border-radius: 10px 0 0 0;
@@ -176,6 +177,35 @@
         0% {transform:rotateZ(-2.5deg) rotateZ(0deg) translate3d(0,2.25%,0) rotateZ(0deg);}
         50% {transform:rotateZ(2.5deg) rotateZ(180deg) translate3d(0,2.25%,0) rotateZ(-180deg);}
         100% {transform:rotateZ(-2.5deg) rotateZ(360deg) translate3d(0,2.25%,0) rotateZ(-360deg);}
+    }
+    @media screen and (max-width:1280px) {
+        .container {
+            gap:8px;
+            bottom: 12px;
+        }
+        .container:has(.button:hover) {
+            gap: 12px;
+        }
+        .button {
+            width: 88px;
+            height: 88px;
+            border-radius: 18px;
+        }
+        .icon {
+            width: 40px;
+        }
+        .label {
+            font-size: 12px;
+        }
+        .arrow {
+            width: 20px;
+            height: 20px;
+        }
+        .arrow::before {
+            width: 12px;
+            height: 12px;
+        }
+        
     }
 </style>
 <script is:inline>
