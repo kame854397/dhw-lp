@@ -28,6 +28,10 @@
             mask: radial-gradient(at top left,#fff,transparent 80%);
         }
     }
+    &__bottom-image {
+        position: relative;
+        z-index: 2;
+    }
 }
 .site-introduction-outline {
     display: flex;
@@ -115,7 +119,7 @@
 }
 .inview-fadein {
     opacity: 0;
-    transform: translate(0,8px);
+    transform: translate(0,16px);
     transition: opacity 0.75s,transform 0.75s;
 }
 .inview-fadein.is-inview {
