@@ -121,6 +121,15 @@ import "../css/top.scss"
         }
     }
     addInview();
+    const body = document.querySelector('body');
+    window.addEventListener('scroll', function(){
+        if(window.scrollY > 200) {
+            body.classList.add('is-scrolled');
+        } else {
+            body.classList.remove('is-scrolled');
+        }
+    });
+
     window.addEventListener('scroll', addInview, false);
     const studioImageRellax = new Rellax('.studio-image__image');
     const rellax = new Rellax('.rellax');

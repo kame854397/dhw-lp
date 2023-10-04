@@ -1,0 +1,91 @@
+---
+import Button from "./Button.astro";
+const naviItem = [
+    {label:"STUDIOつくばの特徴",href:"#feature"},
+    {label:"コース紹介",href:"#feature"},
+    {label:"卒業生の制作物",href:"#feature"},
+    {label:"卒業生インタビュー",href:"#feature"},
+]
+---
+<div class="container">
+    <ul class="navi">
+        {naviItem.map((item)=>
+            <li class="navi-item">
+                <a href={item.href}>{item.label}</a>
+            </li>
+        )}
+        <li class="contact-button">
+            <Button label="お問い合わせ" width="auto" iconSrc="/images/icon-email.svg" color="orange" />
+        </li>
+    </ul>
+</div>
+<style>
+    .container {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        translate: 0 calc(-100% - 24px);
+        transition: 0.25s;
+        z-index: 8;
+        width: var(--content-width-wide);
+    }
+    .navi {
+        width: fit-content;
+        margin: 0 0 0 auto;
+        padding: 12px 12px 12px 32px;
+        background: rgba(255,255,255,0.8);
+        -webkit-backdrop-filter: saturate(2) blur(16px);
+        backdrop-filter: saturate(2) blur(16px);
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        gap: 36px;
+        border-radius: 24px;
+        border: 1px solid var(--color-white-primary);
+        box-shadow: var(--shadow-primary-large);
+    }
+    .navi-item>a {
+        position: relative;
+        display: block;
+        padding: 16px 0;
+    }
+    .navi-item>a::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 50%;
+        bottom: -4px;
+        transform: translate(-50%,0);
+        background: var(--color-orange-primary);
+        -webkit-mask: url("/images/arrow-secondary-down.svg") center/contain no-repeat;
+        mask: url("/images/arrow-secondary-down.svg") center/contain no-repeat;
+    }
+    :global(.is-scrolled) .container {
+        translate: 0 0;
+        transition: 0s;
+        animation: fixed-navi-show 0.5s 0.25s both normal 1 ease-in-out;
+        transform: translate(0,translate(0,0));
+    }
+    @keyframes fixed-navi-show {
+        0% {
+            transform: translate(0,calc(-100% - 24px));
+        }
+        50% {
+            transform: translate(0,6px);
+        }
+        100% {
+            transform: translate(0,0);
+        }
+    }
+    @media screen and (max-width:1280px) {
+        .navi {
+            padding: 8px 0;
+            font-size: 16px;
+            gap: 24px;
+        }
+        .logo {
+            width: 140px;
+        }
+    }
+</style>
