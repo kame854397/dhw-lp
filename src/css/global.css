@@ -49,6 +49,7 @@ table {border-collapse:collapse; border-spacing:0;}
     --color-lightgreen-primary: #F8B7B7;
     --color-purple-primary: #F8B7B7;
     --shadow-rgb-orange: 146,17,0;
+    --shadow-primary-large: 0 32px 64px -16px rgba(var(--shadow-rgb-orange),0.12);
     --shadow-primary-medium: 0 16px 32px -8px rgba(var(--shadow-rgb-orange),0.2);
     --shadow-primary-medium-strong: 0 16px 32px -8px rgba(var(--shadow-rgb-orange),0.4);
     --shadow-primary-small: 0 8px 16px -4px rgba(var(--shadow-rgb-orange),0.2);
