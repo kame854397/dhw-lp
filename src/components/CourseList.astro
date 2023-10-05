@@ -4,10 +4,10 @@ import CourseNavi from "./CourseNavi.astro";
 import courseData from "../data/courseData.json";
 ---
 <div class="container">
-    <div class="course-navi">
+    <div id="course-navi" class="course-navi">
         <CourseNavi courseData={courseData} />
     </div>
-    <div class="course-list">
+    <div id="course-list" class="course-list">
         {courseData.map((item,index)=>
             <>
             <CourseItem data={item} />
@@ -30,12 +30,12 @@ import courseData from "../data/courseData.json";
     .course-navi {
         position: sticky;
         top: 80px;
-        width: 312px;
+        width: 304px;
     }
     .course-list {
         display: grid;
         gap: 160px;
-        width: calc(100% - 360px);
+        width: calc(100% - 354px);
     }
     .border {
         display: block;
@@ -44,3 +44,28 @@ import courseData from "../data/courseData.json";
         background: var(--color-lightgray-secondary);
     }
 </style>
+<script>
+    (function(){
+        const courseList = document.getElementById('course-list');
+        const courseNavi = document.getElementById('course-navi');
+        const courseItems = courseList.querySelectorAll('.course-item');
+        window.addEventListener('scroll',()=>{
+            let activeItemIndex = 0;
+            for(let i=0; i<courseItems.length; i++) {
+                let offsetTop = Math.floor(courseItems[i].getBoundingClientRect().top);
+                if(offsetTop < 360) {
+                    activeItemIndex = i;
+                }
+            }
+            const naviItems = courseNavi.querySelectorAll('.course-navi__item');
+            const activeNaviItem = naviItems[activeItemIndex];
+            for(let i=0; i<naviItems.length; i++) {
+                if (i === activeItemIndex) {
+                    naviItems[i].classList.add('is-active');
+                } else {
+                    naviItems[i].classList.remove('is-active');
+                }
+            }
+        });
+    }());
+</script>

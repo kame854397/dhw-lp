@@ -7,12 +7,21 @@ const naviItem = [
     {label:"卒業生インタビュー",href:"#feature"},
 ]
 ---
-<div class="container">
+<div id="fixed-navi" class="container">
     <div class="navi-container">
         <ul class="navi">
             {naviItem.map((item)=>
                 <li class="navi-item">
-                    <a href={item.href}>{item.label}<span class="arrow"></span></a>
+                    <a href={item.href}>
+                        {item.label}
+                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="delay-3" x="0.5" y="4" width="3" height="3"/>
+                            <rect class="delay-2" x="3.5" y="7" width="3" height="3"/>
+                            <rect class="delay-1" x="6.5" y="10" width="3" height="3"/>
+                            <rect class="delay-2" x="9.5" y="7" width="3" height="3"/>
+                            <rect class="delay-3" x="12.5" y="4" width="3" height="3"/>
+                        </svg>
+                    </a>
                 </li>
             )}
             <!-- <li class="contact-button">
@@ -59,10 +68,29 @@ const naviItem = [
         background: var(--color-white-primary);
         z-index: -2;
     }
+    .navi-item {
+        position: relative;
+        transition: opacity 0.5s;
+    }
+    .navi-item::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: 0;
+        left: 0;
+        height: 4px;
+        background: var(--color-orange-primary);
+        border-radius: 0 0 2px 2px;
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+    .navi-item.is-active::before {
+        opacity: 1;
+    }
     .navi {
         position: relative;
         width: fit-content;
-        padding: 8px 28px 10px 28px;
+        padding: 0 28px;
         display: flex;
         align-items: center;
         font-size: 16px;
@@ -74,7 +102,7 @@ const naviItem = [
     .navi-item>a {
         position: relative;
         display: block;
-        padding: 8px 0 22px;
+        padding: 18px 0 32px;
         text-shadow: 0 4px 0 rgba(120,40,0,0.12);
     }
     .arrow {
@@ -82,24 +110,49 @@ const naviItem = [
         width: 16px;
         height: 16px;
         left: 50%;
-        bottom: 6px;
+        bottom: 10px;
         transform: translate(-50%,0);
         filter: drop-shadow(0 4px 0 rgba(160,60,0,0.2));
+        fill: var(--color-orange-primary);
     }
-    .arrow::before {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: var(--color-orange-primary);
-        -webkit-mask: url("/images/arrow-secondary-down.svg") center/contain no-repeat;
-        mask: url("/images/arrow-secondary-down.svg") center/contain no-repeat;
+    :where(.navi-item>a:hover .arrow) rect {
+        transform: translate(0,3px);
+        animation: arrow-dot-show 0.5s 0s normal both 1 ease-out;
+    }
+    :where(.navi:has(.navi-item:hover)) .navi-item {
+        opacity: 0.35;
+    }
+    .navi-item:hover {
+        opacity: 1;
+    }
+    .arrow .delay-1 {
+        animation-delay: 0s;
+    }
+    .arrow .delay-2 {
+        animation-delay: 0.0625s;
+    }
+    .arrow .delay-3 {
+        animation-delay: 0.125s;
     }
     :global(.is-scrolled) .container {
         translate: 0 0;
         transition: 0s;
         animation: fixed-navi-show 0.75s 0.25s both normal 1 ease-in-out;
         transform: translate(0,0);
+    }
+    @keyframes arrow-dot-show {
+        0% {
+            opacity: 0;
+            fill: #ffbb00;
+        }
+        50% {
+            opacity: 1;
+            fill: #ffbb00;
+        }
+        100% {
+            opacity: 1;
+            fill: var(--color-orange-primary);
+        }
     }
     @keyframes fixed-navi-show {
         0% {

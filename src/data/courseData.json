@@ -1,4 +1,5 @@
-[{
+[
+{
     "icon": "/images/icon-course-web.svg",
     "label": "WEBデザイナー専攻",
     "copy": "ここにキャッチコピーが入ります。",
@@ -49,12 +50,5 @@
 {
     "icon": "/images/icon-course-video.svg",
     "label": "ネット動画クリエイター専攻"
-},
-{
-    "icon": "/images/icon-course-graphic.svg",
-    "label": "グラフィックデザイン講座"
-},
-{
-    "icon": "/images/icon-course-web.svg",
-    "label": "WEBデザイナー専攻"
-}]
+}
+]

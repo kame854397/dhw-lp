@@ -1,14 +1,15 @@
 ---
-import { Img } from 'astro-imagetools/components';
+import { getImage } from "astro:assets";
 const {
     title = "",
     subTitle,
     subTitleImage,
 } = Astro.props
+const optimizedSubTitleImage = await getImage({src: import(`../../public${subTitleImage}`), format: 'webp'})
 ---
-<div class="container inview-target">
-    <p class="subtitle">
-        <Img src={subTitleImage} format="webp" placeholder="none" alt={subTitle}/>
+<div class="container inview-target section-title">
+    <p class="subtitle" style={`--mask:url(${optimizedSubTitleImage.src});`}>
+        <img src={optimizedSubTitleImage.src} alt={subTitle} {...optimizedSubTitleImage.attributes}>
     </p>
     <h2 class="title">
         <slot />
@@ -37,6 +38,17 @@ const {
         border-radius: 1000px;
         box-shadow: var(--shadow-primary-medium);
         z-index: -1;
+    }
+    .subtitle::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        mask: var(--mask) center/100% no-repeat;;
+        -webkit-mask: var(--mask) center/100% no-repeat;;
+        background: url("/images/noise.png") center/100px repeat;
+        animation: overlay-noise 1s 0s both normal infinite steps(15);
+        mix-blend-mode: overlay;
+        opacity: 0.75;
     }
     .subtitle :global(img) {
         width: auto;

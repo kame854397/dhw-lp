@@ -10,7 +10,7 @@ const {
     data,
 } = Astro.props
 ---
-<div class="container" style={`--dominant-color:${data.color ? data.color : "#EE0101"}`}>
+<div class="container course-item" style={`--dominant-color:${data.color ? data.color : "#EE0101"}`}>
     <div class="outline">
         <div class="text-content">
             <div class="header">
@@ -45,7 +45,10 @@ const {
         justify-content: space-between;
     }
     .text-content {
-        width: 50%;
+        width: 55%;
+    }
+    .description {
+        line-height: 2;
     }
     .image {
         position: relative;
