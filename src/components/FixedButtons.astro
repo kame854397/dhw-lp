@@ -23,8 +23,8 @@
         position: relative;
         position: fixed;
         z-index: 4;
-        right: 20px;
-        bottom: 40px;
+        right: 12px;
+        bottom: 20px;
         display: grid;
         gap: 10px;
         transition: gap 0.5s, opacity 0.5s 0.875s,transform 0.5s 0.875s;
@@ -46,7 +46,7 @@
         filter: blur(32px);
     }
     .container:has(.button:hover) {
-        gap: 20px;
+        gap: 16px;
     }
     .button {
         position: relative;
@@ -58,8 +58,8 @@
         backface-visibility: hidden;
         gap: 2px;
         padding: 0 0 8px;
-        width: 120px;
-        height: 120px;
+        width: 108px;
+        height: 108px;
         color: var(--color-white-primary);
         background: var(--color-black-primary);
         border: 1px solid rgba(255,255,255,0.65);
@@ -137,16 +137,17 @@
         position: absolute;
         right: 0;
         bottom: 0;
-        width: 30px;
-        height: 30px;
-        border-radius: 12px 0 0 0;
+        z-index: -1;
+        width: 26px;
+        height: 26px;
+        border-radius: 10px 0 0 0;
         background: #161616;
     }
     .arrow::before {
         content: "";
         position: absolute;
-        top: 6px;
-        left: 4px;
+        top: 4px;
+        left: 2px;
         width: 16px;
         height: 16px;
         background: var(--color-white-primary);
@@ -176,6 +177,47 @@
         0% {transform:rotateZ(-2.5deg) rotateZ(0deg) translate3d(0,2.25%,0) rotateZ(0deg);}
         50% {transform:rotateZ(2.5deg) rotateZ(180deg) translate3d(0,2.25%,0) rotateZ(-180deg);}
         100% {transform:rotateZ(-2.5deg) rotateZ(360deg) translate3d(0,2.25%,0) rotateZ(-360deg);}
+    }
+    @media screen and (max-width:1280px) {
+        .container {
+            gap:8px;
+            bottom: 12px;
+        }
+        .container:has(.button:hover) {
+            gap: 12px;
+        }
+        .button {
+            width: 88px;
+            height: 88px;
+            border-radius: 18px;
+        }
+        .icon {
+            width: 40px;
+        }
+        .label {
+            font-size: 12px;
+        }
+        .arrow {
+            width: 20px;
+            height: 20px;
+        }
+        .arrow::before {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    @media screen and (max-width:480px) {
+        .button {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+        }
+        .icon {
+            width: 32px;
+        }
+        .label {
+            font-size: 10px;
+        }
     }
 </style>
 <script is:inline>
