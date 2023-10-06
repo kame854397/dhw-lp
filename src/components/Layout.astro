@@ -14,7 +14,7 @@ import "../css/global.css";
         <meta name="description" content="ここに説明文が入ります">
 		<title>デジハリLP</title>
 	</head>
-	<body>
+	<body class="page">
         <Header />
         <FixedNavi />
 		<main>
@@ -46,3 +46,21 @@ import "../css/global.css";
 		</defs></svg>
 	</body>
 </html>
+<style>
+	.page {
+		position: relative;
+		z-index: 0;
+	}
+	.page::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 50%;
+		width: 1560px;
+		height: 100%;
+		transform: translate(-50%,0);
+		background: url("/images/bg-line.svg") center/100% repeat;
+		z-index: -1;
+		opacity: 0.45;
+	}
+</style>

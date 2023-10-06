@@ -28,11 +28,7 @@
         -webkit-mask: linear-gradient(to top, transparent 0%,12.5%,black 17.5%, black 100%);
         mask: linear-gradient(to top, transparent 0%,12.5%,black 17.5%, black 100%);
         content-visibility: auto;
-        opacity: 0;
-        transition: opacity 0.5s 0.375s;
-    }
-    :global(.is-load) .mainvisual {
-        opacity: 1;
+        background: var(--color-white-secondary);
     }
     .mainvisual-bg {
         position: absolute;
@@ -40,6 +36,11 @@
         inset: -4.75%;
         z-index: 0;
         background: var(--color-white-secondary);
+        opacity: 0;
+        transition: opacity 0.5s 0.375s;
+    }
+    :global(.is-load) .mainvisual-bg {
+        opacity: 1;
     }
     .mainvisual-bg::before {
         content: "";

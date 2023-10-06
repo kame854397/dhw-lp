@@ -66,7 +66,7 @@ const {
     .label {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 4px;
         margin: 0 auto;
     }
     .container--color-orange {
@@ -90,6 +90,16 @@ const {
         background: var(--color-orange-primary);
         mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
         -webkit-mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+    }
+    :where(.container[target="_blank"]) .label::after {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+        background: var(--color-black-primary);
+        -webkit-mask: url("/images/icon-external-link.svg") center/contain no-repeat;
+        mask: url("/images/icon-external-link.svg") center/contain no-repeat;
     }
     :where(.container--color-white) .arrow {
         background: var(--color-orange-primary);
