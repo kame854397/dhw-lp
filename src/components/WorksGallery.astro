@@ -2,6 +2,7 @@
 import Button from "./Button.astro";
 import SlidePagination from "./SlidePagination.astro";
 import PageNaviButtons from "./PageNaviButtons.astro";
+import { Img } from 'astro-imagetools/components';
 const works = [
     {
         title: "卒業生〇〇さんの制作物",
@@ -40,7 +41,9 @@ const works = [
         <div class="works-list" data-items-count={works.length} style={`--slide-count:${works.length};`}>
             {works.map((item,index) =>
                 <div class={`works-item ${index===0 ? "is-active" : ""}`} data-url={item.url}>
-                    <img class={`image item-${index}`} src={item.image} alt="" loading="lazy" width="800" height="1200" />
+                    <div class="image">
+                        <Img src={item.image} alt="" loading="lazy" format="webp" />
+                    </div>
                     <a href={item.url} class="url">{item.url}</a>
                 </div>
             )}
@@ -61,7 +64,7 @@ const works = [
                 <li class={`selector-item item-${index} ${index===0 ? "is-active" : ""}`}>
                     <button>
                         <div class="thumbnail">
-                            <img src={item.thumbnail} alt="" width="300" height="200" />
+                            <Img src={item.thumbnail} alt="" format="webp" />
                         </div>
                         <p class="title">{item.title}</p>
                     </button>
@@ -291,7 +294,10 @@ const works = [
     .works-item.is-scrolling-down {
         translate: 0 -80px;
     }
-    
+    .works-item.is-scrolling-up .image,
+    .works-item.is-scrolling-down .image {
+        filter: blur(2px);
+    }
     .works-list {
         position: relative;
         z-index: 0;
@@ -321,7 +327,7 @@ const works = [
         opacity: 1;
         transition: opacity 0.25s;
     }
-    .image {
+    .image :global(img) {
         width: 100%;
         height: 100%;
         object-fit: cover;
