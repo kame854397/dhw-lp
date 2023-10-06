@@ -1,16 +1,17 @@
 ---
 const {
-    numberOfBullet = 3,
+    bulletCount = 3,
     direction = "vertical",
 } = Astro.props;
 const bullets = [];
-for (let i=0; i<numberOfBullet; i+=1) {
-    bullets.push('<div class="bullet"></div>');
+for (let i=0; i<bulletCount; i+=1) {
+    bullets.push('');
 }
-
 ---
-<div class="container">
-    {bullets}
+<div class="container slide-pagination">
+    {bullets.map((item,index)=>
+        <div class={`bullet ${index === 0 ? "is-active" : ""}`}></div>
+    )}
 </div>
 <style>
     .container {
@@ -21,7 +22,12 @@ for (let i=0; i<numberOfBullet; i+=1) {
     .bullet {
         width: 12px;
         height: 12px;
-        background: var(--color-lightgray-primary);
+        background: var(--color-lightgray-secondary);
         border-radius: 1000px;
+        transition: transform 0.25s,background-color 0.25s;
+    }
+    .is-active {
+        background-color: var(--color-orange-primary);
+        transform: scale(1.25);
     }
 </style>

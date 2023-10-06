@@ -7,6 +7,8 @@ import SectionTitle from '../components/SectionTitle.astro';
 import Button from '../components/Button.astro';
 import FeatureList from '../components/FeatureList.astro';
 import CourseList from '../components/CourseList.astro';
+import GallerySlider from '../components/GallerySlider.astro';
+import WorksGallery from '../components/WorksGallery.astro';
 import { Img } from 'astro-imagetools/components';
 import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
@@ -146,6 +148,20 @@ import "../css/top.scss"
             </ul>
         </div>
     </section>
+    <section class="section section-course" data-section="course">
+        <GallerySlider images={[
+            "/images/gallery-slider-01.jpg",
+            "/images/gallery-slider-02.jpg",
+            "/images/gallery-slider-03.jpg",
+            "/images/gallery-slider-04.jpg",
+        ]} />
+    </section>
+    <section class="section section-course" data-section="course">
+        <SectionTitle subTitle="このページも卒業生が勝手に作りました" subTitleImage="/images/section-subtitle-works.png" >
+            卒業生の制作物
+        </SectionTitle>
+        <WorksGallery />
+    </section> 
 </Layout>
 <script is:inline src="/js/rellax.min.js"></script>
 <script is:inline>

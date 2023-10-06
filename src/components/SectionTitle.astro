@@ -5,11 +5,11 @@ const {
     subTitle,
     subTitleImage,
 } = Astro.props
-const optimizedSubTitleImage = await getImage({src: import(`../../public${subTitleImage}`), format: 'webp'})
 ---
 <div class="container inview-target section-title">
-    <p class="subtitle" style={`--mask:url(${optimizedSubTitleImage.src});`}>
-        <img src={optimizedSubTitleImage.src} alt={subTitle} {...optimizedSubTitleImage.attributes}>
+    <p class="subtitle">
+        <span class="subtitle-overlay" style={`-webkit-mask-image:url(${subTitleImage}); mask-image:url(${subTitleImage});`}></span>
+        <img src={subTitleImage} alt={subTitle} width="400" height="64">
     </p>
     <h2 class="title">
         <slot />
@@ -39,12 +39,12 @@ const optimizedSubTitleImage = await getImage({src: import(`../../public${subTit
         box-shadow: var(--shadow-primary-medium);
         z-index: -1;
     }
-    .subtitle::after {
+    .subtitle-overlay {
         content: "";
         position: absolute;
         inset: 0;
-        mask: var(--mask) center/100% no-repeat;;
-        -webkit-mask: var(--mask) center/100% no-repeat;;
+        mask: url("/images/noise.png") center/contain no-repeat;
+        -webkit-mask: center/contain no-repeat;
         background: url("/images/noise.png") center/100px repeat;
         animation: overlay-noise 1s 0s both normal infinite steps(15);
         mix-blend-mode: overlay;

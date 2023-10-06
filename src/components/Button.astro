@@ -4,10 +4,11 @@ const {
     label = "詳しく見る",
     color = "white",
     width = "medium",
+    target = "_self",
     iconSrc,
 } = Astro.props;
 ---
-<a class={`container container--color-${color} container--width-${width}`} href="">
+<a class={`container container--color-${color} container--width-${width}`} href={href} target={target}>
     <span class={`label`}>
         {iconSrc &&
             <span class="icon"><span style={`-webkit-mask-image:url(${iconSrc}); mask-image:url(${iconSrc});`}></span></span>

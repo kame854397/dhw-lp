@@ -65,7 +65,7 @@
 .site-introduction-copy {
     position: relative;
     line-height: 1.125;
-    font-size: 64px;
+    font-size: 58px;
     margin: 0 0 48px;
     filter:url(#chromaticAberration);
     clip-path: polygon(-1px -1px, calc(100% + 1px) -1px,calc(100% + 1px) calc(100% + 1px),-1px calc(100% + 1px));
@@ -81,7 +81,7 @@
         z-index: 0;
         display: block;
         width: calc(var(--width) + 40px);
-        height: 92px;
+        height: 84px;
         margin: 0 0 24px;
         line-height: 1;
         border-radius: 12px;

@@ -33,6 +33,16 @@ import "../css/global.css";
 				<feComposite in="g" operator="lighter"/>
 				<feComposite in="b" operator="lighter"/>
 			</filter>
+			<filter id="chromaticAberrationLarge">
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+				<feOffset dx="-6" dy="-6" result="g"/>
+				<feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
+				<feOffset dx="0" dy="6" result="b"/>
+				<feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+				<feOffset dx="6" dy="6"/>
+				<feComposite in="g" operator="lighter"/>
+				<feComposite in="b" operator="lighter"/>
+			</filter>
 		</defs></svg>
 	</body>
 </html>

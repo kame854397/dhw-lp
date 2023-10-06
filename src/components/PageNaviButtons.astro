@@ -1,0 +1,50 @@
+---
+---
+<div class="container" id="works-gallery-Navi">
+    <button class="button button--prev" title="前へ"></button>
+    <button class="button button--next" title="次へ"></button>
+</div>
+<style>
+    .container {
+        display: grid;
+        gap: 10px;
+        padding: 8px;
+        background: rgba(33,33,33,0.5);
+        backdrop-filter: blur(24px);
+        border-radius: 1000px;
+        box-shadow: var(--shadow-primary-medium);
+    }
+    .button {
+        position: relative;
+        width: 48px;
+        height: 48px;
+        border-radius: 1000px;
+        background: rgba(33,33,33,0.8);
+        --icon: url("/images/arrow-primary-top.svg");
+        transition: transform 0.25s,opacity 0.25s;
+    }
+    .button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 24px;
+        height: 24px;
+        background: var(--color-white-primary);
+        -webkit-mask: var(--icon) center/contain no-repeat;;
+        mask: var(--icon) center/contain no-repeat;;
+    }
+    .button.is-disabled {
+        opacity: 0.25;
+    }
+    .button:hover:not(.is-disabled) {
+        transform: scale(1.125);
+    }
+    .button--prev {
+        --icon: url("/images/arrow-primary-top.svg");
+    }
+    .button--next {
+        --icon: url("/images/arrow-primary-down.svg");
+    }
+</style>

@@ -1,0 +1,46 @@
+---
+import { Img } from 'astro-imagetools/components';
+const {
+    images,
+} = Astro.props;
+---
+<div class="container">
+    <div class="slider">
+        {images.map((item)=>
+            <div class="item">
+                <Img src={item} alt="" />
+            </div>
+        )}
+    </div>
+    <div class="slider">
+        {images.map((item)=>
+            <div class="item">
+                <Img src={item} alt="" />
+            </div>
+        )}
+    </div>
+</div>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        --gap: 1px;
+        gap: var(--gap);
+    }
+    .slider {
+        display: flex;
+        gap: var(--gap);
+        animation: gallerySlider 20s 0s normal infinite both linear;
+    }
+    .item {
+        width: clamp(200px,160px + 15vw,480px);
+    }
+    @keyframes gallerySlider {
+        0% {
+            translate: calc(-50% - (var(--gap)/4)) 0;
+        }
+        100% {
+            translate: calc(50% + (var(--gap)/4)) 0;
+        }
+    }
+</style>

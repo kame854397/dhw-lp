@@ -225,7 +225,7 @@
         const buttons = document.querySelectorAll('.fixed-button');
         for (let i = 0; i < buttons.length; i++) {
             const button = buttons[i];
-            document.addEventListener('mousemove', (e) => {
+            button.addEventListener('mousemove', (e) => {
                 const glow = button.querySelector('.glow');
                 const offsetX = e.clientX - button.getBoundingClientRect().left;
                 const offsetY = e.clientY - button.getBoundingClientRect().top;
