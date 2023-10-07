@@ -18,7 +18,7 @@ import { Img } from 'astro-imagetools/components';
         </div>
     </div>
     <div class="bg">
-        <div class="bg-image">
+        <div class="bg-image rellax" data-rellax-speed="-2" data-rellax-percentage="0.55">
             <Img src="/images/conversion-bg.png" placeholder="none" format="webp" alt="" />
         </div>
         <p class="bg-note">STUDIOつくば　非公式キャラクター「ツクロウくん」</p>
@@ -97,6 +97,8 @@ import { Img } from 'astro-imagetools/components';
         opacity: 0.25;
         mix-blend-mode: screen;
         background: url("/images/bg-pattern-secondary.svg") center/20px repeat;
+        -webkit-mask: radial-gradient(circle at center,transparent,#fff);
+        mask: radial-gradient(circle at center,transparent,#fff);
     }
     .bg-image {
         position: absolute;
