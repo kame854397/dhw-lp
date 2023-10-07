@@ -1,0 +1,168 @@
+---
+import Button from '../components/Button.astro';
+import { Img } from 'astro-imagetools/components';
+const content = [
+    {
+        category: "WEB",
+        link: "",
+        title: "2022年卒業○○さん",
+        thumbnail: "/images/interview-thumbnail-miyo.jpg",
+        excerpt: "インタビューの抜粋文。これはダミーのテキストです。",
+    },
+    {
+        category: "ネット動画",
+        link: "",
+        title: "2022年卒業○○さん",
+        thumbnail: "/images/interview-thumbnail-takasu.jpg",
+        excerpt: "インタビューの抜粋文。これはダミーのテキストです。",
+    },
+    {
+        category: "WEB",
+        link: "",
+        title: "2022年卒業○○さん",
+        thumbnail: "/images/interview-thumbnail-mikazuki.jpg",
+        excerpt: "インタビューの抜粋文。これはダミーのテキストです。",
+    },
+    {
+        category: "WEB",
+        link: "",
+        title: "2022年卒業○○さん",
+        thumbnail: "/images/interview-thumbnail-enomoto.jpg",
+        excerpt: "インタビューの抜粋文。これはダミーのテキストです。",
+    },
+];
+---
+<ul class="container">
+    {content.map((item,index) =>
+        <li class="item">
+            <a href={item.link}>
+                <div class="thumbnail-container">
+                    <div class="thumbnail">
+                        <Img src={item.thumbnail} alt="" format="webp" />
+                    </div>
+                    {index !== 0 ?
+                        <h4 class="information">
+                            <span class={`category category--${item.category}`}>{item.category}</span>
+                            {item.title}
+                        </h4>
+                        : ""
+                    }
+                </div>
+                <div class="content">
+                    {index === 0 ?
+                        <h4 class="information">
+                            <span class={`category category--${item.category}`}>{item.category}</span>
+                            {item.title}
+                        </h4>
+                        : ""
+                    }
+                    <p class="excerpt">{item.excerpt}</p>
+                    <div class="button">
+                        <Button href="" label="インタビューを見る" width="full" />
+                    </div>
+                </div>
+            </a>
+        </li>
+    )}
+</ul>
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 32px;
+        width: var(--content-width);
+        margin: 0 auto;
+    }
+    .thumbnail-container {
+        position: relative;
+        margin: 0 0 24px;
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary-medium);
+        overflow: hidden;
+    }
+    .information {
+        padding: 12px 20px 12px 12px;
+        font-size: 18px;
+        border-radius: 1000px;
+        width: fit-content;
+        color: var(--color-white-primary);
+        text-shadow: var(--text-shadow-primary);
+        background: linear-gradient(90deg,var(--color-orange-secondary),var(--color-orange-primary));
+        border: 1px solid rgba(255,255,255,0.5);
+        
+    }
+    .category {
+        padding: 4px 12px;
+        margin: 0 12px 0 0;
+        font-size: 16px;
+        text-shadow: none;
+        color: var(--color-red-primary);
+        border-radius: 1000px;
+        background: var(--color-white-primary);
+        box-shadow: var(--shadow-primary-medium-strong);
+    }
+    .category--ネット動画 {
+        color: var(--color-blue-primary);
+    }
+    .button {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .excerpt {
+        position: relative;
+        padding: 12px 24px;
+        margin: 0 0 24px;
+        line-height: 1.625;
+        font-size: 24px;
+    }
+    .excerpt::before,
+    .excerpt::after {
+        content: "";
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        border: 4px solid var(--color-orange-primary);
+    }
+    .excerpt::before {
+        top: 0;
+        left: 0;
+        border-right: none;
+        border-bottom: none;
+    }
+    .excerpt::after {
+        bottom: 0;
+        right: 0;
+        border-top: none;
+        border-left: none;
+    }
+    .item:first-of-type {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        align-items: center;
+        gap: 48px;
+        grid-column: span 3;
+    }
+    :where(.item:first-of-type) .information {
+        margin: 0 0 32px;
+        box-shadow: var(--shadow-primary-medium);
+    }
+    :where(.item:not(:first-of-type)) .information {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border-radius: 0 24px 0 0;
+        border-bottom: none;
+        border-left: none;
+    }
+    :where(.item:first-of-type) .content {
+        padding-bottom: 24px;
+    }
+    :where(.item:first-of-type) .excerpt {
+        max-width: 560px;
+        padding: 24px 32px;
+        font-size: 32px;
+    }
+    :where(.item:first-of-type) .button {
+        margin: 0;
+    }
+</style>

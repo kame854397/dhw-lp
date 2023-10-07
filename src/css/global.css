@@ -45,11 +45,13 @@ table {border-collapse:collapse; border-spacing:0;}
     --color-black-secondary: #000000;
     --color-orange-primary: #F7701B;
     --color-orange-secondary: #F79F1B;
-    --color-orange-tertiary: #F7701B;
+    --color-orange-tertiary: #E05100;
     --color-pink-primary: #F8B7B7;
     --color-pink-secondary: #ffeae2;
     --color-lightgreen-primary: #B2E4BD;
     --color-purple-primary: #D2BEEC;
+    --color-red-primary: #EE0000;
+    --color-blue-primary: #0043F0;
     --shadow-rgb-orange: 146,17,0;
     --shadow-primary-large: 0 20px 40px -10px rgba(var(--shadow-rgb-orange),0.08);
     --shadow-primary-medium: 0 16px 32px -8px rgba(var(--shadow-rgb-orange),0.2);

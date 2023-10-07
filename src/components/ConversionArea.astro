@@ -1,0 +1,114 @@
+---
+import Button from '../components/Button.astro';
+import { Img } from 'astro-imagetools/components';
+---
+<div class="container">
+    <div class="content">
+        <h3 class="title">
+            <div class="title-icon">
+                <img src="/images/conversion-title-icon.svg" alt="" width="150" height="80">
+            </div>
+            まずはお気軽に説明会にお越しください
+        </h3>
+        <div class="body-text">
+            <p>これはダミーのテキストです。ここにはよくある質問の回答が入ります。これはダミーのテキストです。これはダミーのテキストです。ここにはよくある質問の回答が入ります。<br>これはダミーのテキストです。これはダミーのテキストです。ここにはよくある質問の回答が入ります。これはダミーのテキストです。これはダミーのテキストです。</p>
+        </div>
+        <div class="button">
+            <Button href="" label="見学してみる" size="large" width="full" iconSrc="/images/icon-visit.svg"/>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="bg-image">
+            <Img src="/images/conversion-bg.png" placeholder="none" format="webp" alt="" />
+        </div>
+        <p class="bg-note">STUDIOつくば　非公式キャラクター「ツクロウくん」</p>
+    </div>
+</div>
+<style>
+    .container {
+        position: relative;
+        z-index: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: min(92.5vh, 760px);
+        padding: 80px 0 80px 80px;
+        width: calc(var(--content-width) / 2 + 50%);
+        margin: 0 0 0 auto;
+        color: var(--color-white-primary);
+        border-radius: 80px 0 0 80px;
+        overflow: hidden;
+    }
+    .content {
+        width: 55%;
+        padding: 0 0 24px;
+    }
+    .title {
+        font-size: 40px;
+        margin: 0 0 28px;
+        text-shadow: var(--text-shadow-primary);
+    }
+    .title-icon {
+        width: 150px;
+        margin: 0 0 16px;
+    }
+    .body-text {
+        line-height: 2;
+        margin: 0 0 48px;
+        text-shadow: var(--text-shadow-primary);
+    }
+    .button {
+        width: 100%;
+        max-width: 480px;
+        position: relative;
+    }
+    .button::before {
+        content: "";
+        position: absolute;
+        inset: -16px;
+        background: rgba(255,255,255,0.5);
+        border-radius: 36px;
+        animation: conversion-button-bg 1s 0s normal both infinite ease-out;
+    }
+    @keyframes conversion-button-bg {
+        0% {
+            opacity: 1;
+            inset: 0;
+            border-radius: 24px;
+        }
+        100% {
+            opacity: 0;
+            inset: -32px;
+            border-radius: 36px;
+        }
+    }
+    .bg {
+        position: absolute;
+        inset: -2px;
+        z-index: -1;
+        background: radial-gradient(circle at center top, var(--color-orange-secondary),var(--color-orange-tertiary));
+        filter: url(#chromaticAberration) url(#chromaticAberration);
+    }
+    .bg::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.25;
+        mix-blend-mode: screen;
+        background: url("/images/bg-pattern-secondary.svg") center/20px repeat;
+    }
+    .bg-image {
+        position: absolute;
+        right: 0;
+        bottom: 40px;
+        width: 52.5%;
+    }
+    .bg-note {
+        position: absolute;
+        right: 0;
+        bottom: 24px;
+        text-align: right;
+        padding: 0 24px 0 0;
+    }
+</style>

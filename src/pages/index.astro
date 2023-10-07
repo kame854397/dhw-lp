@@ -10,6 +10,8 @@ import CourseList from '../components/CourseList.astro';
 import GallerySlider from '../components/GallerySlider.astro';
 import WorksGallery from '../components/WorksGallery.astro';
 import FaqList from '../components/FaqList.astro';
+import ArchiveInterview from '../components/ArchiveInterview.astro';
+import ConversionArea from '../components/ConversionArea.astro';
 import { Img } from 'astro-imagetools/components';
 import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
@@ -163,12 +165,22 @@ import "../css/top.scss"
         </SectionTitle>
         <WorksGallery />
     </section>
-    <Spacer height="64px"/>
+    <Spacer height="48px"/>
     <section class="section section-faq">
         <SectionTitle>
             よくある質問
         </SectionTitle>
         <FaqList />
+    </section>
+    <Spacer height="48px"/>
+    <section class="section">
+        <SectionTitle>
+            卒業生インタビュー
+        </SectionTitle>
+        <ArchiveInterview />
+    </section> 
+    <section class="section">
+        <ConversionArea />
     </section> 
 </Layout>
 <script is:inline src="/js/rellax.min.js"></script>
