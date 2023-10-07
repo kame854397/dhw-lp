@@ -37,8 +37,8 @@ const naviItem = [
         top: 8px;
         right: 8px;
         z-index: 0;
-        translate: 0 calc(-100% - 24px);
-        transition: 0.25s;
+        transform: translate(0,calc(-100% - 12px));
+        transition: 0.5s cubic-bezier(.08,.66,.44,1.23);
         z-index: 8;
         width: var(--content-width-wide);
     }
@@ -136,8 +136,6 @@ const naviItem = [
     }
     :global(.is-scrolled) .container {
         translate: 0 0;
-        transition: 0s;
-        animation: fixed-navi-show 0.75s 0.25s both normal 1 ease-in-out;
         transform: translate(0,0);
     }
     @keyframes arrow-dot-show {

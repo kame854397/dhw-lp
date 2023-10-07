@@ -9,6 +9,7 @@ import FeatureList from '../components/FeatureList.astro';
 import CourseList from '../components/CourseList.astro';
 import GallerySlider from '../components/GallerySlider.astro';
 import WorksGallery from '../components/WorksGallery.astro';
+import FaqList from '../components/FaqList.astro';
 import { Img } from 'astro-imagetools/components';
 import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
@@ -91,7 +92,7 @@ import "../css/top.scss"
     </section>
     <section class="section section-feature" data-section="feature">
         <SectionTitle subTitle="他にはないかも" subTitleImage="/images/section-subtitle-feature.png" >
-            スタジオつくばの<span class="inline-image"><img src="/images/feature-title-inline.svg" width="184" height="144"></span>
+            スタジオつくばの<span class="inline-image"><img src="/images/feature-title-inline.svg" width="184" height="144" alt="魅力"></span>
         </SectionTitle>
         <Spacer height="24px" />
         <FeatureList />
@@ -161,6 +162,13 @@ import "../css/top.scss"
             卒業生の制作物
         </SectionTitle>
         <WorksGallery />
+    </section>
+    <Spacer height="64px"/>
+    <section class="section section-faq">
+        <SectionTitle>
+            よくある質問
+        </SectionTitle>
+        <FaqList />
     </section> 
 </Layout>
 <script is:inline src="/js/rellax.min.js"></script>

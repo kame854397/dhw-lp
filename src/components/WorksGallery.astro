@@ -63,8 +63,11 @@ const works = [
             {works.map((item,index) =>
                 <li class={`selector-item item-${index} ${index===0 ? "is-active" : ""}`}>
                     <button>
-                        <div class="thumbnail">
-                            <Img src={item.thumbnail} alt="" format="webp" />
+                        <div class="thumbnail-container">
+                            <div class="thumbnail">
+                                <Img src={item.thumbnail} alt="" format="webp" />
+                            </div>
+                            <div class="thumbnail-overlay">これを見る</div>
                         </div>
                         <p class="title">{item.title}</p>
                     </button>
@@ -170,7 +173,7 @@ const works = [
         width: 100%;
         height: 100%;
         display: grid;
-        gap: 40px;
+        gap: 32px;
         padding: 4px 8px 64px 24px;
         overflow-y: scroll;
     }
@@ -186,7 +189,7 @@ const works = [
         content: "";
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -1px;
         width: 100%;
         height: 80px;
         z-index: 2;
@@ -197,7 +200,7 @@ const works = [
         content: "";
         position: absolute;
         left: 0;
-        top: 0;
+        top: -1px;
         width: 100%;
         height: 80px;
         z-index: 2;
@@ -213,7 +216,8 @@ const works = [
         opacity: 1;
     }
 
-    .thumbnail {
+    .thumbnail-container {
+        position: relative;
         width: 100%;
         margin: 0 0 16px;
         border-radius: 12px;
@@ -221,41 +225,67 @@ const works = [
         overflow: hidden;
         transition: opacity 0.5s;
     }
+    .thumbnail {
+        transition: transform 0.5s;
+    }
+    .thumbnail-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+        color: var(--color-white-primary);
+        background: rgba(33,33,33,0.7);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+    }
+    .thumbnail-overlay::before {
+        content: "";
+        display: block;
+        width: 32px;
+        height: 32px;
+        background: var(--color-white-primary);
+        -webkit-mask: url("/images/icon-zoom.svg") center/contain no-repeat;
+        mask: url("/images/icon-zoom.svg") center/contain no-repeat;
+    }
     .title {
         position: relative;
         padding: 0 0 0 40px;
         text-align: left;
-        font-size: 24px;
+        font-size: 22px;
     }
     .title::before {
         content: "";
         position: absolute;
-        top: 0;
+        top: 2px;
         left: 0;
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         background: var(--color-lightgray-secondary);
         border: 1px solid rgba(255,255,255,0.5);
         border-radius: 12px;
         box-shadow: var(--shadow-primary-small);
         transition: background-color 0.25s;
     }
-    .selector-item {
-        transition: opacity 0.5s;
-    }
     :where(.selector-item:hover:not(.is-active)) .thumbnail {
-        opacity: 0.6;
+        transform: scale(1.2);
+    }
+    :where(.selector-item:hover:not(.is-active)) .thumbnail-overlay {
+        opacity: 1;
     }
     :where(.selector-item.is-active) .title::before {
         background-color: var(--color-orange-primary);
     }
-    :where(.selector-item.is-active) .thumbnail {
+    :where(.selector-item.is-active) .thumbnail-container {
         outline: 4px solid var(--color-orange-primary);
     }
     .works-container {
         position: relative;
         width: calc(100% - 440px);
-        max-height: calc(100vh - 240px);
+        max-height: calc(100vh - 220px);
         min-height: 400px;
         aspect-ratio: 1;
         border-radius: 24px;

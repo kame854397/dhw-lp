@@ -15,22 +15,7 @@ const {
         }
         {label}
     </span>
-    <span class="arrow">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_928_689)">
-                <rect class="delay-3" x="4" y="15.5" width="3" height="3" transform="rotate(-90 4 15.5)" fill="#F7701B"/>
-                <rect class="delay-2" x="7" y="12.5" width="3" height="3" transform="rotate(-90 7 12.5)" fill="#F7701B"/>
-                <rect class="delay-1" x="10" y="9.5" width="3" height="3" transform="rotate(-90 10 9.5)" fill="#F7701B"/>
-                <rect class="delay-2" x="7" y="6.5" width="3" height="3" transform="rotate(-90 7 6.5)" fill="#F7701B"/>
-                <rect class="delay-3" x="4" y="3.5" width="3" height="3" transform="rotate(-90 4 3.5)" fill="#F7701B"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_928_689">
-            <rect width="16" height="16" fill="white" transform="translate(0 16) rotate(-90)"/>
-            </clipPath>
-            </defs>
-        </svg>
-    </span>
+    <span class="arrow"></span>
 </a>
 <style>
     .container {
@@ -41,23 +26,18 @@ const {
         justify-content: space-between;
         gap: 10px;
         height: 68px;
-        padding: 0 20px;
+        padding: 0 24px;
         color: var(--color-black-primary);
         background: linear-gradient(var(--color-orange-secondary),var(--color-orange-primary));
-        border-radius: 16px;
+        border-radius: 1000px;
         box-shadow: var(--shadow-primary-medium);
-        transition: transform 0.25s cubic-bezier(.36,.12,.14,1.49);
     }
     .container--color-white::before {
         content: "";
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        width: calc(100% - 6px);
-        height: calc(100% - 6px);
+        inset: 3px;
         background: var(--color-white-primary);
-        border-radius: 13px;
+        border-radius: 1000px;
         z-index: -1;
     }
     .container--width-medium {
@@ -97,33 +77,19 @@ const {
     }
     .arrow {
         position: relative;
-        padding: 8px;
-        border-radius: 8px;
-        background: var(--color-pink-secondary);
+        width: 24px;
+        height: 24px;
+        background: var(--color-white-primary);
+        border-radius: 1000px;
+        box-shadow: var(--shadow-primary-tiny);
     }
-    .arrow svg {
+    .arrow::before {
         content: "";
-        display: block;
-        width: 16px;
-        height: 16px;
-    }
-    .container:hover {
-        transform: scale(1.05);
-    }
-    .container:hover .arrow {
-        transform: translate(3px,0);
-    }
-    .container:hover .arrow rect {
-        animation: arrow-dot-show 0.5s 0s normal both 1 ease-out;
-    }
-    .container:hover .arrow .delay-1 {
-        animation-delay: 0s;
-    }
-    .container:hover .arrow .delay-2 {
-        animation-delay: 0.0625s;
-    }
-    .container:hover .arrow .delay-3 {
-        animation-delay: 0.125s;
+        position: absolute;
+        inset: 4px;
+        background: var(--color-orange-primary);
+        mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+        -webkit-mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
     }
     :where(.container[target="_blank"]) .label::after {
         content: "";
@@ -135,10 +101,10 @@ const {
         -webkit-mask: url("/images/icon-external-link.svg") center/contain no-repeat;
         mask: url("/images/icon-external-link.svg") center/contain no-repeat;
     }
-    /* :where(.container--color-white) .arrow {
+    :where(.container--color-white) .arrow {
         background: var(--color-orange-primary);
     }
     :where(.container--color-white) .arrow::before {
         background: var(--color-white-primary);
-    } */
+    }
 </style>

@@ -1,0 +1,217 @@
+---
+const content = [
+    {
+        question: "これはダミーのテキストです。ここにはよくある質問が入ります。",
+        answer: "これはダミーのテキストです。ここには質問に対する回答が入ります。これはダミーのテキストです。ここにはこれはダミーのテキストです。ここには質問に対する回答が入ります。<br>これはダミーのテキストです。ここには質問に対する回答が入ります。",
+    },
+    {
+        question: "これはダミーのテキストです。ここにはよくある質問が入ります。",
+        answer: "これはダミーのテキストです。ここには質問に対する回答が入ります。これはダミーのテキストです。ここにはこれはダミーのテキストです。ここには質問に対する回答が入ります。<br>これはダミーのテキストです。ここには質問に対する回答が入ります。",
+    },
+    {
+        question: "これはダミーのテキストです。ここにはよくある質問が入ります。",
+        answer: "これはダミーのテキストです。ここには質問に対する回答が入ります。これはダミーのテキストです。ここにはこれはダミーのテキストです。ここには質問に対する回答が入ります。<br>これはダミーのテキストです。ここには質問に対する回答が入ります。",
+    },
+    {
+        question: "これはダミーのテキストです。ここにはよくある質問が入ります。",
+        answer: "これはダミーのテキストです。ここには質問に対する回答が入ります。これはダミーのテキストです。ここにはこれはダミーのテキストです。ここには質問に対する回答が入ります。<br>これはダミーのテキストです。ここには質問に対する回答が入ります。",
+    },
+    {
+        question: "これはダミーのテキストです。ここにはよくある質問が入ります。",
+        answer: "これはダミーのテキストです。ここには質問に対する回答が入ります。これはダミーのテキストです。ここにはこれはダミーのテキストです。ここには質問に対する回答が入ります。<br>これはダミーのテキストです。ここには質問に対する回答が入ります。",
+    },
+];
+---
+<dl class="container">
+    {content.map((item,index) =>
+        <div class="item faq-item">
+            <dt class="question">
+                {index === 0 ? 
+                    <div class="guide-bubble">
+                        <img src="/images/faq-guide-bubble.webp" alt="回答を見る" width="172" height="52" />
+                    </div>
+                    : ""
+                }
+                <span class="title title--question">質問</span>
+                <span class="question-body">{item.question}</span>
+                <span class="open-icon"></span>
+            </dt>
+            <dd class="answer">
+                <span class="title title--answer">回答</span>
+                <span class="answer-body">
+                    {item.answer.split('<br>').map((line, index) => (
+                        <p>{line}</p>
+                    ))}
+                </span>
+            </dd>
+        </div>
+    )}
+</dl>
+<script>
+    (function(){
+        const items = document.querySelectorAll<HTMLElement>('.faq-item');
+        for(let i=0; i<items.length; i++) {
+            let isOpen = false;
+            items[i].addEventListener('click',() => {
+                isOpen = !isOpen;
+                const answer = items[i].querySelector<HTMLElement>(".answer");
+                const answerHeight = answer.scrollHeight;
+                if (isOpen) {
+                    items[i].classList.add('is-open');
+                    items[i].style.setProperty("--answer-height", `${answerHeight}px`);
+                    setTimeout(() => {
+                        items[i].style.setProperty("--answer-height", `auto`);
+                    },375)
+                } else {
+                    items[i].style.setProperty("--answer-height", `${answerHeight}px`);
+                    setTimeout(function() {
+                        items[i].classList.remove('is-open');
+                    }, 0);
+                }
+            });
+        }
+    }())
+</script>
+<style>
+    .container {
+        display: grid;
+        gap: 24px;
+        width: var(--content-width-narrow);
+        margin: 0 auto;
+    }
+    .item {
+        position: relative;
+        padding: 20px;
+        background: var(--color-white-primary);
+        border-radius: 32px;
+        box-shadow: var(--shadow-primary-medium-thin);
+        cursor: pointer;
+        transition: transform 0.25s;
+    }
+    .guide-bubble {
+        position: absolute;
+        top: -40px;
+        right: 48px;
+        z-index: 2;
+        width: auto;
+        height: 64px;
+        animation: faq-guide-bubble 1.5s 0s normal infinite both ease-in-out;
+        transition: opacity 0.25s,transform 0.25s cubic-bezier(.46,.12,.2,1.35);
+    }
+    .guide-bubble::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 12px 0;
+        z-index: -1;
+        border-radius: 1000px;
+        box-shadow: var(--shadow-primary-medium);
+    }
+    .guide-bubble img {
+        width: auto;
+        height: 100%;
+    }
+    @keyframes faq-guide-bubble {
+        0% {
+            translate: 50% -4px;
+        }
+        50% {
+            translate: 50% 4px;
+        }
+        100% {
+            translate: 50% -4px;
+        }
+    }
+    .question {
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        transition: margin 0.25s;
+    }
+    .question-body {
+        font-size: 20px;
+    }
+    .open-icon {
+        flex-shrink: 0;
+        position: relative;
+        width: 32px;
+        height: 32px;
+        margin: 0 0 0 auto;
+        transition: transform 0.25s,background-color 0.25s;
+    }
+    .open-icon::before,
+    .open-icon::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height: 100%;
+        width: 4px;
+        border-radius: 1000px;
+        background: var(--color-orange-primary);
+    }
+    .open-icon::before {
+        transition: height 0.25s cubic-bezier(.08,.66,.44,1.23);
+    }
+    .open-icon::after {
+        width: 100%;
+        height: 4px;
+    }
+    .answer {
+        padding: 0 12px;
+        height: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+        gap: 16px;
+        transition: height 0.375s cubic-bezier(.08,.66,.44,1.23),margin-bottom 0.25s;
+    }
+    .answer-body {
+        line-height: 2;
+        color: var(--color-gray-secondary);
+    }
+    .title {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 56px;
+        height: 56px;
+        text-align: center;
+        color: var(--color-white-primary);
+        background: var(--color-orange-primary);
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 12px;
+        text-shadow: var(--text-shadow-primary);
+        box-shadow: var(--shadow-primary-medium-strong);
+    }
+    .title--answer {
+        height: 44px;
+        background: var(--color-black-primary);
+        box-shadow: none;
+    }
+    .item:not(.is-open):hover {
+        transform: scale(1.025);
+    }
+    :global(.faq-item.is-open) .question {
+        margin-bottom: 12px;
+    }
+    :global(.faq-item.is-open) .guide-bubble {
+        transform: scale(0.75);
+        transform-origin: 50% 100%;
+        opacity: 0;
+    }
+    :global(.faq-item.is-open) .open-icon::before {
+        height: 0;
+        transition: height 0.25s cubic-bezier(.56,-0.36,.59,.97);
+    }
+    :global(.faq-item.is-open) .answer {
+        margin-bottom: 8px;
+        height: var(--answer-height);
+    }
+    :global(.faq-item.is-open) .title--answer {
+        transition: box-shadow 0.25s 0.25s;
+    }
+</style>

@@ -88,7 +88,7 @@
         border: 1px solid rgba(255,255,255,0.5);
         color: var(--color-white-primary);
         overflow: hidden;
-        transition: width 0.5s;
+        transition: width 0.625s cubic-bezier(.55,.13,.14,1.05);
         &::before {
             content: "";
             position: absolute;
@@ -315,5 +315,28 @@
     }
     &:nth-of-type(3) {
         --dominant-color: var(--color-purple-primary);
+    }
+}
+
+.section-faq {
+    position: relative;
+    padding: 96px 0;
+    background: var(--color-lightgray-primary);
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 206px;
+        height: 206px;
+        top: 8px;
+        left: 8px;
+        background: url("/images/section-faq-bg.svg") center/contain no-repeat;
+    }
+    &::after {
+        top: auto;
+        left: auto;
+        right: 8px;
+        bottom: 8px;
+        transform: rotate(180deg);
     }
 }
