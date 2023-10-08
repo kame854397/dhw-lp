@@ -66,8 +66,30 @@ const naviItem = [
         z-index: 0;
         transform: translate(0,calc(-100% - 12px));
         transition: 0.5s cubic-bezier(.08,.66,.44,1.23);
+        display: flex;
+        align-items: center;
         z-index: 8;
         width: var(--content-width-wide);
+    }
+    .current-section-title {
+        position: relative;
+        width: calc(var(--width) + 32px);
+        height: 48px;
+        border-radius: 12px;
+        background: var(--color-white-primary);
+        font-size: 20px;
+        box-shadow: var(--shadow-primary-medium-thin);
+        transition: opacity 0.125s, width 0.125s;
+    }
+    .current-section-title-inner {
+        position: absolute;
+        width: max-content;
+        left: 16px;
+        top: 50%;
+        transform: translate(0,-50%);
+    }
+    .current-section-title.is-hide {
+        opacity: 0;
     }
     .navi-container {
         -webkit-backdrop-filter: brightness(1.5) saturate(1.6) blur(16px);

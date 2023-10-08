@@ -106,27 +106,4 @@ import "../css/global.css";
 		const studioImageRellax = new Rellax('.studio-image__image');
 		const rellax = new Rellax('.rellax');
 	}());
-	(function(){
-        const fixedNavi = document.getElementById('fixed-navi');
-        const sections = document.querySelectorAll('[data-section]');
-        console.log("test");
-        window.addEventListener('scroll',()=>{
-            let activeItemIndex = 0;
-            for(let i=0; i<sections.length; i++) {
-                let offsetTop = Math.floor(sections[i].getBoundingClientRect().top);
-                if(offsetTop < 360) {
-                    activeItemIndex = i;
-                }
-            }
-            const naviItems = fixedNavi.querySelectorAll('.navi-item');
-            const activeNaviItem = naviItems[activeItemIndex];
-            for(let i=0; i<naviItems.length; i++) {
-                if (i === activeItemIndex) {
-                    naviItems[i].classList.add('is-active');
-                } else {
-                    naviItems[i].classList.remove('is-active');
-                }
-            }
-        });
-    }());
 </script>

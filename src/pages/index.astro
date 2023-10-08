@@ -21,7 +21,7 @@ import "../css/top.scss"
 ---
 <Layout>
     <Mainvisual />
-    <section class="section section-introduction">
+    <section class="section section-introduction" data-title="STUDIOつくばとは">
         <div class="site-introduction">
             <!-- <div class="site-introduction__bg rellax" data-rellax-speed="-2.5" data-rellax-percentage="0.5"></div> -->
             <div class="site-introduction-outline">
@@ -95,7 +95,7 @@ import "../css/top.scss"
             <Img src="/images/introduction-bottom-image.jpg" format="webp" alt=""/>
         </div>
     </section>
-    <section id="feature" class="section section-feature" data-section="feature">
+    <section id="feature" class="section section-feature" data-section="feature" data-title="スタジオつくばの魅力">
         <SectionTitle subTitle="他にはないかも" subTitleImage="/images/section-subtitle-feature.png" >
             スタジオつくばの<span class="inline-image"><img src="/images/feature-title-inline.svg" width="184" height="144" alt="魅力"></span>
         </SectionTitle>
@@ -109,7 +109,7 @@ import "../css/top.scss"
         </div>
     </div>
     <Spacer height="40px" />
-    <section id="course" class="section section-course" data-section="course">
+    <section id="course" class="section section-course" data-section="course" data-title="コース紹介">
         <SectionTitle subTitle="豊富なオプション！学び方は自由" subTitleImage="/images/section-subtitle-course.png" >
             コース紹介
         </SectionTitle>
@@ -162,7 +162,7 @@ import "../css/top.scss"
             "/images/gallery-slider-04.jpg",
         ]} />
     </section>
-    <section id="works" class="section section-course" data-section="works">
+    <section id="works" class="section section-course" data-section="works" data-title="卒業生の制作物">
         <SectionTitle subTitle="このページも卒業生が勝手に作りました" subTitleImage="/images/section-subtitle-works.png" >
             卒業生の制作物
         </SectionTitle>
@@ -170,7 +170,7 @@ import "../css/top.scss"
             <WorksGallery />
         </div>
     </section>
-    <section class="section">
+    <section class="section" data-title="トレーナー紹介">
         <SectionTitle subTitle="プロフェッショナル集団!" subTitleImage="/images/section-subtitle-traner-introduction.png">
             トレーナー紹介
         </SectionTitle>
@@ -179,14 +179,14 @@ import "../css/top.scss"
         </div>
     </section>
     <Spacer height="48px"/>
-    <section class="section section-faq">
+    <section class="section section-faq" data-title="よくある質問">
         <SectionTitle>
             よくある質問
         </SectionTitle>
         <FaqList />
     </section>
     <Spacer height="48px"/>
-    <section id="interview" class="section" data-section="interview">
+    <section id="interview" class="section" data-section="interview" data-title="卒業生インタビュー">
         <SectionTitle>
             卒業生インタビュー
         </SectionTitle>
@@ -195,7 +195,7 @@ import "../css/top.scss"
     <section class="section">
         <ConversionArea />
     </section> 
-    <section class="section">
+    <section class="section" data-title="アクセス">
         <div class="inview-target inview-fadein">
             <AccessInfo />
         </div>
@@ -206,6 +206,3 @@ import "../css/top.scss"
         </div>
     </section>
 </Layout>
-<script is:inline>
-
-</script>
