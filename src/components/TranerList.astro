@@ -1,0 +1,144 @@
+---
+import TranerSelector from "./TranerSelector.astro";
+import data from "../data/tranersData.json";
+import { Img } from 'astro-imagetools/components';
+const snsIcon = {
+    website: "/images/sns-icon-website.png",
+    line: "/images/sns-icon-line.png",
+    x: "/images/sns-icon-x.png",
+    facebook: "/images/sns-icon-facebook.png",
+    instagram: "/images/sns-icon-instagram.png",
+}
+---
+<div class="container">
+    <div class="list">
+        {data.map((item)=>
+            <div class="item">
+                <div class="content">
+                    <div class={`category category--${item.category}`}>{item.category}</div>
+                    <h4 class="name">
+                        {item.nameImage ? 
+                            <Img src={item.nameImage} placeholder="none" alt={item.name} />
+                            :
+                            <>{item.name}</>
+                        }
+                    </h4>
+                    {item.quote ? 
+                        <p class="quote">{item.quote}</p>
+                        : ""
+                    }
+                    {item.tags ?  
+                        <ul class="tags">
+                            {item.tags.map((tag)=>
+                                <li class={`tag tag--${tag}`}>{tag}</li>
+                            )}
+                        </ul>
+                        : "" 
+                    }
+                    {item.description ?  
+                        <div class="description">
+                            {item.description.split('<br>').map((line, index) => (
+                                <p>{line}</p>
+                            ))}
+                        </div>
+                        : ""
+                    }
+                    {item.sns ?  
+                        <ul class="sns">
+                            {item.sns.map((snsitem)=>
+                                <li class={`sns-item sns-item--${snsitem.type}`}>
+                                    <a href={snsitem.url}>
+                                        <img src={snsIcon[snsitem.type]} alt={snsitem.type} width="40" height="40" />
+                                    </a>    
+                                </li>
+                            )}
+                        </ul>
+                        : ""
+                    }
+                </div>
+                <div class="image">
+                    <Img src={item.image} placeholder="none" alt="" />
+                </div>
+            </div>
+        )}
+    </div>
+    <div class="selector">
+        <TranerSelector />
+    </div>
+</div>
+<style>
+    .container {
+        width: var(--content-width);
+        margin: 0 auto;
+    }
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .content {
+        width: 40%;
+    }
+    .category {
+        position: relative;
+        z-index: 2;
+        padding: 12px 24px;
+        font-size: 18px;
+        border-radius: 1000px;
+        width: fit-content;
+        color: var(--color-white-primary);
+        text-shadow: var(--text-shadow-primary);
+        background: linear-gradient(90deg,var(--color-orange-secondary),var(--color-orange-primary));
+        border: 1px solid rgba(255,255,255,0.5);
+        box-shadow: var(--shadow-primary-medium);
+    }
+    .image {
+        width: calc(50vw);
+        margin:-64px calc(55% - 50vw) 0 0;
+    }
+    .name {
+        line-height: 1;
+        font-size: 132px;
+        margin: 0 0 20px;
+    }
+    .name :global(img) {
+        width: auto;
+        height: 1em!important;
+    }
+    .quote {
+        font-size: 36px;
+        margin: 0 0 12px;
+    }
+    .tags {
+        display: flex;
+        gap: 8px;
+        margin: 0 0 40px;
+    }
+    .tag {
+        padding: 6px 12px;
+        border-radius: 1000px;
+        color: var(--color-black-secondary);
+        background: var(--color-pink-primary);
+    }
+    .tag--WEB {
+        background-color: var(--color-pink-primary);
+    }
+    .tag--運営 {
+        background-color: #DCD6D6;
+    }
+    .description {
+        line-height: 2;
+        margin: 0 0 40px;
+    }
+    .sns {
+        display: flex;
+        gap: 24px;
+    }
+    .sns-item {
+        width: 48px;
+        height: 48px;
+    }
+    .sns-item img {
+        width: 100%;
+    }
+</style>

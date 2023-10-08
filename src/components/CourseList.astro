@@ -10,7 +10,7 @@ import courseData from "../data/courseData.json";
     <div id="course-list" class="course-list">
         {courseData.map((item,index)=>
             <>
-            <CourseItem data={item} />
+            <CourseItem data={item} itemId={`course-${index}`} />
             {index !== courseData.length - 1 ?
                 <hr class="border" />
                 : ""

@@ -22,7 +22,7 @@ import "../css/global.css";
 			<FixedButtons />
 		</main>
         <Footer />
-		<svg class="svg-filter"><defs>
+		<svg class="svg-filter" style="display:none;"><defs>
 			<filter id="chromaticAberration">
 				<feColorMatrix type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
 				<feOffset dx="-1" dy="-1" result="g"/>
@@ -64,3 +64,69 @@ import "../css/global.css";
 		opacity: 0.45;
 	}
 </style>
+<script is:inline src="/js/rellax.min.js"></script>
+<script is:inline>
+	(function(){
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			const offset = anchor.getAttribute("data-scroll-offset") ? anchor.getAttribute("data-scroll-offset") : 0;
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const href = anchor.getAttribute('href');
+				const target = document.getElementById(href.replace('#', ''));
+				const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+				window.scrollTo({
+					top: targetPosition,
+					behavior: 'smooth'
+				});
+			});
+		});
+	}());
+	(function(){
+		const addInview = function(){
+			const target = document.getElementsByClassName('inview-target');
+			const position = Math.floor(window.innerHeight * .75);
+			for (let i = 0; i < target.length; i++) {
+				let offsetTop = Math.floor(target[i].getBoundingClientRect().top);
+				if (offsetTop < position) {
+					target[i].classList.add('is-inview');
+				}
+			}
+		}
+		addInview();
+		const body = document.querySelector('body');
+		window.addEventListener('scroll', function(){
+			if(window.scrollY > 200) {
+				body.classList.add('is-scrolled');
+			} else {
+				body.classList.remove('is-scrolled');
+			}
+		});
+
+		window.addEventListener('scroll', addInview, false);
+		const studioImageRellax = new Rellax('.studio-image__image');
+		const rellax = new Rellax('.rellax');
+	}());
+	(function(){
+        const fixedNavi = document.getElementById('fixed-navi');
+        const sections = document.querySelectorAll('[data-section]');
+        console.log("test");
+        window.addEventListener('scroll',()=>{
+            let activeItemIndex = 0;
+            for(let i=0; i<sections.length; i++) {
+                let offsetTop = Math.floor(sections[i].getBoundingClientRect().top);
+                if(offsetTop < 360) {
+                    activeItemIndex = i;
+                }
+            }
+            const naviItems = fixedNavi.querySelectorAll('.navi-item');
+            const activeNaviItem = naviItems[activeItemIndex];
+            for(let i=0; i<naviItems.length; i++) {
+                if (i === activeItemIndex) {
+                    naviItems[i].classList.add('is-active');
+                } else {
+                    naviItems[i].classList.remove('is-active');
+                }
+            }
+        });
+    }());
+</script>

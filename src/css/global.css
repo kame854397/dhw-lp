@@ -20,7 +20,7 @@ button {cursor:pointer; color: inherit; background: none;}
 img {display:block; width:100%; height:auto;}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block;}
 html { font-size:62.5%;}
-body {line-height:1; line-height:1.5; --letter-spacing:.05em; font-size:16px; font-family:var(--font-family-primary); font-weight:500; color:var(--color-black-primary); background: var(--color-white-secondary); overflow-y:auto; overflow-x: hidden; scrollbar-gutter:stable;}
+body {line-height:1; line-height:1.5; --letter-spacing:.05em; font-size:16px; font-weight: bold; font-family:var(--font-family-primary); font-weight:500; color:var(--color-black-primary); background: var(--color-white-secondary); overflow-y:auto; overflow-x: hidden; scrollbar-gutter:stable;}
 * {letter-spacing:var(--letter-spacing);}
 @media screen and (max-width:1080px) {
 	body {font-size:15px;}

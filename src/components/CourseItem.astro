@@ -8,9 +8,10 @@ import { Img } from 'astro-imagetools/components';
 
 const {
     data,
+    itemId,
 } = Astro.props
 ---
-<div class="container course-item" style={`--dominant-color:${data.color ? data.color : "#EE0101"}`}>
+<div id={itemId} class="container course-item" style={`--dominant-color:${data.color ? data.color : "#EE0101"}`}>
     <div class="outline">
         <div class="text-content">
             <div class="header">
@@ -32,10 +33,10 @@ const {
             <Img src="/images/course-web-image.png" placeholder="none" format="webp" alt="" />
         </div>
     </div>
-    <Spacer height="56px" />
+    <Spacer height="48px" />
     <SubsectionTitle>こんな方にオススメ</SubsectionTitle>
     <RecommendList data={data.recommend} />
-    <Spacer height="48px" />
+    <Spacer height="32px" />
     <CoursePriceInfo data={data.price} />
 </div>
 <style>

@@ -1,0 +1,157 @@
+---
+import SectionTitle from '../components/SectionTitle.astro';
+import Button from '../components/Button.astro';
+---
+<div class="container">
+    <div class="infomation">
+        <SectionTitle align="left">アクセス</SectionTitle>
+        <table class="table">
+            <tr>
+                <th>
+                    <div class="icon">
+                        <img src="/images/icon-access-car.svg" alt="アクセス方法" width="40" height="40">
+                    </div>
+                </th>
+                <td>
+                    <dl class="access-method">
+                        <div class="access-method-item">
+                            <dt>電車：</dt>
+                            <dd>つくば駅（つくばエクスプレス）→バス停：花畑(つくバス北部シャトル）</dd>
+                        </div>
+                        <div class="access-method-item">
+                            <dt>車：</dt>
+                            <dd>桜土浦I.C.(常磐自動車道)より約30分</dd>
+                        </div>
+                    </dl>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="icon">
+                        <img src="/images/icon-access-address.svg" alt="アクセス方法" width="40" height="40">
+                    </div>
+                </th>
+                <td>
+                    <span class="postal-code">〒300-3261</span>
+                    <span class="address adr">茨城県つくば市花畑1-13-7</span>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="icon">
+                        <img src="/images/icon-access-tel.svg" alt="アクセス方法" width="40" height="40">
+                    </div>
+                </th>
+                <td>
+                    <a href="tel:029-879-5260" class="tel">029-879-5260</a><br>
+                    受付時間：火～金 12:00～22:00 土日祝 10:00～20:00<br>
+                    月曜日休館
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="icon">
+                        <img src="/images/icon-access-email.svg" alt="アクセス方法" width="40" height="40">
+                    </div>
+                </th>
+                <td>
+                    <a href="mailto:tsukuba@dhw.co.jp" class="email">tsukuba@dhw.co.jp</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="map-container">
+        <div class="map">
+            <iframe title="STUDIOつくばへのアクセス方法" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.506467036602!2d140.08741757674414!3d36.12987977244572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60220cc0b7136735%3A0x7cc02f6fc9b54455!2z44OH44K444K_44Or44OP44Oq44Km44OD44OJU1RVRElP44Gk44GP44Gw!5e0!3m2!1sen!2sjp!4v1696729277986!5m2!1sen!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="button">
+            <Button href="https://maps.app.goo.gl/Jws4c4PxiEHLJh9A9" width="full" target="_blank" label="Google マップで見る" />
+        </div>
+    </div>
+</div>
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        width: var(--content-width);
+        margin: 0 auto;
+        text-align: left;
+    }
+    .infomation {
+        width: 40%;
+    }
+    .table {
+        line-height: 2;
+    }
+    .table th,
+    .table td {
+        padding: 24px 0 24px;
+        vertical-align: top;
+        border-bottom: 1px solid var(--color-lightgray-secondary);
+    }
+    .table th {
+        padding-right: 16px;
+    }
+    .table td {
+        padding-top: 28px;
+    }
+    .table tr:first-of-type th {
+        padding-top: 0;
+    }
+    .table tr:first-of-type td {
+        padding-top: 4px;
+    }
+    .table a {
+        position: relative;
+        transition: opacity 0.25s;
+    }
+    .table a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0.125em;
+        height: 2px;
+        background: var(--color-black-primary);
+    }
+    .table a:hover {
+        opacity: 0.5;
+    }
+    .access-method {
+        display: grid;
+        gap: 12px;
+        line-height: 1.5;
+    }
+    .access-method-item {
+        display: flex;
+    }
+    .access-method dt {
+        flex-shrink: 0;
+        width: 4em;
+    }
+    .icon {
+        width: 32px;
+    }
+    .map-container {
+        position: relative;
+        width: 55%;
+    }
+    .map {
+        padding: 3px;
+        background: linear-gradient(var(--color-orange-secondary),var(--color-orange-primary));
+        border-radius: 24px;
+        box-shadow: var(--shadow-primary-medium);
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+    }
+    .map iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 21px;
+    }
+    .button {
+        position: absolute;
+        right: 24px;
+        bottom: -16px;
+    }
+</style>

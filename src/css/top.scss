@@ -320,6 +320,7 @@
 
 .section-faq {
     position: relative;
+    z-index: 0;
     padding: 96px 0;
     background: var(--color-lightgray-primary);
     &::before,
@@ -330,6 +331,7 @@
         height: 206px;
         top: 8px;
         left: 8px;
+        z-index: -1;
         background: url("/images/section-faq-bg.svg") center/contain no-repeat;
     }
     &::after {
