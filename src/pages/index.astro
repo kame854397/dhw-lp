@@ -12,13 +12,16 @@ import WorksGallery from '../components/WorksGallery.astro';
 import FaqList from '../components/FaqList.astro';
 import ArchiveInterview from '../components/ArchiveInterview.astro';
 import ConversionArea from '../components/ConversionArea.astro';
+import AccessInfo from '../components/AccessInfo.astro';
+import Message from '../components/Message.astro';
+import TranerList from '../components/TranerList.astro';
 import { Img } from 'astro-imagetools/components';
 import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
 ---
 <Layout>
     <Mainvisual />
-    <section class="section section-introduction">
+    <section class="section section-introduction" data-title="STUDIOつくばとは">
         <div class="site-introduction">
             <!-- <div class="site-introduction__bg rellax" data-rellax-speed="-2.5" data-rellax-percentage="0.5"></div> -->
             <div class="site-introduction-outline">
@@ -92,7 +95,7 @@ import "../css/top.scss"
             <Img src="/images/introduction-bottom-image.jpg" format="webp" alt=""/>
         </div>
     </section>
-    <section class="section section-feature" data-section="feature">
+    <section id="feature" class="section section-feature" data-section="feature" data-title="スタジオつくばの魅力">
         <SectionTitle subTitle="他にはないかも" subTitleImage="/images/section-subtitle-feature.png" >
             スタジオつくばの<span class="inline-image"><img src="/images/feature-title-inline.svg" width="184" height="144" alt="魅力"></span>
         </SectionTitle>
@@ -106,14 +109,14 @@ import "../css/top.scss"
         </div>
     </div>
     <Spacer height="40px" />
-    <section class="section section-course" data-section="course">
+    <section id="course" class="section section-course" data-section="course" data-title="コース紹介">
         <SectionTitle subTitle="豊富なオプション！学び方は自由" subTitleImage="/images/section-subtitle-course.png" >
             コース紹介
         </SectionTitle>
         <Spacer height="40px" />
         <CourseList />
         <Spacer height="104px" />
-        <div class="course-others">
+        <div id="course-others" class="course-others">
             <h3 class="course-others__title">
                 <div class="course-others__title-bubble inview-target">
                     <Img src="/images/course-others-title-bubble.png" format="webp" placeholder="none" alt="もっと自由に">
@@ -159,21 +162,31 @@ import "../css/top.scss"
             "/images/gallery-slider-04.jpg",
         ]} />
     </section>
-    <section class="section section-course" data-section="works">
+    <section id="works" class="section section-course" data-section="works" data-title="卒業生の制作物">
         <SectionTitle subTitle="このページも卒業生が勝手に作りました" subTitleImage="/images/section-subtitle-works.png" >
             卒業生の制作物
         </SectionTitle>
-        <WorksGallery />
+        <div class="inview-target inview-fadein">
+            <WorksGallery />
+        </div>
+    </section>
+    <section class="section" data-title="トレーナー紹介">
+        <SectionTitle subTitle="プロフェッショナル集団!" subTitleImage="/images/section-subtitle-traner-introduction.png">
+            トレーナー紹介
+        </SectionTitle>
+        <div class="inview-target inview-fadein">
+            <TranerList />
+        </div>
     </section>
     <Spacer height="48px"/>
-    <section class="section section-faq">
+    <section class="section section-faq" data-title="よくある質問">
         <SectionTitle>
             よくある質問
         </SectionTitle>
         <FaqList />
     </section>
     <Spacer height="48px"/>
-    <section class="section">
+    <section id="interview" class="section" data-section="interview" data-title="卒業生インタビュー">
         <SectionTitle>
             卒業生インタビュー
         </SectionTitle>
@@ -182,53 +195,14 @@ import "../css/top.scss"
     <section class="section">
         <ConversionArea />
     </section> 
+    <section class="section" data-title="アクセス">
+        <div class="inview-target inview-fadein">
+            <AccessInfo />
+        </div>
+    </section>
+    <section class="section">
+        <div class="inview-target inview-fadein">
+            <Message />
+        </div>
+    </section>
 </Layout>
-<script is:inline src="/js/rellax.min.js"></script>
-<script is:inline>
-    const addInview = function(){
-        const target = document.getElementsByClassName('inview-target');
-        const position = Math.floor(window.innerHeight * .75);
-        for (let i = 0; i < target.length; i++) {
-            let offsetTop = Math.floor(target[i].getBoundingClientRect().top);
-            if (offsetTop < position) {
-                target[i].classList.add('is-inview');
-            }
-        }
-    }
-    addInview();
-    const body = document.querySelector('body');
-    window.addEventListener('scroll', function(){
-        if(window.scrollY > 200) {
-            body.classList.add('is-scrolled');
-        } else {
-            body.classList.remove('is-scrolled');
-        }
-    });
-
-    window.addEventListener('scroll', addInview, false);
-    const studioImageRellax = new Rellax('.studio-image__image');
-    const rellax = new Rellax('.rellax');
-    (function(){
-        const fixedNavi = document.getElementById('fixed-navi');
-        const sections = document.querySelectorAll('[data-section]');
-        console.log("test");
-        window.addEventListener('scroll',()=>{
-            let activeItemIndex = 0;
-            for(let i=0; i<sections.length; i++) {
-                let offsetTop = Math.floor(sections[i].getBoundingClientRect().top);
-                if(offsetTop < 360) {
-                    activeItemIndex = i;
-                }
-            }
-            const naviItems = fixedNavi.querySelectorAll('.navi-item');
-            const activeNaviItem = naviItems[activeItemIndex];
-            for(let i=0; i<naviItems.length; i++) {
-                if (i === activeItemIndex) {
-                    naviItems[i].classList.add('is-active');
-                } else {
-                    naviItems[i].classList.remove('is-active');
-                }
-            }
-        });
-    }());
-</script>
