@@ -30,5 +30,229 @@
                 "url":"test"
             }
         ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-enomoto.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-enomoto.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-kamezawa.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-kamezawa.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-damy.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-damy.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-takase.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-takase.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-enomoto.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-enomoto.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-kamezawa.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-kamezawa.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
+    },
+    {
+        "name": "高瀬 洋之",
+        "nameImage": "/images/traner-name-takase.png",
+        "category": "トレーナー",
+        "categoryImage": "/images/traner-category-damy.png",
+        "quote": "てめぇら！退屈は敵だ！",
+        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
+        "thumbnail": "/images/traner-thumbnail-damy.png",
+        "image": "/images/traner-takase.png",
+        "tags": [
+            "WEB",
+            "運営"
+        ],
+        "sns": [
+            {
+                "type":"website",
+                "url":"example.com"
+            },
+            {
+                "type":"line",
+                "url":"test"
+            },
+            {
+                "type":"facebook",
+                "url":"test"
+            },
+            {
+                "type":"instagram",
+                "url":"test"
+            }
+        ]
     }
 ]

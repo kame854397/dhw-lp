@@ -1,0 +1,57 @@
+---
+import data from "../data/tranersData.json";
+import { Img } from 'astro-imagetools/components';
+---
+<ul class="container">
+    {data.map((item,index)=>
+        <li class={`item ${index === 0 ? "is-active" : ""}`}>
+            <Img src={item.thumbnail} format="webp" placeholder="none" alt={item.name} />
+        </li>
+    )}
+</ul>
+<style>
+    .container {
+        padding: 12px;
+        display: grid;
+        gap: 10px;
+        border-radius: 24px;
+        background: var(--color-lightgray-primary);
+    }
+    .item {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary-medium);
+        transition: transform 0.25s,opacity 0.25s;
+        cursor: pointer;
+    }
+    .item::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border: 4px solid var(--color-orange-primary);
+        border-radius: 19px;
+        background: var(--color-orange-secondary);
+        opacity: 0;
+    }
+    .item :global(img) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: calc(96 / 80 * 100%);
+        max-width: none!important;
+    }
+    .item:global(.is-active)::before {
+        opacity: 1;
+    }
+    :where(.container:has(.item:hover:not(.is-active))) .item {
+        opacity: 0.5;
+    }
+    .item:hover:not(.is-active) {
+        z-index: 1;
+        opacity: 1;
+        transform: scale(1.125);
+    }
+</style>

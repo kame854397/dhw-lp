@@ -11,14 +11,17 @@ const snsIcon = {
 }
 ---
 <div class="container">
+    <div class="selector">
+        <TranerSelector />
+    </div>
     <div class="list">
-        {data.map((item)=>
-            <div class="item">
+        {data.map((item,index)=>
+            <div class={`item ${index === 0 ? "is-active" : ""}`}>
                 <div class="content">
                     <div class={`category category--${item.category}`}>{item.category}</div>
                     <h4 class="name">
                         {item.nameImage ? 
-                            <Img src={item.nameImage} placeholder="none" alt={item.name} />
+                            <Img src={item.nameImage} format="webp" placeholder="none" alt={item.name} />
                             :
                             <>{item.name}</>
                         }
@@ -57,24 +60,33 @@ const snsIcon = {
                     }
                 </div>
                 <div class="image">
-                    <Img src={item.image} placeholder="none" alt="" />
+                    <Img src={item.image} format="webp" placeholder="none" alt="" />
                 </div>
             </div>
         )}
     </div>
-    <div class="selector">
-        <TranerSelector />
-    </div>
 </div>
 <style>
     .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 48px;
         width: var(--content-width);
         margin: 0 auto;
+    }
+    .selector {
+        flex-shrink: 0;
+        width: 104px;
     }
     .item {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        display: none;
+    }
+    .item:global(.is-active) {
+        display: flex;
     }
     .content {
         width: 40%;
@@ -82,7 +94,7 @@ const snsIcon = {
     .category {
         position: relative;
         z-index: 2;
-        padding: 12px 24px;
+        padding: 8px 24px;
         font-size: 18px;
         border-radius: 1000px;
         width: fit-content;
