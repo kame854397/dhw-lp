@@ -2,9 +2,9 @@
 import Button from "./Button.astro";
 const naviItem = [
     {label:"STUDIOつくばの特徴",href:"#feature"},
-    {label:"コース紹介",href:"#course"},
-    {label:"卒業生の制作物",href:"#works"},
-    {label:"卒業生インタビュー",href:"#interview"},
+    {label:"コース紹介",href:"#feature"},
+    {label:"卒業生の制作物",href:"#feature"},
+    {label:"卒業生インタビュー",href:"#feature"},
 ]
 ---
 <div id="fixed-navi" class="container">
@@ -14,15 +14,13 @@ const naviItem = [
                 <li class="navi-item">
                     <a href={item.href}>
                         {item.label}
-                        <div class="arrow">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect class="delay-3" x="0.5" y="3.5" width="3" height="3"/>
-                                <rect class="delay-2" x="3.5" y="6.5" width="3" height="3"/>
-                                <rect class="delay-1" x="6.5" y="9.5" width="3" height="3"/>
-                                <rect class="delay-2" x="9.5" y="6.5" width="3" height="3"/>
-                                <rect class="delay-3" x="12.5" y="3.5" width="3" height="3"/>
-                            </svg>
-                        </div>
+                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="delay-3" x="0.5" y="4" width="3" height="3"/>
+                            <rect class="delay-2" x="3.5" y="7" width="3" height="3"/>
+                            <rect class="delay-1" x="6.5" y="10" width="3" height="3"/>
+                            <rect class="delay-2" x="9.5" y="7" width="3" height="3"/>
+                            <rect class="delay-3" x="12.5" y="4" width="3" height="3"/>
+                        </svg>
                     </a>
                 </li>
             )}
@@ -33,31 +31,6 @@ const naviItem = [
         <div class="navi-bg"></div>
     </div>
 </div>
-<script>
-    (function(){
-        const fixedNavi = document.getElementById('fixed-navi');
-        const sections = document.querySelectorAll('[data-section]');
-        console.log("test");
-        window.addEventListener('scroll',()=>{
-            let activeItemIndex = 0;
-            for(let i=0; i<sections.length; i++) {
-                let offsetTop = Math.floor(sections[i].getBoundingClientRect().top);
-                if(offsetTop < 360) {
-                    activeItemIndex = i;
-                }
-            }
-            const naviItems = fixedNavi.querySelectorAll('.navi-item');
-            const activeNaviItem = naviItems[activeItemIndex];
-            for(let i=0; i<naviItems.length; i++) {
-                if (i === activeItemIndex) {
-                    naviItems[i].classList.add('is-active');
-                } else {
-                    naviItems[i].classList.remove('is-active');
-                }
-            }
-        });
-    }());
-</script>
 <style>
     .container {
         position: fixed;
@@ -159,20 +132,11 @@ const naviItem = [
         width: 16px;
         height: 16px;
         left: 50%;
-        bottom: 12px;
+        bottom: 10px;
         transform: translate(-50%,0);
         filter: drop-shadow(0 4px 0 rgba(160,60,0,0.2));
-    }
-    .arrow svg {
-        transform: rotate(180deg);
         fill: var(--color-orange-primary);
-        transition: transform 0.25s;
     }
-    .navi-item:global(.is-active) .arrow svg,
-    .navi-item:global(.is-active) ~ .navi-item .arrow svg {
-        transform: none;
-    }
-    
     :where(.navi-item>a:hover .arrow) rect {
         transform: translate(0,3px);
         animation: arrow-dot-show 0.5s 0s normal both 1 ease-out;

@@ -22,9 +22,9 @@ const content = [
     },
 ];
 ---
-<dl class="container inview-target">
+<dl class="container">
     {content.map((item,index) =>
-        <div class="item faq-item" style={`--item-index:${index}`}>
+        <div class="item faq-item">
             <dt class="question">
                 {index === 0 ? 
                     <div class="guide-bubble">
@@ -86,11 +86,7 @@ const content = [
         border-radius: 24px;
         box-shadow: var(--shadow-primary-medium-thin);
         cursor: pointer;
-        opacity: 0;
-        transition: transform 0.25s,opacity 0.75s calc(0.0625s * var(--item-index));
-    }
-    .container:global(.is-inview) .item {
-        opacity: 1;
+        transition: transform 0.25s;
     }
     .guide-bubble {
         position: absolute;
@@ -200,25 +196,25 @@ const content = [
     .item:not(.is-open):hover {
         transform: scale(1.025);
     }
-    .faq-item:global(.is-open) .question {
+    :global(.faq-item.is-open) .question {
         margin-bottom: 12px;
     }
-    .faq-item:global(.is-open) .guide-bubble {
+    :global(.faq-item.is-open) .guide-bubble {
         transform: scale(0.75);
         transform-origin: 50% 100%;
         opacity: 0;
     }
-    .faq-item:global(.is-open) .open-icon::before {
+    :global(.faq-item.is-open) .open-icon::before {
         height: 0;
         transition: height 0.25s cubic-bezier(.56,-0.36,.59,.97);
     }
-    .faq-item:global(.is-open) .answer {
+    :global(.faq-item.is-open) .answer {
         margin-bottom: 8px;
         height: var(--answer-height);
         opacity: 1;
         transition: height 0.375s cubic-bezier(.25,.55,.45,1),margin-bottom 0.25s,opacity 0.25s 0.125s;
     }
-    .faq-item:global(.is-open) .title--answer {
+    :global(.faq-item.is-open) .title--answer {
         transition: box-shadow 0.25s 0.25s;
     }
 </style>
