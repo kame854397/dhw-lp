@@ -7,7 +7,7 @@ const {
     <ul class="navi">
         {courseData.map((item,index)=>
             <li class={`course-navi__item item ${index===0 ? "is-active" : ""}`}>
-                <a href={`#course-${index}`} data-scroll-offset="296">
+                <a href={`#course-${index}`}>
                     <span class="icon">
                         <img src={item.icon} alt="" width="40" height="40" />
                     </span>
@@ -17,7 +17,7 @@ const {
             </li>
         )}
         <li class={`course-navi__item item`}>
-            <a href="#course-others">
+            <a href={`#course-${courseData.length + 1}`}>
                 <span class="icon">
                     <img src="/images/icon-course-others.svg" alt="" width="40" height="40" />
                 </span>
@@ -59,7 +59,7 @@ const {
         line-height: 1.25;
         background: var(--color-white-primary);
         border-radius: 1000px;
-        transition: box-shadow 0.25s,transform 0.25s;
+        transition: box-shadow 0.25s;
     }
     .item a::before {
         content: "";
@@ -71,11 +71,6 @@ const {
         background: linear-gradient(90deg,#FF7067,#FB2740);
         opacity: 0;
         transition: opacity 0.25s;
-    }
-    .item a:hover {
-        z-index: 1;
-        box-shadow: var(--shadow-primary-medium-thin);
-        transform: scale(1.05);
     }
     .icon {
         position: relative;

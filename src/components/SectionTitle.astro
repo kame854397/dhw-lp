@@ -3,10 +3,9 @@ import { getImage } from "astro:assets";
 const {
     subTitle,
     subTitleImage,
-    align = "auto",
 } = Astro.props
 ---
-<div class={`container container--align-${align} inview-target section-title`}>
+<div class="container inview-target section-title">
     {subTitle ?
         <p class="subtitle">
             <span class="subtitle-overlay" style={`-webkit-mask-image:url(${subTitleImage}); mask-image:url(${subTitleImage});`}></span>
@@ -14,7 +13,7 @@ const {
         </p>
         : ""
     }
-    <h2 class={`title title--align-${align}`}>
+    <h2 class="title">
         <slot />
     </h2>
 </div>
@@ -27,9 +26,6 @@ const {
         align-items: center;
         gap: 8px;
         text-align: center;
-    }
-    .container--align-left {
-        align-items: flex-start;
     }
     .subtitle {
         position: relative;
@@ -63,9 +59,6 @@ const {
     }
     .title {
         font-size: 44px;
-    }
-    .title--align-left {
-        text-align: left;
     }
     :global(.is-inview) .subtitle {
         animation: subtitle-show 0.75s 0s both 1 normal ease-in-out;
