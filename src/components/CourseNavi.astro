@@ -9,7 +9,7 @@ const {
             <li class={`course-navi__item item ${index===0 ? "is-active" : ""}`}>
                 <a href={`#course-${index}`} data-scroll-offset="296">
                     <span class="icon">
-                        <img src={item.icon} alt="" width="40" height="40" />
+                        <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
                     </span>
                     <span class="label">{item.label}</span>
                     <span class="arrow"></span>

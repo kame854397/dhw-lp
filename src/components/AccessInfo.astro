@@ -9,7 +9,7 @@ import Button from '../components/Button.astro';
             <tr>
                 <th>
                     <div class="icon">
-                        <img src="/images/icon-access-car.svg" alt="アクセス方法" width="40" height="40">
+                        <img src="/images/icon-access-car.svg" alt="アクセス方法" width="40" height="40" loading="lazy">
                     </div>
                 </th>
                 <td>
@@ -28,7 +28,7 @@ import Button from '../components/Button.astro';
             <tr>
                 <th>
                     <div class="icon">
-                        <img src="/images/icon-access-address.svg" alt="アクセス方法" width="40" height="40">
+                        <img src="/images/icon-access-address.svg" alt="所在地" width="40" height="40" loading="lazy">
                     </div>
                 </th>
                 <td>
@@ -39,7 +39,7 @@ import Button from '../components/Button.astro';
             <tr>
                 <th>
                     <div class="icon">
-                        <img src="/images/icon-access-tel.svg" alt="アクセス方法" width="40" height="40">
+                        <img src="/images/icon-access-tel.svg" alt="電話番号" width="40" height="40" loading="lazy">
                     </div>
                 </th>
                 <td>
@@ -51,7 +51,7 @@ import Button from '../components/Button.astro';
             <tr>
                 <th>
                     <div class="icon">
-                        <img src="/images/icon-access-email.svg" alt="アクセス方法" width="40" height="40">
+                        <img src="/images/icon-access-email.svg" alt="メールアドレス" width="40" height="40" loading="lazy">
                     </div>
                 </th>
                 <td>
@@ -91,9 +91,6 @@ import Button from '../components/Button.astro';
     }
     .table th {
         padding-right: 16px;
-    }
-    .table td {
-        padding-top: 28px;
     }
     .table tr:first-of-type th {
         padding-top: 0;

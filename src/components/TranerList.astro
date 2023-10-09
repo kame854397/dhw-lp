@@ -19,13 +19,13 @@ const snsIcon = {
             <div class={`item ${index === 0 ? "is-active" : ""}`}>
                 <div class="content">
                     <div class={`category category--${item.category}`}>{item.category}</div>
-                    <h4 class="name">
+                    <h3 class="name">
                         {item.nameImage ? 
                             <Img src={item.nameImage} format="webp" placeholder="none" alt={item.name} />
                             :
                             <>{item.name}</>
                         }
-                    </h4>
+                    </h3>
                     {item.quote ? 
                         <p class="quote">{item.quote}</p>
                         : ""
@@ -51,7 +51,7 @@ const snsIcon = {
                             {item.sns.map((snsitem)=>
                                 <li class={`sns-item sns-item--${snsitem.type}`}>
                                     <a href={snsitem.url}>
-                                        <img src={snsIcon[snsitem.type]} alt={snsitem.type} width="40" height="40" />
+                                        <img src={snsIcon[snsitem.type]} alt={snsitem.type} width="40" height="40" loading="lazy" />
                                     </a>    
                                 </li>
                             )}
