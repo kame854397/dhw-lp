@@ -2,10 +2,12 @@
 import data from "../data/tranersData.json";
 import { Img } from 'astro-imagetools/components';
 ---
-<ul class="container">
+<ul class="container traner-selector inview-target">
     {data.map((item,index)=>
-        <li class={`item ${index === 0 ? "is-active" : ""}`}>
-            <Img src={item.thumbnail} format="webp" placeholder="none" alt={item.name} />
+        <li class={`item ${index === 0 ? "is-active" : ""}`} style={`--index: ${index};`}>
+            <div class="inner">
+                <Img src={item.thumbnail} format="webp" placeholder="none" alt={item.name} />
+            </div>
         </li>
     )}
 </ul>
@@ -21,8 +23,6 @@ import { Img } from 'astro-imagetools/components';
         position: relative;
         width: 100%;
         aspect-ratio: 1;
-        border-radius: 12px;
-        box-shadow: var(--shadow-primary-medium);
         transition: transform 0.25s,opacity 0.25s;
         cursor: pointer;
     }
@@ -34,6 +34,7 @@ import { Img } from 'astro-imagetools/components';
         border-radius: 19px;
         background: var(--color-orange-secondary);
         opacity: 0;
+        transition: opacity 0.25s;
     }
     .item :global(img) {
         position: absolute;
@@ -53,5 +54,17 @@ import { Img } from 'astro-imagetools/components';
         z-index: 1;
         opacity: 1;
         transform: scale(1.125);
+    }
+    .inner {
+        height: 100%;
+        border-radius: 12px;
+        box-shadow: var(--shadow-primary-medium);
+        opacity: 0;
+        transform: scale(0.75);
+        transition: opacity 0.25s calc(0.0625s * var(--index,0)),transform 0.25s calc(0.0625s * var(--index,0));
+    }
+    .container:global(.is-inview) .inner {
+        opacity: 1;
+        transform: none;
     }
 </style>

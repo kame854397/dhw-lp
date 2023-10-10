@@ -97,7 +97,6 @@ import "../css/global.css";
 				}
 			}
 		}
-		addInview();
 		const body = document.querySelector('body');
 		window.addEventListener('scroll', function(){
 			if(window.scrollY > 200) {
@@ -106,7 +105,7 @@ import "../css/global.css";
 				body.classList.remove('is-scrolled');
 			}
 		});
-
+		addInview();
 		window.addEventListener('scroll', addInview, false);
 		const studioImageRellax = new Rellax('.studio-image__image');
 		const rellax = new Rellax('.rellax');

@@ -10,13 +10,13 @@ const snsIcon = {
     instagram: "/images/sns-icon-instagram.png",
 }
 ---
-<div class="container">
+<div id="traner-list" class="container">
     <div class="selector">
         <TranerSelector />
     </div>
     <div class="list">
         {data.map((item,index)=>
-            <div class={`item ${index === 0 ? "is-active" : ""}`}>
+            <div class={`item traner-list-item ${index === 0 ? "is-active" : ""}`}>
                 <div class="content">
                     <div class={`category category--${item.category}`}>{item.category}</div>
                     <h3 class="name">
@@ -66,6 +66,25 @@ const snsIcon = {
         )}
     </div>
 </div>
+<script>
+    (function(){
+        const tranerList = document.getElementById('traner-list');
+        const selector = tranerList.querySelector('.traner-selector');
+        const selectorItems = selector.querySelectorAll('.item');
+        const changeItem = (itemIndex)=> {
+            for(let i=0; i<selectorItems.length; i++) {
+                if (i === itemIndex) {
+                    selectorItems[i].classList.add('is-active');
+                } else {
+                    selectorItems[i].classList.remove('is-active');
+                }
+            }
+        };
+        for(let i=0; i<selectorItems.length; i++) {
+            selectorItems[i].addEventListener('click',() => {console.log("test");changeItem(i);});
+        }
+    }());
+</script>
 <style>
     .container {
         display: flex;
@@ -149,8 +168,12 @@ const snsIcon = {
     .sns-item {
         width: 48px;
         height: 48px;
+        transition: opacity 0.25s;
     }
     .sns-item img {
         width: 100%;
+    }
+    .sns-item:hover {
+        opacity: 0.5;
     }
 </style>

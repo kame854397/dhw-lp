@@ -20,8 +20,10 @@ import { Rellax } from 'astro-imagetools/components';
 import "../css/top.scss"
 ---
 <Layout>
-    <Mainvisual />
-    <section class="section section-introduction" data-title="STUDIOつくばとは">
+    <div data-section="mainvisual">
+        <Mainvisual />
+    </div>
+    <section class="section section-introduction" data-title="STUDIOつくばとは" data-section="introduction">
         <div class="site-introduction">
             <!-- <div class="site-introduction__bg rellax" data-rellax-speed="-2.5" data-rellax-percentage="0.5"></div> -->
             <div class="site-introduction-outline">
@@ -177,7 +179,7 @@ import "../css/top.scss"
         <div class="inview-target inview-fadein">
             <TranerList />
         </div>
-    </section>
+    </section>]
     <Spacer height="48px"/>
     <section class="section section-faq" data-title="よくある質問">
         <SectionTitle>
@@ -195,7 +197,7 @@ import "../css/top.scss"
     <section class="section">
         <ConversionArea />
     </section> 
-    <section class="section" data-title="アクセス">
+    <section class="section" data-title="アクセス" data-section="access">
         <div class="inview-target inview-fadein">
             <AccessInfo />
         </div>
