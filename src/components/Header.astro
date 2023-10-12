@@ -2,9 +2,9 @@
 import Button from "./Button.astro";
 const naviItem = [
     {label:"STUDIOつくばの特徴",href:"#feature"},
-    {label:"コース紹介",href:"#feature"},
-    {label:"卒業生の制作物",href:"#feature"},
-    {label:"卒業生インタビュー",href:"#feature"},
+    {label:"コース紹介",href:"#course"},
+    {label:"卒業生の制作物",href:"#works"},
+    {label:"卒業生インタビュー",href:"#interview"},
 ]
 ---
 <header class="container">
@@ -16,7 +16,9 @@ const naviItem = [
             <ul class="navi">
                 {naviItem.map((item)=>
                     <li class="navi-item">
-                        <a href={item.href}>{item.label}</a>
+                        <a href={item.href}>
+                            {item.label}
+                        </a>
                     </li>
                 )}
                 <li class="contact-button">
@@ -61,9 +63,27 @@ const naviItem = [
         border-bottom: 1px solid var(--color-lightgray-secondary);
     }
     .navi-item>a {
+        position: relative;
         display: block;
         padding: 8px 0;
     }
+    .navi-item>a::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        transform: translate(-50%,0);
+        width: 16px;
+        height: 16px;
+        background: url("/images/arrow-secondary-down.svg") center/contain no-repeat;
+        opacity: 0;
+        transition: opacity 0.25s,transform 0.25s;
+    }
+    .navi-item>a:hover::after {
+        transform: translate(-50%,4px);
+        opacity: 1;
+    }
+
     @media screen and (max-width:1280px) {
         .navi {
             padding: 8px 0;

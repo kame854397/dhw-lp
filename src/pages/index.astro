@@ -110,8 +110,9 @@ import "../css/top.scss"
             <Img src="/images/studio-image.jpg" format="webp" alt="" />
         </div>
     </div>
-    <Spacer height="40px" />
     <section id="course" class="section section-course" data-section="course" data-title="コース紹介">
+        <div class="section-course__bg"></div>
+        <Spacer height="40px" />
         <SectionTitle subTitle="豊富なオプション！学び方は自由" subTitleImage="/images/section-subtitle-course.webp" >
             コース紹介
         </SectionTitle>
@@ -155,8 +156,9 @@ import "../css/top.scss"
                 </li>
             </ul>
         </div>
+        <Spacer height="104px" />
     </section>
-    <section class="section section-course">
+    <section class="section-course">
         <GallerySlider images={[
             "/images/gallery-slider-01.jpg",
             "/images/gallery-slider-02.jpg",
@@ -164,7 +166,8 @@ import "../css/top.scss"
             "/images/gallery-slider-04.jpg",
         ]} />
     </section>
-    <section id="works" class="section section-course" data-section="works" data-title="卒業生の制作物">
+    <Spacer height="104px" />
+    <section id="works" class="section section-works" data-section="works" data-title="卒業生の制作物">
         <SectionTitle subTitle="このページも卒業生が勝手に作りました" subTitleImage="/images/section-subtitle-works.webp" >
             卒業生の制作物
         </SectionTitle>

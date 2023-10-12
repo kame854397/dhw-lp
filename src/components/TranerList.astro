@@ -50,7 +50,7 @@ const snsIcon = {
                         <ul class="sns">
                             {item.sns.map((snsitem)=>
                                 <li class={`sns-item sns-item--${snsitem.type}`}>
-                                    <a href={snsitem.url}>
+                                    <a href={snsitem.url} target="_blank">
                                         <img src={snsIcon[snsitem.type]} alt={snsitem.type} width="40" height="40" loading="lazy" />
                                     </a>    
                                 </li>
@@ -96,7 +96,7 @@ const snsIcon = {
     }
     .selector {
         flex-shrink: 0;
-        width: 104px;
+        width: 112px;
     }
     .item {
         display: flex;
@@ -108,7 +108,7 @@ const snsIcon = {
         display: flex;
     }
     .content {
-        width: 40%;
+        width: 42.5%;
     }
     .category {
         position: relative;

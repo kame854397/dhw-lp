@@ -11,7 +11,7 @@ const {
     itemId,
 } = Astro.props
 ---
-<div id={itemId} class="container course-item" style={`--dominant-color:${data.color ? data.color : "#EE0101"}`}>
+<div id={itemId} class="container course-item" style={`--accent-color:${data.color ? data.color : "#EE0101"}`}>
     <div class="outline">
         <div class="text-content">
             <div class="header">
@@ -35,9 +35,13 @@ const {
     </div>
     <Spacer height="48px" />
     <SubsectionTitle>こんな方にオススメ</SubsectionTitle>
-    <RecommendList data={data.recommend} />
+    <div class="recommend-list">
+        <RecommendList data={data.recommend} />
+    </div>
     <Spacer height="32px" />
-    <CoursePriceInfo data={data.price} />
+    <div class="price-info">
+        <CoursePriceInfo data={data.price} />
+    </div>
 </div>
 <style>
     .outline {
@@ -78,7 +82,7 @@ const {
         display: block;
         width: 32px;
         height: 32px;
-        background: var(--dominant-color,#EE0101);
+        background: var(--accent-color,#EE0101);
         border-radius: 1000px;
     }
     .title-icon span {
@@ -90,5 +94,11 @@ const {
     }
     .copy {
         font-size: 34px;
+    }
+    .recommend-list {
+        color: var(--color-black-primary);
+    }
+    .price-info {
+        color: var(--color-black-primary);
     }
 </style>

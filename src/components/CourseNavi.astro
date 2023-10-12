@@ -2,28 +2,34 @@
 const {
     courseData,
 } = Astro.props;
+import { Img } from 'astro-imagetools/components';
+import Button from "./Button.astro";
 ---
 <div class="container">
     <ul class="navi">
         {courseData.map((item,index)=>
-            <li class={`course-navi__item item ${index===0 ? "is-active" : ""}`}>
+            <li class={`course-navi__item item item--large ${index===0 ? "is-active" : ""}`} style={`--accent-color:${item.color};`} data-color={item.color}>
+                <div class="front-image">
+                    <Img src={item.naviImage} alt="" placeholder="none" format="webp" />
+                </div>
                 <a href={`#course-${index}`} data-scroll-offset="296">
-                    <span class="icon">
-                        <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
-                    </span>
-                    <span class="label">{item.label}</span>
+                    <div class="text-content">
+                        <span class="icon">
+                            <img src={item.icon} alt="" width="40" height="40" loading="lazy" />
+                        </span>
+                        <span class="term">{item.term}</span>
+                        <span class="copy">{item.buttonCopy}</span>
+                    </div>
+                    <div class="image">
+                        <Img src={item.naviImage} alt="" placeholder="none" format="webp" />
+                    </div>
                     <span class="arrow"></span>
                 </a>
             </li>
         )}
-        <li class={`course-navi__item item`}>
-            <a href="#course-others">
-                <span class="icon">
-                    <img src="/images/icon-course-others.svg" alt="" width="40" height="40" />
-                </span>
-                <span class="label">その他のコース</span>
-                <span class="arrow"></span>
-            </a>
+        <li class="spacer"></li>
+        <li class={`course-navi__item item item--small`}>
+            <Button href="#course-others" width="full" border="none" shadow="none" label="その他のコース" iconSrc="/images/icon-course-others.svg" iconColor="original" textAlign="left" />
         </li>
     </ul>
 </div>
@@ -31,103 +37,190 @@ const {
     .container {
         position: relative;
         z-index: 0;
-        padding: 16px 16px 16px 0;
-    }
-    .container::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        width: 100vw;
-        border-radius: 0 32px 32px 0;
-        background: var(--color-lightgray-primary);
     }
     .navi {
         display: grid;
         gap: 12px;
     }
-    .item a{
+    .spacer {
+        height: 12px;
+    }
+    .item {
         position: relative;
         z-index: 0;
+        transition: box-shadow 0.25s,transform 0.25s,opacity 0.25s;
+    }
+    .item::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 16px;
+        background: var(--accent-color);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.25s 0.25s;
+    }
+    .item a{
+        position: relative;
         display: flex;
         align-items: center;
-        padding: 0 48px 0 24px;
-        height: 72px;
+        padding: 20px;
+        height: 148px;
         gap: 10px;
         line-height: 1.25;
         background: var(--color-white-primary);
-        border-radius: 1000px;
-        transition: box-shadow 0.25s,transform 0.25s;
+        border-radius: 12px;
+        overflow: hidden;
     }
-    .item a::before {
+    .image {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 60%;
+        mix-blend-mode: multiply;
+        filter: drop-shadow(16px 4px 32px rgba(0,0,0,0.5));
+    }
+    .image :global(img) {
+        position: relative;
+        z-index: 2;
+    }
+    .image::before {
+        content: "";
+        position: absolute;
+        right: -48px;
+        bottom: -56px;
+        z-index: 0;
+        background: var(--accent-color);
+        border-radius: 1000px;
+        width: 216px;
+        height: 216px;
+        opacity: 0.1;
+    }
+    .front-image {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: -24px;
+        width: 60%;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .front-image :global(img) {
+        position: absolute;
+        inset: auto 0 0 0;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .text-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 52.5%;
+        flex-wrap: wrap;
+        gap: 8px 8px;
+    }
+    .term {
+        position: relative;
+        z-index: 0;
+        padding: 6px 8px 4px;
+        font-size: 14px;
+        color: var(--accent-color);
+    }
+    .term::before {
         content: "";
         position: absolute;
         inset: 0;
-        z-index: -1;
         border-radius: 1000px;
-        border: 1px solid rgba(255,255,255,0.5);
-        background: linear-gradient(90deg,#FF7067,#FB2740);
-        opacity: 0;
-        transition: opacity 0.25s;
+        background: var(--accent-color);
+        opacity: 0.1;
     }
-    .item a:hover {
-        z-index: 1;
-        box-shadow: var(--shadow-primary-medium-thin);
-        transform: scale(1.05);
+    .copy {
+        width: 100%;
     }
     .icon {
         position: relative;
         flex-shrink: 0;
+        display: block;
         width: 24px;
         height: 24px;
-    }
-    .icon::before {
-        content: "";
-        position: absolute;
-        inset: -4px;
-        z-index: -1;
-        border-radius: 1000px;
-        background: rgba(255,255,255,0.75);
-        border: 1px solid rgba(255,255,255,0.5);
-        box-shadow: var(--shadow-primary-tiny);
-        opacity: 0;
-        transition: opacity 0.25s;
     }
     .arrow {
         position: absolute;
-        right: 24px;
-        width: 24px;
-        height: 24px;
-        background: var(--color-orange-primary);
+        right: 12px;
+        bottom: 12px;
+        z-index: 2;
+        width: 48px;
+        height: 48px;
         border-radius: 1000px;
-        box-shadow: var(--shadow-primary-tiny);
+        transition: opacity 0.25s 0s,transform 0.25s 0s;
     }
     .arrow::before {
         content: "";
         position: absolute;
-        inset: 4px;
+        inset: 0;
+        background: var(--accent-color);
+        opacity: 0.7;
+        border-radius: 1000px;
+    }
+    .arrow::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 32px;
+        height: 32px;
+        transform: translate(-50%,-50%);
         background: var(--color-white-primary);
-        mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
-        -webkit-mask: url("/images/arrow-primary-right.svg") center/contain no-repeat;
+        -webkit-mask: url("/images/arrow-tertiary-right.svg") center/contain no-repeat;
+        mask: url("/images/arrow-tertiary-right.svg") center/contain no-repeat;
+        opacity: 0.7;
     }
-    .item.is-active a {
-        color: var(--color-white-primary);
-        text-shadow: var(--text-shadow-primary);
-        box-shadow: var(--shadow-primary-medium);
-        z-index: 2;
+    :where(.navi:has(.item:not(.is-active):hover)) .item {
+        opacity: 0.5;
     }
-    .item.is-active a::before {
-        opacity: 1;
-    }
-    .item.is-active .icon::before {
-        opacity: 1;
+    .item.is-active::before {
+        opacity: 0.7;
     }
     .item.is-active .arrow {
-        background: var(--color-white-primary);
+        opacity: 0;
+        transform: scale(0.75);
+        transition: transform 0.25s 0.25s,opacity 0.25s 0.25s;
     }
-    .item.is-active .arrow::before {
-        background: var(--color-orange-primary);
+    .item:not(.is-active):hover {
+        opacity: 1;
+        box-shadow: var(--shadow-primary-medium-thin);
+    }
+    .item--large:not(.is-active):hover {
+        box-shadow: var(--shadow-primary-medium-thin);
+        transform: scale(1.05);
+    }
+    .item--large:not(.is-active):hover .arrow {
+        transition: transform 0.25s 0s;
+        transform: scale(1.25);
+    }
+    :where(.item:nth-of-type(2n)) a{
+        flex-direction: row-reverse;
+    }
+    :where(.item:nth-of-type(2n)) .image{
+        right: auto;
+        left: 0;
+    }
+    :where(.item:nth-of-type(2n)) .front-image {
+        right: auto;
+        left: 0;
+    }
+    :where(.item:nth-of-type(2n)) .image::before {
+        right: auto;
+        left: -48px;
+    }
+    :where(.item:nth-of-type(2n)) .arrow {
+        right: auto;
+        left: 12px;
+    }
+    .item--small a {
+        height: auto;
+        flex-direction: row;
     }
 </style>

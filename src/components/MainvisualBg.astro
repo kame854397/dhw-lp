@@ -1,0 +1,112 @@
+---
+---
+<div class="container">
+    <canvas id="mainvisual-bg" class="mainvisual-bg" width="2400" height="1600"></canvas>
+</div>
+<style>
+    .mainvisual-bg {
+        width: 100%;
+    }
+</style>
+<script is:inline src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script is:inline>
+    let stage;
+    let layers = [];
+    const layerFactors = [0.2, 0.875, 1.75, 2.5, 4.0, 0];
+    createjs.Ticker.setFPS(60);
+    function init() {
+        stage = new createjs.Stage("mainvisual-bg");
+        createjs.Ticker.addEventListener("tick", tick);
+
+        // 画像ファイルのパスを指定
+        const imagePaths = [
+            "/images/kv-04.webp",
+            "/images/kv-03.webp",
+            "/images/kv-02.webp",
+            "/images/kv-01.webp",
+            "/images/kv-00.webp",
+            "/images/kv-copy.webp",
+            // 他の画像ファイル
+        ];
+
+        // 画像のロードと初期化
+        const loader = new createjs.LoadQueue(false);
+        loader.loadManifest(imagePaths.map(path => ({ src: path, type: createjs.LoadQueue.IMAGE }))); // 画像のロード
+        loader.on("fileload", handleImageLoad);
+        loader.on("complete", handleComplete);
+    }
+
+    function handleImageLoad(event) {
+        const image = event.result;
+        const layer = new createjs.Bitmap(image);
+        const newWidth = 2400; // 新しい幅
+        const newHeight = 1600; // 新しい高さ
+        layer.scaleX = newWidth / layer.image.width;
+        layer.scaleY = newHeight / layer.image.height;
+        layer.regX = 0;
+        layer.regY = 0;
+        layers.push(layer);
+    }
+
+    function handleComplete() {
+        // レイヤーをステージに追加
+        for (let i = 0; i < layers.length; i++) {
+            const layer = layers[i];
+            stage.addChild(layer);
+
+            layer.X = stage.canvas.width / 2; // 画面上部から開始
+            layer.y = -280 * layerFactors[i]; // 画面上部から開始
+            const targetX = stage.canvas.width / 2; // 画面中央
+            const targetY = stage.canvas.height / 2; // 画面中央
+            const animationDuration = 1000; // アニメーション時間（1秒）
+        }
+        setTimeout(function(){
+            handleMouseMove();
+            stage.on("tick", handleMouseMove);
+            // マウスムーブイベントをリスナーに追加
+        },50);
+    }
+
+    function handleMouseMove(event) {
+        const mouseX = stage.mouseX ? stage.mouseX : stage.canvas.width / 2;
+        const mouseY = stage.mouseY ? stage.mouseY : stage.canvas.height / 2;
+        const centerX = stage.canvas.width / 2;
+        const centerY = stage.canvas.height / 2;
+
+        for (let i = 0; i < layers.length; i++) {
+            const layer = layers[i];
+            const distanceX = (layerFactors[i] + 1) * (centerX - mouseX) / 10;
+            const distanceY = (layerFactors[i] + 1) * (centerY - mouseY) / 18;
+            const distance = distanceToCenter(mouseX, mouseY, centerX, centerY);
+            const speedFactor = 1 / (1 + distance / 500);
+            // TweenJSを使用して動きを制御
+            createjs.Tween.get(layer, { loop: false })
+                .to({ x: distanceX * speedFactor + defaultPosition.x * layerFactors[i] * 0.1, y: distanceY * speedFactor + defaultPosition.y * layerFactors[i] * 0.1}, 600, createjs.Ease.cubicOut); // アニメーションの時間とイージングを調整
+        }
+    }
+    
+    function distanceToCenter(x, y, centerX, centerY) {
+        return Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+    }
+    
+    const radius = 85;
+    const speed = 0.5;
+    let angle = 0;
+    const defaultPosition = {x:0,y:0};
+    function updateAnimation() {
+        // 極座標を使用して点 p の座標を計算
+        angle += speed; // 角度を増加
+        const radians = angle * (Math.PI / 180); // 角度をラジアンに変換
+        const x = radius * Math.cos(radians);
+        const y = radius * Math.sin(radians);
+
+        // 点 p の座標を更新
+        defaultPosition.x = x;
+        defaultPosition.y = y;
+    }
+    function tick() {
+        updateAnimation();
+        stage.update();
+    }
+    init();
+</script>

@@ -30,18 +30,18 @@ import courseData from "../data/courseData.json";
     .course-navi {
         position: sticky;
         top: 80px;
-        width: 304px;
+        width: 320px;
     }
     .course-list {
         display: grid;
         gap: 160px;
-        width: calc(100% - 354px);
+        width: calc(100% - 368px);
     }
     .border {
         display: block;
         width: 100%;
         height: 1px;
-        background: var(--color-lightgray-secondary);
+        background: rgba(0,0,0,0.08);
     }
 </style>
 <script>
@@ -49,7 +49,10 @@ import courseData from "../data/courseData.json";
         const courseList = document.getElementById('course-list');
         const courseNavi = document.getElementById('course-navi');
         const courseItems = courseList.querySelectorAll('.course-item');
-        window.addEventListener('scroll',()=>{
+        const sectionCourse = document.getElementById('course');
+        const sectionBg = sectionCourse.querySelector('.section-course__bg');
+        const naviItems = courseNavi.querySelectorAll('.course-navi__item');
+        const setActiveItem = () => {
             let activeItemIndex = 0;
             for(let i=0; i<courseItems.length; i++) {
                 let offsetTop = Math.floor(courseItems[i].getBoundingClientRect().top);
@@ -57,7 +60,17 @@ import courseData from "../data/courseData.json";
                     activeItemIndex = i;
                 }
             }
-            const naviItems = courseNavi.querySelectorAll('.course-navi__item');
+            if (sectionBg) {
+                if (courseList.getBoundingClientRect().top > 320) {
+                    sectionBg.classList.add('is-hide');
+                } else if (courseList.getBoundingClientRect().top + courseList.clientHeight > 160) {
+                    const bgColor = naviItems[activeItemIndex].getAttribute("data-color");
+                    sectionCourse.style.setProperty("--bg-color",bgColor);
+                    sectionBg.classList.remove('is-hide');
+                } else {
+                    sectionBg.classList.add('is-hide');
+                }
+            }
             const activeNaviItem = naviItems[activeItemIndex];
             for(let i=0; i<naviItems.length; i++) {
                 if (i === activeItemIndex) {
@@ -66,6 +79,8 @@ import courseData from "../data/courseData.json";
                     naviItems[i].classList.remove('is-active');
                 }
             }
-        });
+        }
+        setActiveItem();
+        window.addEventListener('scroll',setActiveItem);
     }());
 </script>

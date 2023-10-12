@@ -1,24 +1,8 @@
+---
+import MainvisualBg from "./MainvisualBg.astro";
+---
 <div id="mainvisual" class="mainvisual">
-    <div id="mainvisual-bg" class="mainvisual-bg">
-        <div class="mainvisual-bg__layer mainvisual-bg__layer--04" data-depth="2">
-            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--04"></div>
-        </div>
-        <div class="mainvisual-bg__layer mainvisual-bg__layer--03" data-depth="6">
-            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--03"></div>
-        </div>
-        <div class="mainvisual-bg__layer mainvisual-bg__layer--02" data-depth="9">
-            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--02"></div>
-        </div>
-        <div class="mainvisual-bg__layer mainvisual-bg__layer--01" data-depth="11">
-            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--01"></div>
-        </div>
-        <div class="mainvisual-bg__layer mainvisual-bg__layer--00" data-depth="16">
-            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image--00"></div>
-        </div>
-        <div class="mainvisual-bg__layer mainvisual-bg__layer--copy" data-depth="2.5">
-            <div class="mainvisual-bg__layer-image mainvisual-bg__layer-image-copy"></div>
-        </div>
-    </div>
+    <div class="mainvisual-bg"><MainvisualBg /></div>
     <div id="mainvisual__stalker" class="mainvisual__stalker"></div>
 </div>
 <style>
@@ -33,7 +17,10 @@
     .mainvisual-bg {
         position: absolute;
         overflow: hidden;
-        inset: -4.75%;
+        top: calc(40px - 6%);
+        left: -4.75%;
+        right: -4.75%;
+        bottom: auto;
         z-index: 0;
         background: var(--color-white-secondary);
         opacity: 0.001;
@@ -69,49 +56,6 @@
         100% {
             background-position: 100% 100%;
         }
-    }
-    @keyframes mainvisual-bg-layer-show {
-        0% {
-            translate: 0 calc(-280px * (var(--parallax) - 0.75));
-        }
-        100% {
-            translate: 0 0;
-        }
-    }
-    .mainvisual-bg__layer-image {
-        inset: 0;
-        position: absolute;
-        animation:mainvisual-shake 15s 0s both infinite normal linear;
-        background:center 32px/100% no-repeat;
-        /* translate: 0 calc(var(--parallax-offset) * (var(--parallax) - 1.25) * -0.2); */
-        will-change: translate;
-    }
-    .mainvisual-bg__layer-image {
-        background-image:var(--background-image);
-    }
-    .mainvisual-bg__layer--00 {
-        --parallax: 2.5;
-        --background-image:url("/images/kv-00.webp");
-    }
-    .mainvisual-bg__layer--01 {
-        --parallax: 2;
-        --background-image:url("/images/kv-01.webp");
-    }
-    .mainvisual-bg__layer--02 {
-        --parallax: 1.5;
-        --background-image:url("/images/kv-02.webp");
-    }
-    .mainvisual-bg__layer--03 {
-        --parallax: 1;
-        --background-image:url("/images/kv-03.webp");
-    }
-    .mainvisual-bg__layer--04 {
-        --parallax: 0.75;
-        --background-image:url("/images/kv-04.webp");
-    }
-    .mainvisual-bg__layer--copy {
-        --parallax: 1;
-        --background-image:url("/images/kv-copy.svg");
     }
     .mainvisual__stalker {
         position: fixed;
@@ -150,17 +94,6 @@
         setTimeout(function(){
             body.classList.add("is-load");
         },50);
-        let lastScrollY = 0;
-        const mainvisual = document.getElementById('mainvisual-bg');
-        window.onload = function() {
-            if(!document.getElementById('mainvisual-bg')) return;
-            const parallax = new Parallax( mainvisual, {
-                scalarX: 0.375,
-                scalarY: 0.2,
-                frictionX: 0.1,
-                frictionY: 0.2,
-            });
-        };
     }());
     class MouseStalker {
         constructor() {

@@ -317,7 +317,33 @@
         --dominant-color: var(--color-purple-primary);
     }
 }
-
+.section-course {
+    position: relative;
+    z-index: 0;
+    color: #313131;
+}
+.section-course__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #fafafa;
+    transition: background-color 0.5s,opacity 0.5s;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        opacity: 0.06;
+        transition: background-color 0.5s;
+    }
+    &.is-hide {
+        opacity: 0;
+    }
+}
 .section-faq {
     position: relative;
     z-index: 0;
