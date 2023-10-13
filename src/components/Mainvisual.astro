@@ -14,20 +14,29 @@ import MainvisualBg from "./MainvisualBg.astro";
         content-visibility: auto;
         background: var(--color-white-secondary);
     }
+    .mainvisual::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        background: url("/images/kv-05.webp") center/109.5% no-repeat;
+        opacity: 0.01;
+        animation: mainvisual-bg-show 1s 0.75s both 1 normal ease-in-out;
+    }
+    @keyframes mainvisual-bg-show {
+        0% {
+            opacity: 0.01;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
     .mainvisual-bg {
         position: absolute;
-        overflow: hidden;
         top: calc(40px - 6%);
         left: -4.75%;
         right: -4.75%;
         bottom: auto;
-        z-index: 0;
-        background: var(--color-white-secondary);
-        opacity: 0.001;
-        transition: opacity 0.5s 0.375s;
-    }
-    :global(.is-load) .mainvisual-bg {
-        opacity: 1;
+        overflow: hidden;
     }
     .mainvisual-bg::before {
         content: "";
@@ -82,19 +91,8 @@ import MainvisualBg from "./MainvisualBg.astro";
     .mainvisual__stoker.is-visible {
         opacity: 0.75;
     }
-    @keyframes mainvisual-shake {
-        0% {transform: rotateZ(0deg) translate3d(0,calc(1% * var(--parallax)),0) rotateZ(0deg);}
-        100% {transform: rotateZ(360deg) translate3d(0,calc(1% * var(--parallax)),0) rotateZ(-360deg);}
-    }
 </style>
-<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 <script is:inline>
-    (function(){
-        const body = document.querySelector("body");
-        setTimeout(function(){
-            body.classList.add("is-load");
-        },50);
-    }());
     class MouseStalker {
         constructor() {
             this.mainvisual = document.getElementById("mainvisual");
