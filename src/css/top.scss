@@ -55,12 +55,20 @@
         }
     }
     &__body-text {
+        width: 85%;
         line-height: 2;
     }
     &__image {
-        width: 50%;
-        margin: 0 -10% 0 0;
+        width: 50vw;
+        margin: 0 calc(50% - 50vw) -10% -10%;
+        z-index: -1;
+        animation: introduction-image-shake 12s 0s infinite both normal linear;
     }
+}
+@keyframes introduction-image-shake {
+    0% {transform:rotateZ(0deg) translate3d(0,2.25%,0) rotateZ(0deg);}
+    50% {transform:rotateZ(180deg) translate3d(0,2.25%,0) rotateZ(-180deg);}
+    100% {transform:rotateZ(360deg) translate3d(0,2.25%,0) rotateZ(-360deg);}
 }
 .site-introduction-copy {
     position: relative;

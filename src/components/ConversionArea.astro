@@ -93,6 +93,9 @@ import Button from '../components/Button.astro';
         background: radial-gradient(circle at center top, var(--color-orange-secondary),var(--color-orange-tertiary));
         filter: url(#chromaticAberration) url(#chromaticAberration);
     }
+    :global(::-webkit-full-page-media, :future, :root) .bg{
+        filter: none;
+    }
     .bg::before {
         content: "";
         position: absolute;

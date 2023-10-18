@@ -22,6 +22,7 @@ import "../css/top.scss"
     <div data-section="mainvisual">
         <Mainvisual />
     </div>
+    <Spacer heght="64px"/>
     <section class="section section-introduction" data-title="STUDIOつくばとは" data-section="introduction">
         <div class="site-introduction">
             <!-- <div class="site-introduction__bg rellax" data-rellax-speed="-2.5" data-rellax-percentage="0.5"></div> -->
@@ -43,7 +44,7 @@ import "../css/top.scss"
                     </h2>
                     <script>
                         (function(){
-                            const copy = document.querySelector('.site-introduction-copy__emphasys');
+                            const copy = document.querySelector<HTMLElement>('.site-introduction-copy__emphasys');
                             const items = copy.querySelectorAll('.site-introduction-copy__emphasys-item');
                             const bg = copy.querySelectorAll('.site-introduction-copy__emphasys-bg');
                             let activeItemIndex = 0;
@@ -75,7 +76,7 @@ import "../css/top.scss"
                     </div>
                 </div>
                 <div class="site-introduction-outline__image">
-                    <Img src="/images/introduction-image.png" placeholder="none" format="webp" alt=""/>
+                    <Img src="/images/introduction-image.jpg" placeholder="none" format="webp" alt=""/>
                 </div>
             </div>
             <Spacer height="64px"/>

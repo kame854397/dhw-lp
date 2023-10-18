@@ -1,22 +1,26 @@
 <div class="container fixed-button">
-    <a class="button button--black fixed-button" href="">
-        <div class="specular"></div>
-        <div class="button-inner">
-            <div class="icon"><img src="/images/icon-orientation.svg" alt="" width="40" height="40"></div>
-            <div class="label">説明会予約</div>
-        </div>
-        <div class="arrow"></div>
-        <div class="glow"></div>
-    </a>
-    <a class="button button--orange fixed-button" href="">
-        <div class="specular"></div>
-        <div class="button-inner">
-            <div class="icon"><img src="/images/icon-material.svg" alt="" width="40" height="40"></div>
-            <div class="label">資料請求</div>
-        </div>
-        <div class="arrow"></div>
-        <div class="glow"></div>
-    </a>
+    <div class="button-container fixed-button">
+        <a class="button button--black" href="">
+            <div class="specular"></div>
+            <div class="button-inner">
+                <div class="icon"><img src="/images/icon-orientation.svg" alt="" width="40" height="40"></div>
+                <div class="label">説明会予約</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="glow"></div>
+        </a>
+    </div>
+    <div class="button-container fixed-button">
+        <a class="button button--orange" href="">
+            <div class="specular"></div>
+            <div class="button-inner">
+                <div class="icon"><img src="/images/icon-material.svg" alt="" width="40" height="40"></div>
+                <div class="label">資料請求</div>
+            </div>
+            <div class="arrow"></div>
+            <div class="glow"></div>
+        </a>
+    </div>
 </div>
 <style>
     .container {
@@ -48,8 +52,20 @@
     .container:has(.button:hover) {
         gap: 16px;
     }
+    .button-container {
+        position: relative;
+        z-index: 0;
+        transition: scale 0.25s;
+        will-change: scale;
+    }
+    .button-container:hover {
+        scale: 1.075;
+        translate: calc((var(--cursor-offsetX) - 50%) / 7.5 * var(--offset-weight)) calc((var(--cursor-offsetY) - 50%) / 7.5 * var(--offset-weight));
+        transition: scale 0.5s, translate 0s;
+    }
     .button {
         position: relative;
+        z-index: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -63,7 +79,8 @@
         color: var(--color-white-primary);
         background: var(--color-black-primary);
         border: 1px solid rgba(255,255,255,0.65);
-        border-radius: 24px;
+        --border-radius: 24px;
+        border-radius: var(--border-radius);
         overflow: hidden;
         box-shadow: var(--shadow-primary-medium-strong);
         animation: fixed-button-shake 7.5s 0s infinite both normal linear;
@@ -74,11 +91,13 @@
         position: absolute;
         inset: 0;
         z-index: 2;
+        border-radius: var(--border-radius);
         background: url("/images/noise.png") center/50px repeat;
         animation: overlay-noise 0.5s 0s both normal infinite steps(5);
         mix-blend-mode: overlay;
         opacity: 0;
         transition: opacity 0.5s;
+        will-change: opacity;
     }
     .button::after {
         content: "";
@@ -86,7 +105,7 @@
         inset: 0;
         z-index: 2;
         box-shadow: var(--inner-grow-primary-medium);
-        border-radius: 12px;
+        border-radius: calc(var(--border-radius - 4px));
         filter: blur(0);
     }
     .specular {
@@ -99,11 +118,6 @@
         background: var(--color-white-primary);
         filter: blur(2px);
     }
-    .button:hover {
-        scale: 1.075;
-        translate: calc((var(--cursor-offsetX) - 50%) / 7.5 * var(--offset-weight)) calc((var(--cursor-offsetY) - 50%) / 7.5 * var(--offset-weight));
-        transition: scale 0.5s, translate 0s;
-    }
     .button:hover::before {
         opacity: 1;
     }
@@ -114,7 +128,7 @@
         align-items: center;
         transition: transform 2s;
     }
-    .button:hover .button-inner {
+    .button-container:hover .button-inner {
         transform: translate(calc((var(--cursor-offsetX) - 50%) / 20 * var(--offset-weight)),calc((var(--cursor-offsetY) - 50%) / 20 * var(--offset-weight)));
         transition: transform 0s;
     }
@@ -189,7 +203,7 @@
         .button {
             width: 88px;
             height: 88px;
-            border-radius: 18px;
+            --border-radius: 18px;
         }
         .icon {
             width: 40px;
@@ -210,7 +224,7 @@
         .button {
             width: 72px;
             height: 72px;
-            border-radius: 16px;
+            --border-radius: 16px;
         }
         .icon {
             width: 32px;

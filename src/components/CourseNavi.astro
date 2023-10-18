@@ -39,8 +39,12 @@ import Button from "./Button.astro";
         z-index: 0;
     }
     .navi {
+        position: relative;
+        z-index: 0;
+        filter: blur(0px);
         display: grid;
         gap: 12px;
+        backface-visibility: none;
     }
     .spacer {
         height: 12px;
@@ -49,6 +53,7 @@ import Button from "./Button.astro";
         position: relative;
         z-index: 0;
         transition: box-shadow 0.25s,transform 0.25s,opacity 0.25s;
+        will-change: transform,opacity;
     }
     .item::before {
         content: "";
@@ -59,6 +64,7 @@ import Button from "./Button.astro";
         opacity: 0;
         z-index: -1;
         transition: opacity 0.25s 0.25s;
+        will-change: opacity;
     }
     .item a{
         position: relative;
@@ -155,6 +161,7 @@ import Button from "./Button.astro";
         height: 48px;
         border-radius: 1000px;
         transition: opacity 0.25s 0s,transform 0.25s 0s;
+        will-change: transform,opacity;
     }
     .arrow::before {
         content: "";

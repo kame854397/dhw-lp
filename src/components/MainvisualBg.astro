@@ -17,6 +17,9 @@
         opacity: 0.01;
         transition: opacity 1s 0.125s;
     }
+    :global(::-webkit-full-page-media, :future, :root) .mainvisual-bg:global(.is-hide) {
+        display: none;
+    }
     :global(.is-load) .container { 
         opacity: 1;
     }
@@ -26,12 +29,14 @@
 </style>
 <script is:inline>
     (function(){
+        const canvas = document.getElementById("mainvisual-bg");
         let stage;
         let layers = [];
-        const layerFactors = [0, 0.2, 0.875, 1.75, 2.5, 4.0, 0];
+        const layerFactors = [0.9, 1.2, 1.875, 2.75, 3.5, 5.0, 1];
         createjs.Ticker.setFPS(60);
         function init() {
-            stage = new createjs.StageGL("mainvisual-bg");
+            resizeCanvas();
+            stage = new createjs.Stage("mainvisual-bg");
             createjs.Ticker.addEventListener("tick", tick);
 
             // 画像ファイルのパスを指定
@@ -52,26 +57,35 @@
             loader.on("complete", handleComplete);
         }
 
+        function resizeCanvas() {
+            // ウィンドウのデバイスピクセル比を取得
+            const devicePixelRatio = window.devicePixelRatio || 1;
+            // ウィンドウの幅と高さをデバイスピクセル比で調整
+            const width = Math.min(Math.max(canvas.clientWidth * devicePixelRatio,1600),2500);
+            const height = width * 1640 / 2500;
+            // キャンバスの幅と高さを設定
+            canvas.width = width;
+            canvas.height = height;
+        }
+
         function handleImageLoad(event) {
             const image = event.result;
             const layer = new createjs.Bitmap(image);
-            const newWidth = 2500; // 新しい幅
-            const newHeight = 1640; // 新しい高さ
+            const newWidth = stage.canvas.width; // 新しい幅
+            const newHeight = stage.canvas.height; // 新しい高さ
             layer.scaleX = newWidth / layer.image.width;
             layer.scaleY = newHeight / layer.image.height;
             layer.regX = 0;
             layer.regY = 0;
             layers.push(layer);
         }
-
         function handleComplete() {
             // レイヤーをステージに追加
             for (let i = 0; i < layers.length; i++) {
                 const layer = layers[i];
                 stage.addChild(layer);
-
                 layer.X = stage.canvas.width / 2; // 画面上部から開始
-                layer.y = -280 * layerFactors[i]; // 画面上部から開始
+                layer.y = 280 * layerFactors[i]; // 画面上部から開始
                 const targetX = stage.canvas.width / 2; // 画面中央
                 const targetY = stage.canvas.height / 2; // 画面中央
                 const animationDuration = 1000; // アニメーション時間（1秒）
@@ -91,13 +105,17 @@
 
             for (let i = 0; i < layers.length; i++) {
                 const layer = layers[i];
-                const distanceX = (layerFactors[i] + 1) * (centerX - mouseX) / 10;
-                const distanceY = (layerFactors[i] + 1) * (centerY - mouseY) / 18;
+                const distanceX = (centerX - mouseX) / 10;
+                const distanceY = (centerY - mouseY) / 18;
                 const distance = distanceToCenter(mouseX, mouseY, centerX, centerY);
                 const speedFactor = 1 / (1 + distance / 500);
+                const canvasSizeRatio = stage.canvas.width / 2500;
                 // TweenJSを使用して動きを制御
                 createjs.Tween.get(layer, { loop: false })
-                    .to({ x: distanceX * speedFactor + defaultPosition.x * layerFactors[i] * 0.1, y: distanceY * speedFactor + defaultPosition.y * layerFactors[i] * 0.1}, 600, createjs.Ease.cubicOut); // アニメーションの時間とイージングを調整
+                    .to({
+                        x: (distanceX * speedFactor + defaultPosition.x) * layerFactors[i] * canvasSizeRatio,
+                        y: (distanceY * speedFactor + defaultPosition.y) * layerFactors[i] * canvasSizeRatio,
+                    },600,createjs.Ease.cubicOut); // アニメーションの時間とイージングを調整
             }
         }
         
@@ -105,8 +123,8 @@
             return Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
         }
         
-        const radius = 85;
-        const speed = 0.5;
+        const radius = 9;
+        const speed = 0.6;
         let angle = 0;
         const defaultPosition = {x:0,y:0};
         function updateAnimation() {
@@ -125,5 +143,13 @@
             stage.update();
         }
         init();
+        window.addEventListener('scroll',function(){
+            const threshold = canvas.clientHeight + 400;
+            if (this.window.scrollY > threshold) {
+                canvas.classList.add('is-hide');
+            } else {
+                canvas.classList.remove('is-hide');
+            }
+        });
     }());
 </script>
