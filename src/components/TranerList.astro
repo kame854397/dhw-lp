@@ -60,7 +60,7 @@ const snsIcon = {
                     }
                 </div>
                 <div class="image">
-                    <Img src={item.image} format="webp" placeholder="none" alt="" />
+                    <img src={item.image} alt="" width="800" height="800" loading="lazy" />
                 </div>
             </div>
         )}
@@ -75,8 +75,10 @@ const snsIcon = {
             for(let i=0; i<selectorItems.length; i++) {
                 if (i === itemIndex) {
                     selectorItems[i].classList.add('is-active');
+                    tranerList.querySelectorAll('.traner-list-item')[i].classList.add('is-active');
                 } else {
                     selectorItems[i].classList.remove('is-active');
+                    tranerList.querySelectorAll('.traner-list-item')[i].classList.remove('is-active');
                 }
             }
         };
@@ -128,13 +130,21 @@ const snsIcon = {
         margin:-64px calc(55% - 50vw) 0 0;
     }
     .name {
+        position: relative;
         line-height: 1;
-        font-size: 132px;
-        margin: 0 0 20px;
+        font-size: 152px;
+        height: 1em;
+        margin: 20px 0 8px;
     }
     .name :global(img) {
-        width: auto;
-        height: 1em!important;
+        position: absolute;
+        left: -0.05em;
+        top: -0.05em;
+        width: calc(100% + 0.1em)!important;
+        max-width: none!important;
+        height: calc(100% + 0.1em)!important;
+        object-fit: contain;
+        object-position: center left;
     }
     .quote {
         font-size: 36px;

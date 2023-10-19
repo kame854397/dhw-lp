@@ -7,7 +7,7 @@
         "quote": "てめぇら！退屈は敵だ！",
         "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
         "thumbnail": "/images/traner-thumbnail-takase.png",
-        "image": "/images/traner-takase.png",
+        "image": "/images/traner-takase.webp",
         "tags": [
             "WEB",
             "運営"
@@ -32,14 +32,14 @@
         ]
     },
     {
-        "name": "高瀬 洋之",
-        "nameImage": "/images/traner-name-takase.png",
-        "category": "トレーナー",
+        "name": "榎本 明穂",
+        "nameImage": "/images/traner-name-enomoto.png",
+        "category": "SA",
         "categoryImage": "/images/traner-category-enomoto.png",
         "quote": "てめぇら！退屈は敵だ！",
         "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
         "thumbnail": "/images/traner-thumbnail-enomoto.png",
-        "image": "/images/traner-takase.png",
+        "image": "/images/traner-enomoto.webp",
         "tags": [
             "WEB",
             "運営"
