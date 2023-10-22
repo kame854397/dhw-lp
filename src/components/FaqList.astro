@@ -39,9 +39,7 @@ const content = [
             <dd class="answer">
                 <span class="title title--answer">回答</span>
                 <span class="answer-body">
-                    {item.answer.split('<br>').map((line, index) => (
-                        <p>{line}</p>
-                    ))}
+                    <p set:html={item.answer}></p>
                 </span>
             </dd>
         </div>

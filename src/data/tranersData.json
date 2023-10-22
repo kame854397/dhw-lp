@@ -36,13 +36,12 @@
         "nameImage": "/images/traner-name-enomoto.png",
         "category": "SA",
         "categoryImage": "/images/traner-category-enomoto.png",
-        "quote": "てめぇら！退屈は敵だ！",
+        "quote": "アイム！スパルタン！！",
         "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
         "thumbnail": "/images/traner-thumbnail-enomoto.png",
         "image": "/images/traner-enomoto.webp",
         "tags": [
-            "WEB",
-            "運営"
+            "WEB"
         ],
         "sns": [
             {
@@ -64,17 +63,16 @@
         ]
     },
     {
-        "name": "高瀬 洋之",
-        "nameImage": "/images/traner-name-takase.png",
-        "category": "トレーナー",
-        "categoryImage": "/images/traner-category-kamezawa.png",
-        "quote": "てめぇら！退屈は敵だ！",
-        "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
-        "thumbnail": "/images/traner-thumbnail-kamezawa.png",
-        "image": "/images/traner-takase.png",
+        "name": "みかづき なおき",
+        "nameImage": "/images/traner-name-mikazuki.png",
+        "category": "SA",
+        "categoryImage": "/images/traner-category-mikazuki.png",
+        "quote": "僕は2021年にスタジオつくばを卒業して、現在はフリーランスとして活動してます。未経験からこの業界に飛び込み、たくさん悩んだり、解決したりしてきました。知識や経験を惜しみなく、皆さんにお伝えできればいいなと思ってます。",
+        "description" : "よろしくお願いします。",
+        "thumbnail": "/images/traner-thumbnail-mikazuki.png",
+        "image": "/images/traner-mikazuki.webp",
         "tags": [
-            "WEB",
-            "運営"
+            "WEB"
         ],
         "sns": [
             {
@@ -96,14 +94,14 @@
         ]
     },
     {
-        "name": "高瀬 洋之",
-        "nameImage": "/images/traner-name-takase.png",
+        "name": "亀沢 哲史",
+        "nameImage": "/images/traner-name-kamezawa.png",
         "category": "トレーナー",
         "categoryImage": "/images/traner-category-damy.png",
         "quote": "てめぇら！退屈は敵だ！",
         "description" : "これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。これはダミーのテキストです。<br>ここには本文が入ります。これはダミーのテキストです。ここには本文が入ります。",
-        "thumbnail": "/images/traner-thumbnail-damy.png",
-        "image": "/images/traner-takase.png",
+        "thumbnail": "/images/traner-thumbnail-kamezawa.png",
+        "image": "/images/traner-kamezawa.webp",
         "tags": [
             "WEB",
             "運営"

@@ -40,9 +40,7 @@ const snsIcon = {
                     }
                     {item.description ?  
                         <div class="description">
-                            {item.description.split('<br>').map((line, index) => (
-                                <p>{line}</p>
-                            ))}
+                            <p set:html={item.description}></p>
                         </div>
                         : ""
                     }
@@ -100,14 +98,28 @@ const snsIcon = {
         flex-shrink: 0;
         width: 112px;
     }
+    .list {
+        perspective: 800px;
+    }
     .item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: scale(0.8) translate3d(0,-96px,0) rotateX(15deg);
+        opacity: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        display: none;
+        transition: opacity 0.25s,transform cubic-bezier(.33,1.41,.52,1.01) 0.25s;
+        
     }
     .item:global(.is-active) {
+        position: static;
         display: flex;
+        transform: none;
+        opacity: 1;
+        z-index: 2;
     }
     .content {
         width: 42.5%;
@@ -148,7 +160,8 @@ const snsIcon = {
     }
     .quote {
         font-size: 36px;
-        margin: 0 0 12px;
+        line-height: 1.25;
+        margin: 0 0 16px;
     }
     .tags {
         display: flex;
